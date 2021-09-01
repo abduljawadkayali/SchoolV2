@@ -1,0 +1,55 @@
+[26-Feb-2020 23:04:23 UTC] PHP Fatal error:  Declaration of Symfony\Component\Translation\TranslatorInterface::setLocale($locale) must be compatible with Symfony\Contracts\Translation\LocaleAwareInterface::setLocale(string $locale) in /home/jilalmostakkball/school/vendor/symfony/translation/TranslatorInterface.php on line 24
+[26-Feb-2020 23:04:46 UTC] PHP Fatal error:  Declaration of Symfony\Component\Translation\TranslatorInterface::setLocale($locale) must be compatible with Symfony\Contracts\Translation\LocaleAwareInterface::setLocale(string $locale) in /home/jilalmostakkball/school/vendor/symfony/translation/TranslatorInterface.php on line 24
+[26-Feb-2020 23:17:51 UTC] PHP Fatal error:  Declaration of Symfony\Component\Translation\TranslatorInterface::setLocale($locale) must be compatible with Symfony\Contracts\Translation\LocaleAwareInterface::setLocale(string $locale) in /home/jilalmostakkball/school/vendor/symfony/translation/TranslatorInterface.php on line 24
+[26-Feb-2020 23:37:50 UTC] PHP Fatal error:  Declaration of Symfony\Component\Translation\TranslatorInterface::setLocale($locale) must be compatible with Symfony\Contracts\Translation\LocaleAwareInterface::setLocale(string $locale) in /home/jilalmostakkball/school/vendor/symfony/translation/TranslatorInterface.php on line 24
+[23-Dec-2020 21:09:07 UTC] PHP Warning:  require(/home/jilalmostakkball/school/vendor/composer/../myclabs/deep-copy/src/DeepCopy/deep_copy.php): failed to open stream: No such file or directory in /home/jilalmostakkball/school/vendor/composer/autoload_real.php on line 66
+[23-Dec-2020 21:09:07 UTC] PHP Warning:  require(/home/jilalmostakkball/school/vendor/composer/../myclabs/deep-copy/src/DeepCopy/deep_copy.php): failed to open stream: No such file or directory in /home/jilalmostakkball/school/vendor/composer/autoload_real.php on line 66
+[23-Dec-2020 21:09:07 UTC] PHP Fatal error:  require(): Failed opening required '/home/jilalmostakkball/school/vendor/composer/../myclabs/deep-copy/src/DeepCopy/deep_copy.php' (include_path='.:/opt/cpanel/ea-php73/root/usr/share/pear') in /home/jilalmostakkball/school/vendor/composer/autoload_real.php on line 66
+[23-Dec-2020 21:14:59 UTC] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Foundation\Application' not found in /home/jilalmostakkball/school/bootstrap/app.php:14
+Stack trace:
+#0 /home/jilalmostakkball/school/artisan(20): require_once()
+#1 {main}
+  thrown in /home/jilalmostakkball/school/bootstrap/app.php on line 14
+[23-Dec-2020 21:18:47 UTC] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Foundation\Application' not found in /home/jilalmostakkball/school/bootstrap/app.php:14
+Stack trace:
+#0 /home/jilalmostakkball/school/artisan(20): require_once()
+#1 {main}
+  thrown in /home/jilalmostakkball/school/bootstrap/app.php on line 14
+[23-Dec-2020 21:19:14 UTC] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Foundation\Application' not found in /home/jilalmostakkball/school/bootstrap/app.php:14
+Stack trace:
+#0 /home/jilalmostakkball/school/artisan(20): require_once()
+#1 {main}
+  thrown in /home/jilalmostakkball/school/bootstrap/app.php on line 14
+[23-Dec-2020 21:19:20 UTC] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Foundation\Application' not found in /home/jilalmostakkball/school/bootstrap/app.php:14
+Stack trace:
+#0 /home/jilalmostakkball/school/artisan(20): require_once()
+#1 {main}
+  thrown in /home/jilalmostakkball/school/bootstrap/app.php on line 14
+[23-Dec-2020 21:21:08 UTC] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Foundation\Application' not found in /home/jilalmostakkball/school/bootstrap/app.php:14
+Stack trace:
+#0 /home/jilalmostakkball/school/artisan(20): require_once()
+#1 {main}
+  thrown in /home/jilalmostakkball/school/bootstrap/app.php on line 14
+[23-Dec-2020 21:21:13 UTC] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Foundation\Application' not found in /home/jilalmostakkball/school/bootstrap/app.php:14
+Stack trace:
+#0 /home/jilalmostakkball/school/artisan(20): require_once()
+#1 {main}
+  thrown in /home/jilalmostakkball/school/bootstrap/app.php on line 14
+[23-Dec-2020 21:22:43 UTC] PHP Warning:  require(/home/jilalmostakkball/school/vendor/autoload.php): failed to open stream: No such file or directory in /home/jilalmostakkball/school/artisan on line 18
+[23-Dec-2020 21:22:43 UTC] PHP Warning:  require(/home/jilalmostakkball/school/vendor/autoload.php): failed to open stream: No such file or directory in /home/jilalmostakkball/school/artisan on line 18
+[23-Dec-2020 21:22:43 UTC] PHP Fatal error:  require(): Failed opening required '/home/jilalmostakkball/school/vendor/autoload.php' (include_path='.:/opt/cpanel/ea-php73/root/usr/share/pear') in /home/jilalmostakkball/school/artisan on line 18
+[27-Dec-2020 16:18:47 UTC] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Foundation\Application' not found in /home/jilalmostakkball/school/bootstrap/app.php:14
+Stack trace:
+#0 /home/jilalmostakkball/school/artisan(20): require_once()
+#1 {main}
+  thrown in /home/jilalmostakkball/school/bootstrap/app.php on line 14
+[27-Dec-2020 16:18:54 UTC] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Foundation\Application' not found in /home/jilalmostakkball/school/bootstrap/app.php:14
+Stack trace:
+#0 /home/jilalmostakkball/school/artisan(20): require_once()
+#1 {main}
+  thrown in /home/jilalmostakkball/school/bootstrap/app.php on line 14
+[28-Dec-2020 08:07:14 UTC] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Foundation\Application' not found in /home/jilalmostakkball/school/bootstrap/app.php:14
+Stack trace:
+#0 /home/jilalmostakkball/school/artisan(20): require_once()
+#1 {main}
+  thrown in /home/jilalmostakkball/school/bootstrap/app.php on line 14
