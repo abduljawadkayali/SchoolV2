@@ -7,11 +7,11 @@ use Illuminate\Http\Request;
 class CrudsController extends Controller
 {
     public function __construct() {
-       
 
-        $this->middleware('permission:Designer');
-        
-    
+
+        $this->middleware('permission:NewDesigner');
+
+
    }
 
     /**
@@ -21,21 +21,21 @@ class CrudsController extends Controller
      */
     public function index()
     {
-    
+
         $data = Crud::where('web_page', '2')->paginate(5);
-       
+
         return view('photo.index', compact('data'))
                 ->with('i', (request()->input('page', 1) - 1) * 5);
-                
+
     }
 
     public function photo($id)
     {
-    
+
         $data = Crud::where('web_page', $id)->paginate(5);
         return view('photo.index', compact('data'))
                 ->with('i', (request()->input('page', 1) - 1) * 5);
-                
+
     }
 
 
@@ -85,7 +85,7 @@ class CrudsController extends Controller
 
         Crud::create($form_data);
 
-       
+
         return redirect()->action('CrudsController@create', ['id' => $page])->with('success', 'Data Added successfully.');
     }
 
@@ -111,8 +111,8 @@ class CrudsController extends Controller
     {
         $data = Crud::findOrFail($id);
         return view('photo.edit', compact('data'));
-          
-      
+
+
     }
 
 
@@ -172,9 +172,9 @@ class CrudsController extends Controller
     {
         $data = Crud::findOrFail($id);
         $page=$data->web_page ;
-        
+
         $data->delete();
         return redirect()->action('CrudsController@photo', ['id' => $page]);
-        
+
     }
 }

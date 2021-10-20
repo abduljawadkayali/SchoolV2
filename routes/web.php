@@ -25,7 +25,17 @@ Route::get('/clear-cache', function() {
 Route::get('/ads.txt',function(){
    return view('ads');
 });
+Route::get('updateStudent',function(){
+    $students = \App\Student::first();
+   return view('ads');
+});
 Route::get('welcome', 'PagesController@welcome');
+Route::get('ted', 'PagesController@ted');
+Route::get('blog', 'PagesController@blog');
+Route::get('work', 'PagesController@work');
+Route::get('hr', 'PagesController@hr');
+Route::get('finans', 'PagesController@finans');
+Route::get('contact', 'PagesController@contact');
 Route::get('kg', 'PagesController@kg');
 Route::get('prekg', 'PagesController@prekg');
 Route::get('firstschool','PagesController@firstschool');
@@ -60,6 +70,7 @@ Route::get('interviewofice', 'PagesController@interviewofice');
 
 
 Route::get('conectus', 'PagesController@conectus');
+Route::post('SendMessage', 'PagesController@message')->name('SendMessage');
 
 Route::resource('posts', 'PostsController');
 Route::get('text/{id}', ['as' => 'post.text', 'uses' => 'PostsController@text']);
@@ -83,6 +94,16 @@ Route::resource('roles', 'RoleController');
 Route::resource('permissions', 'PermissionController');
 Route::get('photo/{id}', ['as' => 'crud.photo', 'uses' => 'CrudsController@photo']);
 
+
+Route::resource('background','New\BackgroundController');
+Route::resource('icon','New\IconController');
+Route::resource('gallery','New\GalleryController');
+Route::resource('haber','New\HaberController');
+Route::resource('haberCard','New\HaberCardController');
+Route::resource('rate','New\RateController');
+Route::resource('employe','New\EmployeController');
+Route::get('employee/{id}', ['as' => 'employe.display', 'uses' => 'pagesController@displayEmployee']);
+Route::get('displayHaber/{id}', ['as' => 'haberCard.display', 'uses' => 'pagesController@display']);
 
 Route::resource('crud','CrudsController');
 Route::get('/staff/create', ['as' => 'staff.create', 'uses' => 'CrudsController@createStaff']);
@@ -114,6 +135,7 @@ Route::resource('respon', 'Group_branch_subject_teachersController');
 
 
 Route::resource('school', 'SchoolController');
+Route::resource('message', 'New\MessageController');
 
 
 Route::get('relation', ['as' => 'relation', 'uses' => 'Group_branch_subject_teachersController@getGroups']);
@@ -188,7 +210,7 @@ Route::get('action/{class}/{subject}','Teacher\TeacherLessonController@action')-
 Route::resource('personal', 'Teacher\TeacherPersonalController');
 
 });
- 
+
 
 
 Route::resource('takip', 'takipController');

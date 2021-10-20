@@ -26,7 +26,7 @@ class HomeController extends Controller
     public function index()
     {
 
-       
+
         if (Auth::check()){
             //$this->middleware(['isAdmin']);
             if (Auth::user()->hasPermissionTo('isAdmin'))
@@ -35,6 +35,10 @@ class HomeController extends Controller
                 return (HomeController::DesignerDashbored());
             elseif (Auth::user()->hasPermissionTo('Editor'))
                 return (HomeController::EditorDashbored());
+            elseif (Auth::user()->hasPermissionTo('NewDesigner'))
+                return (HomeController::NewDesignerDashbored());
+            elseif (Auth::user()->hasPermissionTo('muhasib'))
+                return (HomeController::MuhasibDashbored());
             else {
                 Auth::logout();
                 return (HomeController::NotLogin());
@@ -45,7 +49,9 @@ class HomeController extends Controller
 
 
     }
-
+public function MuhasibDashbored(){
+    return redirect()->route('payment.index');
+}
     public function NotLogin()
     {
         return redirect()->action('PagesController@welcome');
@@ -60,12 +66,17 @@ class HomeController extends Controller
 
     public function DesignerDashbored()
     {
-        
+
         return redirect()->route('crud.create');
+    }
+    public function NewDesignerDashbored()
+    {
+
+        return redirect()->route('background.index');
     }
     public function EditorDashbored()
     {
-        
+
         return redirect()->route('AddStudent');
     }
 }

@@ -3,14 +3,14 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="x-ua-compatible" content="ie=edge"> 
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title> @lang("Future Generation Private Schools")</title>
 
     <!-- Tell the browser    to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Font Awesome -->
   @include('includes.css')
-   
+
 <!-- bootstrap rtl -->
 <link rel="stylesheet" href="/dist/css/bootstrap-rtl.min.css">
 <!-- template rtl version -->
@@ -122,7 +122,12 @@
                             </li>
                         </ul>
                     </li>
-
+                        <li class="nav-item">
+                            <a href="/updateStudent" class="nav-link">
+                                <i class="fas fa-key nav-icon"></i>
+                                <p>@lang("updateStudent")</p>
+                            </a>
+                        </li>
 
 
 
@@ -138,7 +143,7 @@
               <i class="fas fa-key nav-icon"></i>
                <p>@lang("Editor dash")</p>
              </a>
-           </li>  
+           </li>
 
                     </ul>
             </nav>
