@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Background;
+use App\BackgroundOther;
+use App\CourseCategory;
+use App\CourseView;
 use App\Employe;
 use App\Gallery;
 use App\HaberCard;
@@ -105,35 +108,127 @@ class PagesController extends Controller
     }
     public function blog()
     {
-
         $habers = Haber::orderBy('created_at', 'desc')->paginate(10);
+        $haberCards1 = HaberCard::where('type','أخر الأخبار')->get();
+        $haberCards2 = HaberCard::where('type','النشاطات')->get();
+        $haberCards3 = HaberCard::where('type','الزيارات')->get();
+        $haberCards4 = HaberCard::where('type','القرارات')->get();
+        $haberCards5 = HaberCard::where('type','التعليمات الادارية')->get();
+        $mangement = Employe::where('page','mangement')->get();
+        $Tedmangement = Employe::where('page','Tedmangement')->get();
+        $BabeMangement = Employe::where('page','BabeMangement')->get();
+        $PreMangement = Employe::where('page','PreMangement')->get();
+        $FirstMangement = Employe::where('page','FirstMangement')->get();
+        $SecondMangement = Employe::where('page','SecondMangement')->get();
+        $ThirdMangement = Employe::where('page','ThirdMangement')->get();
+        $OnlineMangement = Employe::where('page','OnlineMangement')->get();
+        $GalleryFirst = Gallery::where('title','first')->get()->pluck('image');
+        $GalleryAll = Gallery::where('title','first')->get()->pluck('image');
+        $GallerySecond = Gallery::where('title','second')->get()->pluck('image');
+        $GalleryThird = Gallery::where('title','third')->get()->pluck('image');
+        $GalleryForth = Gallery::where('title','forth')->get()->pluck('image');
 
-        return view('pages.blog', compact( 'habers'))
+        $background = BackgroundOther::where('type','blog')->first();
+//        dd($background);
+        return view('pages.blog', compact('background','GalleryFirst','GallerySecond','GalleryThird','mangement','Tedmangement'
+            ,'GalleryForth','SecondMangement','PreMangement','FirstMangement','ThirdMangement','OnlineMangement',
+            'BabeMangement',
+            'habers',
+            'haberCards1','haberCards2','haberCards3','haberCards4','haberCards5'))
             ->with('i', (request()->input('page', 1) - 1) * 50);
     }
     public function hr()
     {
-
         $habers = Haber::orderBy('created_at', 'desc')->paginate(10);
+        $haberCards1 = HaberCard::where('type','أخر الأخبار')->get();
+        $haberCards2 = HaberCard::where('type','النشاطات')->get();
+        $haberCards3 = HaberCard::where('type','الزيارات')->get();
+        $haberCards4 = HaberCard::where('type','القرارات')->get();
+        $haberCards5 = HaberCard::where('type','التعليمات الادارية')->get();
+        $BabeMangement = Employe::where('page','BabeMangement')->get();
+        $PreMangement = Employe::where('page','PreMangement')->get();
+        $FirstMangement = Employe::where('page','FirstMangement')->get();
+        $SecondMangement = Employe::where('page','SecondMangement')->get();
+        $ThirdMangement = Employe::where('page','ThirdMangement')->get();
+        $OnlineMangement = Employe::where('page','OnlineMangement')->get();
+        $GalleryFirst = Gallery::where('title','first')->get()->pluck('image');
+        $GallerySecond = Gallery::where('title','second')->get()->pluck('image');
+        $GalleryThird = Gallery::where('title','third')->get()->pluck('image');
+        $GalleryForth = Gallery::where('title','forth')->get()->pluck('image');
 
-        return view('pages.hr', compact( 'habers'))
+        $background = BackgroundOther::where('type','hr')->first();
+//        dd($background);
+        return view('pages.hr', compact('background','GalleryFirst','GallerySecond','GalleryThird'
+            ,'GalleryForth','SecondMangement','PreMangement','FirstMangement','ThirdMangement','OnlineMangement',
+            'BabeMangement',
+            'habers',
+            'haberCards1','haberCards2','haberCards3','haberCards4','haberCards5'))
             ->with('i', (request()->input('page', 1) - 1) * 50);
+        $habers = Haber::orderBy('created_at', 'desc')->paginate(10);
     }
     public function finans()
     {
-
         $habers = Haber::orderBy('created_at', 'desc')->paginate(10);
+        $haberCards1 = HaberCard::where('type','أخر الأخبار')->get();
+        $haberCards2 = HaberCard::where('type','النشاطات')->get();
+        $haberCards3 = HaberCard::where('type','الزيارات')->get();
+        $haberCards4 = HaberCard::where('type','القرارات')->get();
+        $haberCards5 = HaberCard::where('type','التعليمات الادارية')->get();
+        $mangement = Employe::where('page','mangement')->get();
+        $Tedmangement = Employe::where('page','Tedmangement')->get();
+        $BabeMangement = Employe::where('page','BabeMangement')->get();
+        $PreMangement = Employe::where('page','PreMangement')->get();
+        $FirstMangement = Employe::where('page','FirstMangement')->get();
+        $SecondMangement = Employe::where('page','SecondMangement')->get();
+        $ThirdMangement = Employe::where('page','ThirdMangement')->get();
+        $OnlineMangement = Employe::where('page','OnlineMangement')->get();
+        $GalleryFirst = Gallery::where('title','first')->get()->pluck('image');
+        $GalleryAll = Gallery::where('title','first')->get()->pluck('image');
+        $GallerySecond = Gallery::where('title','second')->get()->pluck('image');
+        $GalleryThird = Gallery::where('title','third')->get()->pluck('image');
+        $GalleryForth = Gallery::where('title','forth')->get()->pluck('image');
 
-        return view('pages.finans', compact( 'habers'))
+        $background = BackgroundOther::where('type','finans')->first();
+//        dd($background);
+        return view('pages.finans', compact('mangement','Tedmangement','background','GalleryFirst','GallerySecond','GalleryThird'
+            ,'GalleryForth','SecondMangement','PreMangement','FirstMangement','ThirdMangement','OnlineMangement',
+            'BabeMangement',
+            'habers',
+            'haberCards1','haberCards2','haberCards3','haberCards4','haberCards5'))
             ->with('i', (request()->input('page', 1) - 1) * 50);
+        $habers = Haber::orderBy('created_at', 'desc')->paginate(10);
     }
     public function work()
     {
-
         $habers = Haber::orderBy('created_at', 'desc')->paginate(10);
+        $haberCards1 = HaberCard::where('type','أخر الأخبار')->get();
+        $haberCards2 = HaberCard::where('type','النشاطات')->get();
+        $haberCards3 = HaberCard::where('type','الزيارات')->get();
+        $haberCards4 = HaberCard::where('type','القرارات')->get();
+        $haberCards5 = HaberCard::where('type','التعليمات الادارية')->get();
+        $mangement = Employe::where('page','mangement')->get();
+        $Tedmangement = Employe::where('page','Tedmangement')->get();
+        $BabeMangement = Employe::where('page','BabeMangement')->get();
+        $PreMangement = Employe::where('page','PreMangement')->get();
+        $FirstMangement = Employe::where('page','FirstMangement')->get();
+        $SecondMangement = Employe::where('page','SecondMangement')->get();
+        $ThirdMangement = Employe::where('page','ThirdMangement')->get();
+        $OnlineMangement = Employe::where('page','OnlineMangement')->get();
+        $GalleryFirst = Gallery::where('title','first')->get()->pluck('image');
+        $GalleryAll = Gallery::where('title','first')->get()->pluck('image');
+        $GallerySecond = Gallery::where('title','second')->get()->pluck('image');
+        $GalleryThird = Gallery::where('title','third')->get()->pluck('image');
+        $GalleryForth = Gallery::where('title','forth')->get()->pluck('image');
 
-        return view('pages.work', compact( 'habers'))
+        $background = BackgroundOther::where('type','work')->first();
+//        dd($background);
+        return view('pages.work', compact('mangement','Tedmangement','background','GalleryFirst','GallerySecond','GalleryThird'
+            ,'GalleryForth','SecondMangement','PreMangement','FirstMangement','ThirdMangement','OnlineMangement',
+            'BabeMangement',
+            'habers',
+            'haberCards1','haberCards2','haberCards3','haberCards4','haberCards5'))
             ->with('i', (request()->input('page', 1) - 1) * 50);
+        $habers = Haber::orderBy('created_at', 'desc')->paginate(10);
     }
     public function ted()
     {
@@ -161,8 +256,11 @@ class PagesController extends Controller
         $GallerySecond = Gallery::where('title','second')->get()->pluck('image');
         $GalleryThird = Gallery::where('title','third')->get()->pluck('image');
         $GalleryForth = Gallery::where('title','forth')->get()->pluck('image');
-         //dd($GalleryFirst);
-        return view('pages.ted', compact('GalleryFirst','GallerySecond','GalleryThird','GalleryForth','OnlineMangement','ThirdMangement','SecondMangement','FirstMangement','PreMangement','BabeMangement','Tedmangement','mangement','parentsRate','teachersRate','studentsRate','backgrounds','icons', 'habers','haberCards1','haberCards2','haberCards3','haberCards4','haberCards5'))
+        $CourseView = CourseView::all();
+        $CourseCategory = CourseCategory::all();
+
+//         dd($CourseView);
+        return view('pages.ted', compact('CourseCategory','CourseView','GalleryFirst','GallerySecond','GalleryThird','GalleryForth','OnlineMangement','ThirdMangement','SecondMangement','FirstMangement','PreMangement','BabeMangement','Tedmangement','mangement','parentsRate','teachersRate','studentsRate','backgrounds','icons', 'habers','haberCards1','haberCards2','haberCards3','haberCards4','haberCards5'))
                 ->with('i', (request()->input('page', 1) - 1) * 50);
 
     }
@@ -207,20 +305,12 @@ class PagesController extends Controller
     }
 
     public function kg()
-    {
-        $backgrounds = Background::all();
-        $icons = Icon::all();
-        $habers = Haber::orderBy('created_at', 'desc')->paginate(10);
+    {   $habers = Haber::orderBy('created_at', 'desc')->paginate(10);
         $haberCards1 = HaberCard::where('type','أخر الأخبار')->get();
         $haberCards2 = HaberCard::where('type','النشاطات')->get();
         $haberCards3 = HaberCard::where('type','الزيارات')->get();
         $haberCards4 = HaberCard::where('type','القرارات')->get();
         $haberCards5 = HaberCard::where('type','التعليمات الادارية')->get();
-        $parentsRate = Rate::where('category','parents')->get();
-        $teachersRate = Rate::where('category','teacher')->get();
-        $studentsRate = Rate::where('category','student')->get();
-        $mangement = Employe::where('page','mangement')->get();
-        $Tedmangement = Employe::where('page','Tedmangement')->get();
         $BabeMangement = Employe::where('page','BabeMangement')->get();
         $PreMangement = Employe::where('page','PreMangement')->get();
         $FirstMangement = Employe::where('page','FirstMangement')->get();
@@ -228,33 +318,28 @@ class PagesController extends Controller
         $ThirdMangement = Employe::where('page','ThirdMangement')->get();
         $OnlineMangement = Employe::where('page','OnlineMangement')->get();
         $GalleryFirst = Gallery::where('title','first')->get()->pluck('image');
-        $GalleryAll = Gallery::where('title','first')->get()->pluck('image');
         $GallerySecond = Gallery::where('title','second')->get()->pluck('image');
         $GalleryThird = Gallery::where('title','third')->get()->pluck('image');
         $GalleryForth = Gallery::where('title','forth')->get()->pluck('image');
 
-        //dd($GalleryFirst);
-        return view('pages.kg', compact('GalleryFirst','GallerySecond','GalleryThird','GalleryForth','OnlineMangement','ThirdMangement','SecondMangement','FirstMangement','PreMangement','BabeMangement','Tedmangement','mangement','parentsRate','teachersRate','studentsRate','backgrounds','icons', 'habers','haberCards1','haberCards2','haberCards3','haberCards4','haberCards5'))
+        $background = BackgroundOther::where('type','kg')->first();
+//        dd($background);
+        return view('pages.kg', compact('background','GalleryFirst','GallerySecond','GalleryThird'
+            ,'GalleryForth','SecondMangement','PreMangement','FirstMangement','ThirdMangement','OnlineMangement',
+            'BabeMangement',
+            'habers',
+            'haberCards1','haberCards2','haberCards3','haberCards4','haberCards5'))
             ->with('i', (request()->input('page', 1) - 1) * 50);
-
-
     }
 
     public function prekg()
     {
-        $backgrounds = Background::all();
-        $icons = Icon::all();
         $habers = Haber::orderBy('created_at', 'desc')->paginate(10);
         $haberCards1 = HaberCard::where('type','أخر الأخبار')->get();
         $haberCards2 = HaberCard::where('type','النشاطات')->get();
         $haberCards3 = HaberCard::where('type','الزيارات')->get();
         $haberCards4 = HaberCard::where('type','القرارات')->get();
         $haberCards5 = HaberCard::where('type','التعليمات الادارية')->get();
-        $parentsRate = Rate::where('category','parents')->get();
-        $teachersRate = Rate::where('category','teacher')->get();
-        $studentsRate = Rate::where('category','student')->get();
-        $mangement = Employe::where('page','mangement')->get();
-        $Tedmangement = Employe::where('page','Tedmangement')->get();
         $BabeMangement = Employe::where('page','BabeMangement')->get();
         $PreMangement = Employe::where('page','PreMangement')->get();
         $FirstMangement = Employe::where('page','FirstMangement')->get();
@@ -262,13 +347,17 @@ class PagesController extends Controller
         $ThirdMangement = Employe::where('page','ThirdMangement')->get();
         $OnlineMangement = Employe::where('page','OnlineMangement')->get();
         $GalleryFirst = Gallery::where('title','first')->get()->pluck('image');
-        $GalleryAll = Gallery::where('title','first')->get()->pluck('image');
         $GallerySecond = Gallery::where('title','second')->get()->pluck('image');
         $GalleryThird = Gallery::where('title','third')->get()->pluck('image');
         $GalleryForth = Gallery::where('title','forth')->get()->pluck('image');
 
-        //dd($GalleryFirst);
-        return view('pages.prekg', compact('GalleryFirst','GallerySecond','GalleryThird','GalleryForth','OnlineMangement','ThirdMangement','SecondMangement','FirstMangement','PreMangement','BabeMangement','Tedmangement','mangement','parentsRate','teachersRate','studentsRate','backgrounds','icons', 'habers','haberCards1','haberCards2','haberCards3','haberCards4','haberCards5'))
+$background = BackgroundOther::where('type','Babe')->first();
+//        dd($background);
+        return view('pages.prekg', compact('background','GalleryFirst','GallerySecond','GalleryThird'
+            ,'GalleryForth','SecondMangement','PreMangement','FirstMangement','ThirdMangement','OnlineMangement',
+             'BabeMangement',
+              'habers',
+            'haberCards1','haberCards2','haberCards3','haberCards4','haberCards5'))
             ->with('i', (request()->input('page', 1) - 1) * 50);
 
 
@@ -276,19 +365,12 @@ class PagesController extends Controller
 
     public function firstschool()
     {
-        $backgrounds = Background::all();
-        $icons = Icon::all();
         $habers = Haber::orderBy('created_at', 'desc')->paginate(10);
         $haberCards1 = HaberCard::where('type','أخر الأخبار')->get();
         $haberCards2 = HaberCard::where('type','النشاطات')->get();
         $haberCards3 = HaberCard::where('type','الزيارات')->get();
         $haberCards4 = HaberCard::where('type','القرارات')->get();
         $haberCards5 = HaberCard::where('type','التعليمات الادارية')->get();
-        $parentsRate = Rate::where('category','parents')->get();
-        $teachersRate = Rate::where('category','teacher')->get();
-        $studentsRate = Rate::where('category','student')->get();
-        $mangement = Employe::where('page','mangement')->get();
-        $Tedmangement = Employe::where('page','Tedmangement')->get();
         $BabeMangement = Employe::where('page','BabeMangement')->get();
         $PreMangement = Employe::where('page','PreMangement')->get();
         $FirstMangement = Employe::where('page','FirstMangement')->get();
@@ -296,13 +378,17 @@ class PagesController extends Controller
         $ThirdMangement = Employe::where('page','ThirdMangement')->get();
         $OnlineMangement = Employe::where('page','OnlineMangement')->get();
         $GalleryFirst = Gallery::where('title','first')->get()->pluck('image');
-        $GalleryAll = Gallery::where('title','first')->get()->pluck('image');
         $GallerySecond = Gallery::where('title','second')->get()->pluck('image');
         $GalleryThird = Gallery::where('title','third')->get()->pluck('image');
         $GalleryForth = Gallery::where('title','forth')->get()->pluck('image');
 
-        //dd($GalleryFirst);
-        return view('pages.firstschool', compact('GalleryFirst','GallerySecond','GalleryThird','GalleryForth','OnlineMangement','ThirdMangement','SecondMangement','FirstMangement','PreMangement','BabeMangement','Tedmangement','mangement','parentsRate','teachersRate','studentsRate','backgrounds','icons', 'habers','haberCards1','haberCards2','haberCards3','haberCards4','haberCards5'))
+        $background = BackgroundOther::where('type','firstschool')->first();
+//        dd($background);
+        return view('pages.firstschool', compact('background','GalleryFirst','GallerySecond','GalleryThird'
+            ,'GalleryForth','SecondMangement','PreMangement','FirstMangement','ThirdMangement','OnlineMangement',
+            'BabeMangement',
+            'habers',
+            'haberCards1','haberCards2','haberCards3','haberCards4','haberCards5'))
             ->with('i', (request()->input('page', 1) - 1) * 50);
 
     }
@@ -310,19 +396,12 @@ class PagesController extends Controller
 
     public function secschool()
     {
-        $backgrounds = Background::all();
-        $icons = Icon::all();
         $habers = Haber::orderBy('created_at', 'desc')->paginate(10);
         $haberCards1 = HaberCard::where('type','أخر الأخبار')->get();
         $haberCards2 = HaberCard::where('type','النشاطات')->get();
         $haberCards3 = HaberCard::where('type','الزيارات')->get();
         $haberCards4 = HaberCard::where('type','القرارات')->get();
         $haberCards5 = HaberCard::where('type','التعليمات الادارية')->get();
-        $parentsRate = Rate::where('category','parents')->get();
-        $teachersRate = Rate::where('category','teacher')->get();
-        $studentsRate = Rate::where('category','student')->get();
-        $mangement = Employe::where('page','mangement')->get();
-        $Tedmangement = Employe::where('page','Tedmangement')->get();
         $BabeMangement = Employe::where('page','BabeMangement')->get();
         $PreMangement = Employe::where('page','PreMangement')->get();
         $FirstMangement = Employe::where('page','FirstMangement')->get();
@@ -330,13 +409,17 @@ class PagesController extends Controller
         $ThirdMangement = Employe::where('page','ThirdMangement')->get();
         $OnlineMangement = Employe::where('page','OnlineMangement')->get();
         $GalleryFirst = Gallery::where('title','first')->get()->pluck('image');
-        $GalleryAll = Gallery::where('title','first')->get()->pluck('image');
         $GallerySecond = Gallery::where('title','second')->get()->pluck('image');
         $GalleryThird = Gallery::where('title','third')->get()->pluck('image');
         $GalleryForth = Gallery::where('title','forth')->get()->pluck('image');
 
-        //dd($GalleryFirst);
-        return view('pages.secschool', compact('GalleryFirst','GallerySecond','GalleryThird','GalleryForth','OnlineMangement','ThirdMangement','SecondMangement','FirstMangement','PreMangement','BabeMangement','Tedmangement','mangement','parentsRate','teachersRate','studentsRate','backgrounds','icons', 'habers','haberCards1','haberCards2','haberCards3','haberCards4','haberCards5'))
+        $background = BackgroundOther::where('type','secschool')->first();
+//        dd($background);
+        return view('pages.secschool', compact('background','GalleryFirst','GallerySecond','GalleryThird'
+            ,'GalleryForth','SecondMangement','PreMangement','FirstMangement','ThirdMangement','OnlineMangement',
+            'BabeMangement',
+            'habers',
+            'haberCards1','haberCards2','haberCards3','haberCards4','haberCards5'))
             ->with('i', (request()->input('page', 1) - 1) * 50);
 
 
@@ -344,19 +427,13 @@ class PagesController extends Controller
     }
 
     public function highschool()
-    {        $backgrounds = Background::all();
-        $icons = Icon::all();
+    {
         $habers = Haber::orderBy('created_at', 'desc')->paginate(10);
         $haberCards1 = HaberCard::where('type','أخر الأخبار')->get();
         $haberCards2 = HaberCard::where('type','النشاطات')->get();
         $haberCards3 = HaberCard::where('type','الزيارات')->get();
         $haberCards4 = HaberCard::where('type','القرارات')->get();
         $haberCards5 = HaberCard::where('type','التعليمات الادارية')->get();
-        $parentsRate = Rate::where('category','parents')->get();
-        $teachersRate = Rate::where('category','teacher')->get();
-        $studentsRate = Rate::where('category','student')->get();
-        $mangement = Employe::where('page','mangement')->get();
-        $Tedmangement = Employe::where('page','Tedmangement')->get();
         $BabeMangement = Employe::where('page','BabeMangement')->get();
         $PreMangement = Employe::where('page','PreMangement')->get();
         $FirstMangement = Employe::where('page','FirstMangement')->get();
@@ -364,13 +441,16 @@ class PagesController extends Controller
         $ThirdMangement = Employe::where('page','ThirdMangement')->get();
         $OnlineMangement = Employe::where('page','OnlineMangement')->get();
         $GalleryFirst = Gallery::where('title','first')->get()->pluck('image');
-        $GalleryAll = Gallery::where('title','first')->get()->pluck('image');
         $GallerySecond = Gallery::where('title','second')->get()->pluck('image');
         $GalleryThird = Gallery::where('title','third')->get()->pluck('image');
         $GalleryForth = Gallery::where('title','forth')->get()->pluck('image');
 
-        //dd($GalleryFirst);
-        return view('pages.highschool', compact('GalleryFirst','GallerySecond','GalleryThird','GalleryForth','OnlineMangement','ThirdMangement','SecondMangement','FirstMangement','PreMangement','BabeMangement','Tedmangement','mangement','parentsRate','teachersRate','studentsRate','backgrounds','icons', 'habers','haberCards1','haberCards2','haberCards3','haberCards4','haberCards5'))
+        $background = BackgroundOther::where('type','highschool')->first();
+        return view('pages.highschool', compact('background','GalleryFirst','GallerySecond','GalleryThird'
+            ,'GalleryForth','SecondMangement','PreMangement','FirstMangement','ThirdMangement','OnlineMangement',
+            'BabeMangement',
+            'habers',
+            'haberCards1','haberCards2','haberCards3','haberCards4','haberCards5'))
             ->with('i', (request()->input('page', 1) - 1) * 50);
 
 
@@ -397,13 +477,6 @@ class PagesController extends Controller
         $teachersRate = Rate::where('category','teacher')->get();
         $studentsRate = Rate::where('category','student')->get();
         $mangement = Employe::where('page','mangement')->get();
-        $Tedmangement = Employe::where('page','Tedmangement')->get();
-        $BabeMangement = Employe::where('page','BabeMangement')->get();
-        $PreMangement = Employe::where('page','PreMangement')->get();
-        $FirstMangement = Employe::where('page','FirstMangement')->get();
-        $SecondMangement = Employe::where('page','SecondMangement')->get();
-        $ThirdMangement = Employe::where('page','ThirdMangement')->get();
-        $OnlineMangement = Employe::where('page','OnlineMangement')->get();
         $GalleryFirst = Gallery::where('title','first')->get()->pluck('image');
         $GalleryAll = Gallery::where('title','first')->get()->pluck('image');
         $GallerySecond = Gallery::where('title','second')->get()->pluck('image');
@@ -411,7 +484,9 @@ class PagesController extends Controller
         $GalleryForth = Gallery::where('title','forth')->get()->pluck('image');
 
         //dd($GalleryFirst);
-        return view('pages.mangement', compact('GalleryFirst','GallerySecond','GalleryThird','GalleryForth','OnlineMangement','ThirdMangement','SecondMangement','FirstMangement','PreMangement','BabeMangement','Tedmangement','mangement','parentsRate','teachersRate','studentsRate','backgrounds','icons', 'habers','haberCards1','haberCards2','haberCards3','haberCards4','haberCards5'))
+        return view('pages.mangement', compact('GalleryFirst','GallerySecond','GalleryThird',
+            'GalleryForth'
+      ,'mangement','parentsRate','teachersRate','studentsRate','backgrounds','icons', 'habers','haberCards1','haberCards2','haberCards3','haberCards4','haberCards5'))
             ->with('i', (request()->input('page', 1) - 1) * 50);
 
 
@@ -431,14 +506,7 @@ class PagesController extends Controller
         $parentsRate = Rate::where('category','parents')->get();
         $teachersRate = Rate::where('category','teacher')->get();
         $studentsRate = Rate::where('category','student')->get();
-        $mangement = Employe::where('page','mangement')->get();
-        $Tedmangement = Employe::where('page','Tedmangement')->get();
-        $BabeMangement = Employe::where('page','BabeMangement')->get();
-        $PreMangement = Employe::where('page','PreMangement')->get();
-        $FirstMangement = Employe::where('page','FirstMangement')->get();
-        $SecondMangement = Employe::where('page','SecondMangement')->get();
-        $ThirdMangement = Employe::where('page','ThirdMangement')->get();
-        $OnlineMangement = Employe::where('page','OnlineMangement')->get();
+        $mangement = Employe::where('page','PreMangement')->get();
         $GalleryFirst = Gallery::where('title','first')->get()->pluck('image');
         $GalleryAll = Gallery::where('title','first')->get()->pluck('image');
         $GallerySecond = Gallery::where('title','second')->get()->pluck('image');
@@ -446,7 +514,8 @@ class PagesController extends Controller
         $GalleryForth = Gallery::where('title','forth')->get()->pluck('image');
 
         //dd($GalleryFirst);
-        return view('pages.kgmang', compact('GalleryFirst','GallerySecond','GalleryThird','GalleryForth','OnlineMangement','ThirdMangement','SecondMangement','FirstMangement','PreMangement','BabeMangement','Tedmangement','mangement','parentsRate','teachersRate','studentsRate','backgrounds','icons', 'habers','haberCards1','haberCards2','haberCards3','haberCards4','haberCards5'))
+        return view('pages.kgmang', compact('GalleryFirst','GallerySecond','GalleryThird','GalleryForth',
+            'mangement','parentsRate','teachersRate','studentsRate','backgrounds','icons', 'habers','haberCards1','haberCards2','haberCards3','haberCards4','haberCards5'))
             ->with('i', (request()->input('page', 1) - 1) * 50);
 
 
@@ -464,14 +533,7 @@ class PagesController extends Controller
         $parentsRate = Rate::where('category','parents')->get();
         $teachersRate = Rate::where('category','teacher')->get();
         $studentsRate = Rate::where('category','student')->get();
-        $mangement = Employe::where('page','mangement')->get();
-        $Tedmangement = Employe::where('page','Tedmangement')->get();
-        $BabeMangement = Employe::where('page','BabeMangement')->get();
-        $PreMangement = Employe::where('page','PreMangement')->get();
-        $FirstMangement = Employe::where('page','FirstMangement')->get();
-        $SecondMangement = Employe::where('page','SecondMangement')->get();
-        $ThirdMangement = Employe::where('page','ThirdMangement')->get();
-        $OnlineMangement = Employe::where('page','OnlineMangement')->get();
+        $mangement = Employe::where('page','BabeMangement')->get();
         $GalleryFirst = Gallery::where('title','first')->get()->pluck('image');
         $GalleryAll = Gallery::where('title','first')->get()->pluck('image');
         $GallerySecond = Gallery::where('title','second')->get()->pluck('image');
@@ -479,7 +541,8 @@ class PagesController extends Controller
         $GalleryForth = Gallery::where('title','forth')->get()->pluck('image');
 
         //dd($GalleryFirst);
-        return view('pages.prekgmang', compact('GalleryFirst','GallerySecond','GalleryThird','GalleryForth','OnlineMangement','ThirdMangement','SecondMangement','FirstMangement','PreMangement','BabeMangement','Tedmangement','mangement','parentsRate','teachersRate','studentsRate','backgrounds','icons', 'habers','haberCards1','haberCards2','haberCards3','haberCards4','haberCards5'))
+        return view('pages.prekgmang', compact('GalleryFirst','GallerySecond','GalleryThird','GalleryForth'
+            ,'mangement','parentsRate','teachersRate','studentsRate','backgrounds','icons', 'habers','haberCards1','haberCards2','haberCards3','haberCards4','haberCards5'))
             ->with('i', (request()->input('page', 1) - 1) * 50);
 
 
@@ -497,14 +560,7 @@ class PagesController extends Controller
         $parentsRate = Rate::where('category','parents')->get();
         $teachersRate = Rate::where('category','teacher')->get();
         $studentsRate = Rate::where('category','student')->get();
-        $mangement = Employe::where('page','mangement')->get();
-        $Tedmangement = Employe::where('page','Tedmangement')->get();
-        $BabeMangement = Employe::where('page','BabeMangement')->get();
-        $PreMangement = Employe::where('page','PreMangement')->get();
-        $FirstMangement = Employe::where('page','FirstMangement')->get();
-        $SecondMangement = Employe::where('page','SecondMangement')->get();
-        $ThirdMangement = Employe::where('page','ThirdMangement')->get();
-        $OnlineMangement = Employe::where('page','OnlineMangement')->get();
+        $mangement = Employe::where('page','FirstMangement')->get();
         $GalleryFirst = Gallery::where('title','first')->get()->pluck('image');
         $GalleryAll = Gallery::where('title','first')->get()->pluck('image');
         $GallerySecond = Gallery::where('title','second')->get()->pluck('image');
@@ -512,7 +568,8 @@ class PagesController extends Controller
         $GalleryForth = Gallery::where('title','forth')->get()->pluck('image');
 
         //dd($GalleryFirst);
-        return view('pages.firstmang', compact('GalleryFirst','GallerySecond','GalleryThird','GalleryForth','OnlineMangement','ThirdMangement','SecondMangement','FirstMangement','PreMangement','BabeMangement','Tedmangement','mangement','parentsRate','teachersRate','studentsRate','backgrounds','icons', 'habers','haberCards1','haberCards2','haberCards3','haberCards4','haberCards5'))
+        return view('pages.firstmang', compact('GalleryFirst','GallerySecond','GalleryThird','GalleryForth',
+            'mangement','parentsRate','teachersRate','studentsRate','backgrounds','icons', 'habers','haberCards1','haberCards2','haberCards3','haberCards4','haberCards5'))
             ->with('i', (request()->input('page', 1) - 1) * 50);
 
 
@@ -530,14 +587,7 @@ class PagesController extends Controller
         $parentsRate = Rate::where('category','parents')->get();
         $teachersRate = Rate::where('category','teacher')->get();
         $studentsRate = Rate::where('category','student')->get();
-        $mangement = Employe::where('page','mangement')->get();
-        $Tedmangement = Employe::where('page','Tedmangement')->get();
-        $BabeMangement = Employe::where('page','BabeMangement')->get();
-        $PreMangement = Employe::where('page','PreMangement')->get();
-        $FirstMangement = Employe::where('page','FirstMangement')->get();
-        $SecondMangement = Employe::where('page','SecondMangement')->get();
-        $ThirdMangement = Employe::where('page','ThirdMangement')->get();
-        $OnlineMangement = Employe::where('page','OnlineMangement')->get();
+        $mangement = Employe::where('page','SecondMangement')->get();
         $GalleryFirst = Gallery::where('title','first')->get()->pluck('image');
         $GalleryAll = Gallery::where('title','first')->get()->pluck('image');
         $GallerySecond = Gallery::where('title','second')->get()->pluck('image');
@@ -545,7 +595,8 @@ class PagesController extends Controller
         $GalleryForth = Gallery::where('title','forth')->get()->pluck('image');
 
         //dd($GalleryFirst);
-        return view('pages.secondmang', compact('GalleryFirst','GallerySecond','GalleryThird','GalleryForth','OnlineMangement','ThirdMangement','SecondMangement','FirstMangement','PreMangement','BabeMangement','Tedmangement','mangement','parentsRate','teachersRate','studentsRate','backgrounds','icons', 'habers','haberCards1','haberCards2','haberCards3','haberCards4','haberCards5'))
+        return view('pages.secondmang', compact('GalleryFirst','GallerySecond','GalleryThird','GalleryForth',
+            'mangement','parentsRate','teachersRate','studentsRate','backgrounds','icons', 'habers','haberCards1','haberCards2','haberCards3','haberCards4','haberCards5'))
             ->with('i', (request()->input('page', 1) - 1) * 50);
 
 
@@ -563,14 +614,7 @@ class PagesController extends Controller
         $parentsRate = Rate::where('category','parents')->get();
         $teachersRate = Rate::where('category','teacher')->get();
         $studentsRate = Rate::where('category','student')->get();
-        $mangement = Employe::where('page','mangement')->get();
-        $Tedmangement = Employe::where('page','Tedmangement')->get();
-        $BabeMangement = Employe::where('page','BabeMangement')->get();
-        $PreMangement = Employe::where('page','PreMangement')->get();
-        $FirstMangement = Employe::where('page','FirstMangement')->get();
-        $SecondMangement = Employe::where('page','SecondMangement')->get();
-        $ThirdMangement = Employe::where('page','ThirdMangement')->get();
-        $OnlineMangement = Employe::where('page','OnlineMangement')->get();
+        $mangement = Employe::where('page','ThirdMangement')->get();
         $GalleryFirst = Gallery::where('title','first')->get()->pluck('image');
         $GalleryAll = Gallery::where('title','first')->get()->pluck('image');
         $GallerySecond = Gallery::where('title','second')->get()->pluck('image');
@@ -578,7 +622,60 @@ class PagesController extends Controller
         $GalleryForth = Gallery::where('title','forth')->get()->pluck('image');
 
         //dd($GalleryFirst);
-        return view('pages.highmang', compact('GalleryFirst','GallerySecond','GalleryThird','GalleryForth','OnlineMangement','ThirdMangement','SecondMangement','FirstMangement','PreMangement','BabeMangement','Tedmangement','mangement','parentsRate','teachersRate','studentsRate','backgrounds','icons', 'habers','haberCards1','haberCards2','haberCards3','haberCards4','haberCards5'))
+        return view('pages.highmang', compact('GalleryFirst','GallerySecond','GalleryThird','GalleryForth',
+            'mangement','parentsRate','teachersRate','studentsRate','backgrounds','icons', 'habers','haberCards1','haberCards2','haberCards3','haberCards4','haberCards5'))
+            ->with('i', (request()->input('page', 1) - 1) * 50);
+
+
+    }
+    public function Tedmangement(){
+        $backgrounds = Background::all();
+        $icons = Icon::all();
+        $habers = Haber::orderBy('created_at', 'desc')->paginate(10);
+        $haberCards1 = HaberCard::where('type','أخر الأخبار')->get();
+        $haberCards2 = HaberCard::where('type','النشاطات')->get();
+        $haberCards3 = HaberCard::where('type','الزيارات')->get();
+        $haberCards4 = HaberCard::where('type','القرارات')->get();
+        $haberCards5 = HaberCard::where('type','التعليمات الادارية')->get();
+        $parentsRate = Rate::where('category','parents')->get();
+        $teachersRate = Rate::where('category','teacher')->get();
+        $studentsRate = Rate::where('category','student')->get();
+        $mangement = Employe::where('page','Tedmangement')->get();
+        $GalleryFirst = Gallery::where('title','first')->get()->pluck('image');
+        $GalleryAll = Gallery::where('title','first')->get()->pluck('image');
+        $GallerySecond = Gallery::where('title','second')->get()->pluck('image');
+        $GalleryThird = Gallery::where('title','third')->get()->pluck('image');
+        $GalleryForth = Gallery::where('title','forth')->get()->pluck('image');
+
+        //dd($GalleryFirst);
+        return view('pages.tedMangement', compact('GalleryFirst','GallerySecond','GalleryThird','GalleryForth',
+            'mangement','parentsRate','teachersRate','studentsRate','backgrounds','icons', 'habers','haberCards1','haberCards2','haberCards3','haberCards4','haberCards5'))
+            ->with('i', (request()->input('page', 1) - 1) * 50);
+
+
+    }
+    public function OnlineMangement(){
+        $backgrounds = Background::all();
+        $icons = Icon::all();
+        $habers = Haber::orderBy('created_at', 'desc')->paginate(10);
+        $haberCards1 = HaberCard::where('type','أخر الأخبار')->get();
+        $haberCards2 = HaberCard::where('type','النشاطات')->get();
+        $haberCards3 = HaberCard::where('type','الزيارات')->get();
+        $haberCards4 = HaberCard::where('type','القرارات')->get();
+        $haberCards5 = HaberCard::where('type','التعليمات الادارية')->get();
+        $parentsRate = Rate::where('category','parents')->get();
+        $teachersRate = Rate::where('category','teacher')->get();
+        $studentsRate = Rate::where('category','student')->get();
+        $mangement = Employe::where('page','OnlineMangement')->get();
+        $GalleryFirst = Gallery::where('title','first')->get()->pluck('image');
+        $GalleryAll = Gallery::where('title','first')->get()->pluck('image');
+        $GallerySecond = Gallery::where('title','second')->get()->pluck('image');
+        $GalleryThird = Gallery::where('title','third')->get()->pluck('image');
+        $GalleryForth = Gallery::where('title','forth')->get()->pluck('image');
+
+        //dd($GalleryFirst);
+        return view('pages.OnlineMangement', compact('GalleryFirst','GallerySecond','GalleryThird','GalleryForth',
+            'mangement','parentsRate','teachersRate','studentsRate','backgrounds','icons', 'habers','haberCards1','haberCards2','haberCards3','haberCards4','haberCards5'))
             ->with('i', (request()->input('page', 1) - 1) * 50);
 
 
@@ -596,43 +693,124 @@ class PagesController extends Controller
 
     public function club()
     {
-
-        $data = Crud::where('web_page', '7')->paginate(50);
-        $dataText = Post::where('page', '7')->paginate(50);
-
-        return view('pages.club', compact('data', 'dataText'))
-                ->with('i', (request()->input('page', 1) - 1) * 50);
+        $habers = Haber::orderBy('created_at', 'desc')->paginate(10);
+        $haberCards1 = HaberCard::where('type','أخر الأخبار')->get();
+        $haberCards2 = HaberCard::where('type','النشاطات')->get();
+        $haberCards3 = HaberCard::where('type','الزيارات')->get();
+        $haberCards4 = HaberCard::where('type','القرارات')->get();
+        $haberCards5 = HaberCard::where('type','التعليمات الادارية')->get();
+        $mangement = Employe::where('page','mangement')->get();
+        $Tedmangement = Employe::where('page','Tedmangement')->get();
+        $BabeMangement = Employe::where('page','BabeMangement')->get();
+        $PreMangement = Employe::where('page','PreMangement')->get();
+        $FirstMangement = Employe::where('page','FirstMangement')->get();
+        $SecondMangement = Employe::where('page','SecondMangement')->get();
+        $ThirdMangement = Employe::where('page','ThirdMangement')->get();
+        $OnlineMangement = Employe::where('page','OnlineMangement')->get();
+        $GalleryFirst = Gallery::where('title','first')->get()->pluck('image');
+        $GalleryAll = Gallery::where('title','first')->get()->pluck('image');
+        $GallerySecond = Gallery::where('title','second')->get()->pluck('image');
+        $GalleryThird = Gallery::where('title','third')->get()->pluck('image');
+        $GalleryForth = Gallery::where('title','forth')->get()->pluck('image');
+        $background = BackgroundOther::where('type','club')->first();
+        return view('pages.club', compact('mangement','Tedmangement','background','GalleryFirst','GallerySecond','GalleryThird'
+            ,'GalleryForth','SecondMangement','PreMangement','FirstMangement','ThirdMangement','OnlineMangement',
+            'BabeMangement',
+            'habers',
+            'haberCards1','haberCards2','haberCards3','haberCards4','haberCards5'))
+            ->with('i', (request()->input('page', 1) - 1) * 50);
 
     }
 
     public function bus()
     {
+        $habers = Haber::orderBy('created_at', 'desc')->paginate(10);
+        $haberCards1 = HaberCard::where('type','أخر الأخبار')->get();
+        $haberCards2 = HaberCard::where('type','النشاطات')->get();
+        $haberCards3 = HaberCard::where('type','الزيارات')->get();
+        $haberCards4 = HaberCard::where('type','القرارات')->get();
+        $haberCards5 = HaberCard::where('type','التعليمات الادارية')->get();
+        $mangement = Employe::where('page','mangement')->get();
+        $Tedmangement = Employe::where('page','Tedmangement')->get();
+        $BabeMangement = Employe::where('page','BabeMangement')->get();
+        $PreMangement = Employe::where('page','PreMangement')->get();
+        $FirstMangement = Employe::where('page','FirstMangement')->get();
+        $SecondMangement = Employe::where('page','SecondMangement')->get();
+        $ThirdMangement = Employe::where('page','ThirdMangement')->get();
+        $OnlineMangement = Employe::where('page','OnlineMangement')->get();
+        $GalleryFirst = Gallery::where('title','first')->get()->pluck('image');
+        $GalleryAll = Gallery::where('title','first')->get()->pluck('image');
+        $GallerySecond = Gallery::where('title','second')->get()->pluck('image');
+        $GalleryThird = Gallery::where('title','third')->get()->pluck('image');
+        $GalleryForth = Gallery::where('title','forth')->get()->pluck('image');
 
-        $data = Crud::where('web_page', '8')->paginate(50);
-        $dataText = Post::where('page', '8')->paginate(50);
-        return view('pages.bus', compact('data', 'dataText'))
-                ->with('i', (request()->input('page', 1) - 1) * 50);
+
+        $background = BackgroundOther::where('type','bus')->first();
+        return view('pages.bus', compact('mangement','Tedmangement','background','GalleryFirst','GallerySecond','GalleryThird'
+            ,'GalleryForth','SecondMangement','PreMangement','FirstMangement','ThirdMangement','OnlineMangement',
+            'BabeMangement',
+            'habers',
+            'haberCards1','haberCards2','haberCards3','haberCards4','haberCards5'))
+            ->with('i', (request()->input('page', 1) - 1) * 50);
 
     }
 
     public function service()
     {
+        $habers = Haber::orderBy('created_at', 'desc')->paginate(10);
+        $haberCards1 = HaberCard::where('type','أخر الأخبار')->get();
+        $haberCards2 = HaberCard::where('type','النشاطات')->get();
+        $haberCards3 = HaberCard::where('type','الزيارات')->get();
+        $haberCards4 = HaberCard::where('type','القرارات')->get();
+        $haberCards5 = HaberCard::where('type','التعليمات الادارية')->get();
+        $BabeMangement = Employe::where('page','BabeMangement')->get();
+        $PreMangement = Employe::where('page','PreMangement')->get();
+        $FirstMangement = Employe::where('page','FirstMangement')->get();
+        $SecondMangement = Employe::where('page','SecondMangement')->get();
+        $ThirdMangement = Employe::where('page','ThirdMangement')->get();
+        $OnlineMangement = Employe::where('page','OnlineMangement')->get();
+        $GalleryFirst = Gallery::where('title','first')->get()->pluck('image');
+        $GallerySecond = Gallery::where('title','second')->get()->pluck('image');
+        $GalleryThird = Gallery::where('title','third')->get()->pluck('image');
+        $GalleryForth = Gallery::where('title','forth')->get()->pluck('image');
 
-        $data = Crud::where('web_page', '10')->paginate(50);
-        $dataText = Post::where('page', '10')->paginate(50);
-        return view('pages.service', compact('data', 'dataText'))
-                ->with('i', (request()->input('page', 1) - 1) * 50);
+        $background = BackgroundOther::where('type','service')->first();
+        return view('pages.service', compact('background','GalleryFirst','GallerySecond','GalleryThird'
+            ,'GalleryForth','SecondMangement','PreMangement','FirstMangement','ThirdMangement','OnlineMangement',
+            'BabeMangement',
+            'habers',
+            'haberCards1','haberCards2','haberCards3','haberCards4','haberCards5'))
+            ->with('i', (request()->input('page', 1) - 1) * 50);
 
     }
 
 
     public function interviewofice()
     {
+        $habers = Haber::orderBy('created_at', 'desc')->paginate(10);
+        $haberCards1 = HaberCard::where('type','أخر الأخبار')->get();
+        $haberCards2 = HaberCard::where('type','النشاطات')->get();
+        $haberCards3 = HaberCard::where('type','الزيارات')->get();
+        $haberCards4 = HaberCard::where('type','القرارات')->get();
+        $haberCards5 = HaberCard::where('type','التعليمات الادارية')->get();
+        $BabeMangement = Employe::where('page','BabeMangement')->get();
+        $PreMangement = Employe::where('page','PreMangement')->get();
+        $FirstMangement = Employe::where('page','FirstMangement')->get();
+        $SecondMangement = Employe::where('page','SecondMangement')->get();
+        $ThirdMangement = Employe::where('page','ThirdMangement')->get();
+        $OnlineMangement = Employe::where('page','OnlineMangement')->get();
+        $GalleryFirst = Gallery::where('title','first')->get()->pluck('image');
+        $GallerySecond = Gallery::where('title','second')->get()->pluck('image');
+        $GalleryThird = Gallery::where('title','third')->get()->pluck('image');
+        $GalleryForth = Gallery::where('title','forth')->get()->pluck('image');
 
-        $data = Crud::where('web_page', '9')->paginate(50);
-        $dataText = Post::where('page', '9')->paginate(50);
-        return view('pages.interviewofice', compact('data', 'dataText'))
-                ->with('i', (request()->input('page', 1) - 1) * 50);
+        $background = BackgroundOther::where('type','interviewofice')->first();
+        return view('pages.interviewofice', compact('background','GalleryFirst','GallerySecond','GalleryThird'
+            ,'GalleryForth','SecondMangement','PreMangement','FirstMangement','ThirdMangement','OnlineMangement',
+            'BabeMangement',
+            'habers',
+            'haberCards1','haberCards2','haberCards3','haberCards4','haberCards5'))
+            ->with('i', (request()->input('page', 1) - 1) * 50);
 
     }
 

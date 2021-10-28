@@ -1,4 +1,5 @@
 @include ('includes.navbarNew')
+
 <meta name="csrf-token" content="{{ csrf_token() }}" />
 
 <section class="hero-area bg-gray hero-area-4">
@@ -122,990 +123,117 @@
     </div><!-- end container -->
 </section><!-- end feature-area -->
 
-<section class="course-area section-padding bg-gray">
-    <div class="container">
-        <div class="section-heading text-center">
-            <h2 class="section__title theme-font-2 pb-40px">دورات لتبدأ بها</h2>
-        </div><!-- end section-heading -->
-        <ul class="nav nav-tabs generic-tab justify-content-center pb-50px" id="myTab" role="tablist">
-            <li class="nav-item">
-                <a class="nav-link active" id="business-tab" data-toggle="tab" href="#business" role="tab" aria-controls="business" aria-selected="true">اعمال</a>
+
+<section class="client-logo-area section-padding position-relative overflow-hidden text-center">
+    <div id="exTab1" class="container">
+    <div class="section-heading text-center">
+        <h5 class="ribbon ribbon-lg mb-2">اختر الدورات التي تريدها</h5>
+        <h2 class="section__title">أكبر مجموعة من الدورات التدريبية مع أفضل المدربين </h2>
+        <span class="section-divider"></span>
+
+        <ul class="nav nav-tabs generic-tab justify-content-center pb-4" id="myTab" role="tablist">
+@php( $i=0)
+             @foreach($CourseCategory as $item)
+                @if($i==0)
+                    <li class="active"><a class="nav-link active " href="#a{{$item->id}}" data-toggle="tab">{{$item->name}}</a>
+                    </li>
+                    @php( $i=1)
+
+            @else
+            <li><a class="nav-link " href="#a{{$item->id}}" data-toggle="tab">{{$item->name}}</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" id="design-tab" data-toggle="tab" href="#design" role="tab" aria-controls="design" aria-selected="false">تصميم</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" id="development-tab" data-toggle="tab" href="#development" role="tab" aria-controls="development" aria-selected="false">تطوير</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" id="drawing-tab" data-toggle="tab" href="#drawing" role="tab" aria-controls="drawing" aria-selected="false">رسم</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" id="marketing-tab" data-toggle="tab" href="#marketing" role="tab" aria-controls="marketing" aria-selected="false">تسويق</a>
-            </li>
+                @endif
+            @endforeach
+
         </ul>
-        <div class="tab-content" id="myTabContent">
-            <div class="tab-pane fade show active" id="business" role="tabpanel" aria-labelledby="business-tab">
+    </div>
+        <div class="tab-content clearfix">
+            @foreach($CourseCategory as $item3)
+
+                @if($i==1)
+            <div class="tab-pane active" id="a{{$item3->id}}">
                 <div class="row">
-                    <div class="col-lg-4 responsive-column-half">
-                        <div class="card card-item card-preview" data-tooltip-content="#tooltip_content_1">
-                            <div class="card-image">
-                                <a href="course-details.html" class="d-block">
-                                    <img class="card-img-top lazy" src="images/img-loading.png" data-src="images/img8.jpg" alt="Card image cap">
-                                </a>
-                                <div class="course-badge-labels">
-                                    <div class="course-badge">الأكثر مبيعا</div>
-                                    <div class="course-badge blue">-39%</div>
-                                </div>
-                            </div><!-- end card-image -->
-                            <div class="card-body">
-                                <h6 class="ribbon ribbon-blue-bg fs-14 mb-3">جميع المستويات</h6>
-                                <h5 class="card-title"><a href="course-details.html">دورة محلل ذكاء الأعمال 2021</a></h5>
-                                <p class="card-text"><a href="teacher-detail.html">خوسيه بورتيلا</a></p>
-                                <div class="rating-wrap d-flex align-items-center py-2">
-                                    <div class="review-stars">
-                                        <span class="rating-number">4.4</span>
-                                        <span class="la la-star"></span>
-                                        <span class="la la-star"></span>
-                                        <span class="la la-star"></span>
-                                        <span class="la la-star"></span>
-                                        <span class="la la-star-o"></span>
+                @foreach($CourseView as $data)
+                    @if($data->course_category_id == $item3->id)
+                        @php($i=9)
+                        <div class="col-lg-4 responsive-column-half">
+                    <div class="card card-item card-preview" data-tooltip-content="#tooltip_content_1">
+                        <div class="card-image">
+                            <a href="" class="d-block">
+                                <img class="card-img-top lazy" src="images/{{$data->image}}" data-src="images/{{$data->image}}" alt="Card image cap">
+                            </a>
+                        </div>
+                        <!-- end card-image -->
+                        <div class="card-body">
+                            <h6 class="ribbon ribbon-blue-bg fs-14 mb-3">{{$data->type}}</h6>
+                            <h5 class="card-title">{{$data->title}} </h5>
+                            <p class="card-text">{{$data->teacher}} </p>
+                            <p class="card-text">{{$data->body}} </p>
+
+                            <!-- end rating-wrap -->
+                            @if($data->price)
+                            <div class="d-flex justify-content-between align-items-center">
+
+                               السعر : <p class="card-price text-black text-center font-weight-bold">{{$data->price}}</p>
+
+                            </div>
+                                @endif
+                        </div>
+                        <!-- end card-body -->
+                    </div>
+                    <!-- end card -->
+                </div>
+                    @endif
+                    @endforeach
+                </div>
+            </div>
+
+                @else
+                    <div class="tab-pane" id="a{{$item3->id}}">
+                        <div class="row">
+                        @foreach($CourseView as $data)
+                            @if($data->course_category_id == $item3->id)
+                                <div class="col-lg-4 responsive-column-half">
+                                    <div class="card card-item card-preview" data-tooltip-content="#tooltip_content_1">
+                                        <div class="card-image">
+                                            <a href="" class="d-block">
+                                                <img class="card-img-top lazy" src="images/{{$data->image}}" data-src="images/{{$data->image}}" alt="Card image cap">
+                                            </a>
+                                        </div>
+                                        <!-- end card-image -->
+                                        <div class="card-body">
+                                            <h6 class="ribbon ribbon-blue-bg fs-14 mb-3">{{$data->type}}</h6>
+                                            <h5 class="card-title">{{$data->title}} </h5>
+                                            <p class="card-text">{{$data->teacher}} </p>
+                                            <p class="card-text">{{$data->body}} </p>
+
+                                            <!-- end rating-wrap -->
+                                            @if($data->price)
+                                                <div class="d-flex justify-content-between align-items-center">
+
+                                                    السعر : <p class="card-price text-black text-center font-weight-bold">{{$data->price}}</p>
+
+                                                </div>
+                                            @endif
+                                        </div>
+                                        <!-- end card-body -->
                                     </div>
-                                    <span class="rating-total pl-1">(20,230)</span>
-                                </div><!-- end rating-wrap -->
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <p class="card-price text-black font-weight-bold">12.99 <span class="before-price font-weight-medium">129.99</span></p>
-                                    <div class="icon-element icon-element-sm shadow-sm cursor-pointer" title="Add to Wishlist"><i class="la la-heart-o"></i></div>
+                                    <!-- end card -->
                                 </div>
-                            </div><!-- end card-body -->
-                        </div><!-- end card -->
-                    </div><!-- end col-lg-4 -->
-                    <div class="col-lg-4 responsive-column-half">
-                        <div class="card card-item card-preview" data-tooltip-content="#tooltip_content_1">
-                            <div class="card-image">
-                                <a href="course-details.html" class="d-block">
-                                    <img class="card-img-top lazy" src="images/img-loading.png" data-src="images/img9.jpg" alt="Card image cap">
-                                </a>
-                                <div class="course-badge-labels">
-                                    <div class="course-badge red">متميز</div>
-                                </div>
-                            </div><!-- end card-image -->
-                            <div class="card-body">
-                                <h6 class="ribbon ribbon-blue-bg fs-14 mb-3">جميع المستويات</h6>
-                                <h5 class="card-title"><a href="course-details.html">دورة محلل ذكاء الأعمال 2021</a></h5>
-                                <p class="card-text"><a href="teacher-detail.html">خوسيه بورتيلا</a></p>
-                                <div class="rating-wrap d-flex align-items-center py-2">
-                                    <div class="review-stars">
-                                        <span class="rating-number">4.4</span>
-                                        <span class="la la-star"></span>
-                                        <span class="la la-star"></span>
-                                        <span class="la la-star"></span>
-                                        <span class="la la-star"></span>
-                                        <span class="la la-star-o"></span>
-                                    </div>
-                                    <span class="rating-total pl-1">(20,230)</span>
-                                </div><!-- end rating-wrap -->
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <p class="card-price text-black font-weight-bold">129.99</p>
-                                    <div class="icon-element icon-element-sm shadow-sm cursor-pointer" title="Add to Wishlist"><i class="la la-heart-o"></i></div>
-                                </div>
-                            </div><!-- end card-body -->
-                        </div><!-- end card -->
-                    </div><!-- end col-lg-4 -->
-                    <div class="col-lg-4 responsive-column-half">
-                        <div class="card card-item card-preview" data-tooltip-content="#tooltip_content_1">
-                            <div class="card-image">
-                                <a href="course-details.html" class="d-block">
-                                    <img class="card-img-top lazy" src="images/img-loading.png" data-src="images/img10.jpg" alt="Card image cap">
-                                </a>
-                            </div><!-- end card-image -->
-                            <div class="card-body">
-                                <h6 class="ribbon ribbon-blue-bg fs-14 mb-3">جميع المستويات</h6>
-                                <h5 class="card-title"><a href="course-details.html">دورة محلل ذكاء الأعمال 2021</a></h5>
-                                <p class="card-text"><a href="teacher-detail.html">خوسيه بورتيلا</a></p>
-                                <div class="rating-wrap d-flex align-items-center py-2">
-                                    <div class="review-stars">
-                                        <span class="rating-number">4.4</span>
-                                        <span class="la la-star"></span>
-                                        <span class="la la-star"></span>
-                                        <span class="la la-star"></span>
-                                        <span class="la la-star"></span>
-                                        <span class="la la-star-o"></span>
-                                    </div>
-                                    <span class="rating-total pl-1">(20,230)</span>
-                                </div><!-- end rating-wrap -->
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <p class="card-price text-black font-weight-bold">129.99</p>
-                                    <div class="icon-element icon-element-sm shadow-sm cursor-pointer" title="Add to Wishlist"><i class="la la-heart-o"></i></div>
-                                </div>
-                            </div><!-- end card-body -->
-                        </div><!-- end card -->
-                    </div><!-- end col-lg-4 -->
-                    <div class="col-lg-4 responsive-column-half">
-                        <div class="card card-item card-preview" data-tooltip-content="#tooltip_content_1">
-                            <div class="card-image">
-                                <a href="course-details.html" class="d-block">
-                                    <img class="card-img-top lazy" src="images/img-loading.png" data-src="images/img11.jpg" alt="Card image cap">
-                                </a>
-                            </div><!-- end card-image -->
-                            <div class="card-body">
-                                <h6 class="ribbon ribbon-blue-bg fs-14 mb-3">جميع المستويات</h6>
-                                <h5 class="card-title"><a href="course-details.html">دورة محلل ذكاء الأعمال 2021</a></h5>
-                                <p class="card-text"><a href="teacher-detail.html">خوسيه بورتيلا</a></p>
-                                <div class="rating-wrap d-flex align-items-center py-2">
-                                    <div class="review-stars">
-                                        <span class="rating-number">4.4</span>
-                                        <span class="la la-star"></span>
-                                        <span class="la la-star"></span>
-                                        <span class="la la-star"></span>
-                                        <span class="la la-star"></span>
-                                        <span class="la la-star-o"></span>
-                                    </div>
-                                    <span class="rating-total pl-1">(20,230)</span>
-                                </div><!-- end rating-wrap -->
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <p class="card-price text-black font-weight-bold">129.99</p>
-                                    <div class="icon-element icon-element-sm shadow-sm cursor-pointer" title="Add to Wishlist"><i class="la la-heart-o"></i></div>
-                                </div>
-                            </div><!-- end card-body -->
-                        </div><!-- end card -->
-                    </div><!-- end col-lg-4 -->
-                    <div class="col-lg-4 responsive-column-half">
-                        <div class="card card-item card-preview" data-tooltip-content="#tooltip_content_1">
-                            <div class="card-image">
-                                <a href="course-details.html" class="d-block">
-                                    <img class="card-img-top lazy" src="images/img-loading.png" data-src="images/img12.jpg" alt="Card image cap">
-                                </a>
-                                <div class="course-badge-labels">
-                                    <div class="course-badge green">حر</div>
-                                </div>
-                            </div><!-- end card-image -->
-                            <div class="card-body">
-                                <h6 class="ribbon ribbon-blue-bg fs-14 mb-3">جميع المستويات</h6>
-                                <h5 class="card-title"><a href="course-details.html">دورة محلل ذكاء الأعمال 2021</a></h5>
-                                <p class="card-text"><a href="teacher-detail.html">خوسيه بورتيلا</a></p>
-                                <div class="rating-wrap d-flex align-items-center py-2">
-                                    <div class="review-stars">
-                                        <span class="rating-number">4.4</span>
-                                        <span class="la la-star"></span>
-                                        <span class="la la-star"></span>
-                                        <span class="la la-star"></span>
-                                        <span class="la la-star"></span>
-                                        <span class="la la-star-o"></span>
-                                    </div>
-                                    <span class="rating-total pl-1">(20,230)</span>
-                                </div><!-- end rating-wrap -->
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <p class="card-price text-black font-weight-bold">حر</p>
-                                    <div class="icon-element icon-element-sm shadow-sm cursor-pointer" title="Add to Wishlist"><i class="la la-heart-o"></i></div>
-                                </div>
-                            </div><!-- end card-body -->
-                        </div><!-- end card -->
-                    </div><!-- end col-lg-4 -->
-                    <div class="col-lg-4 responsive-column-half">
-                        <div class="card card-item card-preview" data-tooltip-content="#tooltip_content_1">
-                            <div class="card-image">
-                                <a href="course-details.html" class="d-block">
-                                    <img class="card-img-top lazy" src="images/img-loading.png" data-src="images/img13.jpg" alt="Card image cap">
-                                </a>
-                                <div class="course-badge-labels">
-                                    <div class="course-badge sky-blue">أعلى تصنيف</div>
-                                </div>
-                            </div><!-- end card-image -->
-                            <div class="card-body">
-                                <h6 class="ribbon ribbon-blue-bg fs-14 mb-3">جميع المستويات</h6>
-                                <h5 class="card-title"><a href="course-details.html">دورة محلل ذكاء الأعمال 2021</a></h5>
-                                <p class="card-text"><a href="teacher-detail.html">خوسيه بورتيلا</a></p>
-                                <div class="rating-wrap d-flex align-items-center py-2">
-                                    <div class="review-stars">
-                                        <span class="rating-number">4.4</span>
-                                        <span class="la la-star"></span>
-                                        <span class="la la-star"></span>
-                                        <span class="la la-star"></span>
-                                        <span class="la la-star"></span>
-                                        <span class="la la-star-o"></span>
-                                    </div>
-                                    <span class="rating-total pl-1">(20,230)</span>
-                                </div><!-- end rating-wrap -->
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <p class="card-price text-black font-weight-bold">129.99</p>
-                                    <div class="icon-element icon-element-sm shadow-sm cursor-pointer" title="Add to Wishlist"><i class="la la-heart-o"></i></div>
-                                </div>
-                            </div><!-- end card-body -->
-                        </div><!-- end card -->
-                    </div><!-- end col-lg-4 -->
-                </div><!-- end row -->
-            </div><!-- end tab-pane -->
-            <div class="tab-pane fade" id="design" role="tabpanel" aria-labelledby="design-tab">
-                <div class="row">
-                    <div class="col-lg-4 responsive-column-half">
-                        <div class="card card-item card-preview" data-tooltip-content="#tooltip_content_2">
-                            <div class="card-image">
-                                <a href="course-details.html" class="d-block">
-                                    <img class="card-img-top lazy" src="images/img-loading.png" data-src="images/img11.jpg" alt="Card image cap">
-                                </a>
-                            </div><!-- end card-image -->
-                            <div class="card-body">
-                                <h6 class="ribbon ribbon-blue-bg fs-14 mb-3">مبتدئ</h6>
-                                <h5 class="card-title"><a href="course-details.html">تدريب فوتوشوب النهائي: من المبتدئين إلى المحترفين</a></h5>
-                                <p class="card-text"><a href="teacher-detail.html">خوسيه بورتيلا</a></p>
-                                <div class="rating-wrap d-flex align-items-center py-2">
-                                    <div class="review-stars">
-                                        <span class="rating-number">4.4</span>
-                                        <span class="la la-star"></span>
-                                        <span class="la la-star"></span>
-                                        <span class="la la-star"></span>
-                                        <span class="la la-star"></span>
-                                        <span class="la la-star-o"></span>
-                                    </div>
-                                    <span class="rating-total pl-1">(20,230)</span>
-                                </div><!-- end rating-wrap -->
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <p class="card-price text-black font-weight-bold">129.99</p>
-                                    <div class="icon-element icon-element-sm shadow-sm cursor-pointer" title="Add to Wishlist"><i class="la la-heart-o"></i></div>
-                                </div>
-                            </div><!-- end card-body -->
-                        </div><!-- end card -->
-                    </div><!-- end col-lg-4 -->
-                    <div class="col-lg-4 responsive-column-half">
-                        <div class="card card-item card-preview" data-tooltip-content="#tooltip_content_2">
-                            <div class="card-image">
-                                <a href="course-details.html" class="d-block">
-                                    <img class="card-img-top lazy" src="images/img-loading.png" data-src="images/img12.jpg" alt="Card image cap">
-                                </a>
-                                <div class="course-badge-labels">
-                                    <div class="course-badge green">حر</div>
-                                </div>
-                            </div><!-- end card-image -->
-                            <div class="card-body">
-                                <h6 class="ribbon ribbon-blue-bg fs-14 mb-3">مبتدئ</h6>
-                                <h5 class="card-title"><a href="course-details.html">تدريب فوتوشوب النهائي: من المبتدئين إلى المحترفين</a></h5>
-                                <p class="card-text"><a href="teacher-detail.html">خوسيه بورتيلا</a></p>
-                                <div class="rating-wrap d-flex align-items-center py-2">
-                                    <div class="review-stars">
-                                        <span class="rating-number">4.4</span>
-                                        <span class="la la-star"></span>
-                                        <span class="la la-star"></span>
-                                        <span class="la la-star"></span>
-                                        <span class="la la-star"></span>
-                                        <span class="la la-star-o"></span>
-                                    </div>
-                                    <span class="rating-total pl-1">(20,230)</span>
-                                </div><!-- end rating-wrap -->
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <p class="card-price text-black font-weight-bold">حر</p>
-                                    <div class="icon-element icon-element-sm shadow-sm cursor-pointer" title="Add to Wishlist"><i class="la la-heart-o"></i></div>
-                                </div>
-                            </div><!-- end card-body -->
-                        </div><!-- end card -->
-                    </div><!-- end col-lg-4 -->
-                    <div class="col-lg-4 responsive-column-half">
-                        <div class="card card-item card-preview" data-tooltip-content="#tooltip_content_2">
-                            <div class="card-image">
-                                <a href="course-details.html" class="d-block">
-                                    <img class="card-img-top lazy" src="images/img-loading.png" data-src="images/img13.jpg" alt="Card image cap">
-                                </a>
-                                <div class="course-badge-labels">
-                                    <div class="course-badge sky-blue">أعلى تصنيف</div>
-                                </div>
-                            </div><!-- end card-image -->
-                            <div class="card-body">
-                                <h6 class="ribbon ribbon-blue-bg fs-14 mb-3">مبتدئ</h6>
-                                <h5 class="card-title"><a href="course-details.html">تدريب فوتوشوب النهائي: من المبتدئين إلى المحترفين</a></h5>
-                                <p class="card-text"><a href="teacher-detail.html">خوسيه بورتيلا</a></p>
-                                <div class="rating-wrap d-flex align-items-center py-2">
-                                    <div class="review-stars">
-                                        <span class="rating-number">4.4</span>
-                                        <span class="la la-star"></span>
-                                        <span class="la la-star"></span>
-                                        <span class="la la-star"></span>
-                                        <span class="la la-star"></span>
-                                        <span class="la la-star-o"></span>
-                                    </div>
-                                    <span class="rating-total pl-1">(20,230)</span>
-                                </div><!-- end rating-wrap -->
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <p class="card-price text-black font-weight-bold">129.99</p>
-                                    <div class="icon-element icon-element-sm shadow-sm cursor-pointer" title="Add to Wishlist"><i class="la la-heart-o"></i></div>
-                                </div>
-                            </div><!-- end card-body -->
-                        </div><!-- end card -->
-                    </div><!-- end col-lg-4 -->
-                    <div class="col-lg-4 responsive-column-half">
-                        <div class="card card-item card-preview" data-tooltip-content="#tooltip_content_2">
-                            <div class="card-image">
-                                <a href="course-details.html" class="d-block">
-                                    <img class="card-img-top lazy" src="images/img-loading.png" data-src="images/img8.jpg" alt="Card image cap">
-                                </a>
-                                <div class="course-badge-labels">
-                                    <div class="course-badge">الأكثر مبيعا</div>
-                                    <div class="course-badge blue">-39%</div>
-                                </div>
-                            </div><!-- end card-image -->
-                            <div class="card-body">
-                                <h6 class="ribbon ribbon-blue-bg fs-14 mb-3">مبتدئ</h6>
-                                <h5 class="card-title"><a href="course-details.html">تدريب فوتوشوب النهائي: من المبتدئين إلى المحترفين</a></h5>
-                                <p class="card-text"><a href="teacher-detail.html">خوسيه بورتيلا</a></p>
-                                <div class="rating-wrap d-flex align-items-center py-2">
-                                    <div class="review-stars">
-                                        <span class="rating-number">4.4</span>
-                                        <span class="la la-star"></span>
-                                        <span class="la la-star"></span>
-                                        <span class="la la-star"></span>
-                                        <span class="la la-star"></span>
-                                        <span class="la la-star-o"></span>
-                                    </div>
-                                    <span class="rating-total pl-1">(20,230)</span>
-                                </div><!-- end rating-wrap -->
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <p class="card-price text-black font-weight-bold">12.99 <span class="before-price font-weight-medium">129.99</span></p>
-                                    <div class="icon-element icon-element-sm shadow-sm cursor-pointer" title="Add to Wishlist"><i class="la la-heart-o"></i></div>
-                                </div>
-                            </div><!-- end card-body -->
-                        </div><!-- end card -->
-                    </div><!-- end col-lg-4 -->
-                    <div class="col-lg-4 responsive-column-half">
-                        <div class="card card-item card-preview" data-tooltip-content="#tooltip_content_2">
-                            <div class="card-image">
-                                <a href="course-details.html" class="d-block">
-                                    <img class="card-img-top lazy" src="images/img-loading.png" data-src="images/img9.jpg" alt="Card image cap">
-                                </a>
-                                <div class="course-badge-labels">
-                                    <div class="course-badge red">متميز</div>
-                                </div>
-                            </div><!-- end card-image -->
-                            <div class="card-body">
-                                <h6 class="ribbon ribbon-blue-bg fs-14 mb-3">مبتدئ</h6>
-                                <h5 class="card-title"><a href="course-details.html">تدريب فوتوشوب النهائي: من المبتدئين إلى المحترفين</a></h5>
-                                <p class="card-text"><a href="teacher-detail.html">خوسيه بورتيلا</a></p>
-                                <div class="rating-wrap d-flex align-items-center py-2">
-                                    <div class="review-stars">
-                                        <span class="rating-number">4.4</span>
-                                        <span class="la la-star"></span>
-                                        <span class="la la-star"></span>
-                                        <span class="la la-star"></span>
-                                        <span class="la la-star"></span>
-                                        <span class="la la-star-o"></span>
-                                    </div>
-                                    <span class="rating-total pl-1">(20,230)</span>
-                                </div><!-- end rating-wrap -->
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <p class="card-price text-black font-weight-bold">129.99</p>
-                                    <div class="icon-element icon-element-sm shadow-sm cursor-pointer" title="Add to Wishlist"><i class="la la-heart-o"></i></div>
-                                </div>
-                            </div><!-- end card-body -->
-                        </div><!-- end card -->
-                    </div><!-- end col-lg-4 -->
-                    <div class="col-lg-4 responsive-column-half">
-                        <div class="card card-item card-preview" data-tooltip-content="#tooltip_content_2">
-                            <div class="card-image">
-                                <a href="course-details.html" class="d-block">
-                                    <img class="card-img-top lazy" src="images/img-loading.png" data-src="images/img10.jpg" alt="Card image cap">
-                                </a>
-                            </div><!-- end card-image -->
-                            <div class="card-body">
-                                <h6 class="ribbon ribbon-blue-bg fs-14 mb-3">مبتدئ</h6>
-                                <h5 class="card-title"><a href="course-details.html">تدريب فوتوشوب النهائي: من المبتدئين إلى المحترفين</a></h5>
-                                <p class="card-text"><a href="teacher-detail.html">خوسيه بورتيلا</a></p>
-                                <div class="rating-wrap d-flex align-items-center py-2">
-                                    <div class="review-stars">
-                                        <span class="rating-number">4.4</span>
-                                        <span class="la la-star"></span>
-                                        <span class="la la-star"></span>
-                                        <span class="la la-star"></span>
-                                        <span class="la la-star"></span>
-                                        <span class="la la-star-o"></span>
-                                    </div>
-                                    <span class="rating-total pl-1">(20,230)</span>
-                                </div><!-- end rating-wrap -->
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <p class="card-price text-black font-weight-bold">129.99</p>
-                                    <div class="icon-element icon-element-sm shadow-sm cursor-pointer" title="Add to Wishlist"><i class="la la-heart-o"></i></div>
-                                </div>
-                            </div><!-- end card-body -->
-                        </div><!-- end card -->
-                    </div><!-- end col-lg-4 -->
-                </div><!-- end row -->
-            </div><!-- end tab-pane -->
-            <div class="tab-pane fade" id="development" role="tabpanel" aria-labelledby="development-tab">
-                <div class="row">
-                    <div class="col-lg-4 responsive-column-half">
-                        <div class="card card-item card-preview" data-tooltip-content="#tooltip_content_3">
-                            <div class="card-image">
-                                <a href="course-details.html" class="d-block">
-                                    <img class="card-img-top lazy" src="images/img-loading.png" data-src="images/img8.jpg" alt="Card image cap">
-                                </a>
-                                <div class="course-badge-labels">
-                                    <div class="course-badge">الأكثر مبيعا</div>
-                                    <div class="course-badge blue">-39%</div>
-                                </div>
-                            </div><!-- end card-image -->
-                            <div class="card-body">
-                                <h6 class="ribbon ribbon-blue-bg fs-14 mb-3">جميع المستويات</h6>
-                                <h5 class="card-title"><a href="course-details.html">دورة الأعمال الكاملة لموقع الويب</a></h5>
-                                <p class="card-text"><a href="teacher-detail.html">خوسيه بورتيلا</a></p>
-                                <div class="rating-wrap d-flex align-items-center py-2">
-                                    <div class="review-stars">
-                                        <span class="rating-number">4.4</span>
-                                        <span class="la la-star"></span>
-                                        <span class="la la-star"></span>
-                                        <span class="la la-star"></span>
-                                        <span class="la la-star"></span>
-                                        <span class="la la-star-o"></span>
-                                    </div>
-                                    <span class="rating-total pl-1">(20,230)</span>
-                                </div><!-- end rating-wrap -->
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <p class="card-price text-black font-weight-bold">12.99 <span class="before-price font-weight-medium">129.99</span></p>
-                                    <div class="icon-element icon-element-sm shadow-sm cursor-pointer" title="Add to Wishlist"><i class="la la-heart-o"></i></div>
-                                </div>
-                            </div><!-- end card-body -->
-                        </div><!-- end card -->
-                    </div><!-- end col-lg-4 -->
-                    <div class="col-lg-4 responsive-column-half">
-                        <div class="card card-item card-preview" data-tooltip-content="#tooltip_content_3">
-                            <div class="card-image">
-                                <a href="course-details.html" class="d-block">
-                                    <img class="card-img-top lazy" src="images/img-loading.png" data-src="images/img9.jpg" alt="Card image cap">
-                                </a>
-                                <div class="course-badge-labels">
-                                    <div class="course-badge red">متميز</div>
-                                </div>
-                            </div><!-- end card-image -->
-                            <div class="card-body">
-                                <h6 class="ribbon ribbon-blue-bg fs-14 mb-3">جميع المستويات</h6>
-                                <h5 class="card-title"><a href="course-details.html">دورة الأعمال الكاملة لموقع الويب</a></h5>
-                                <p class="card-text"><a href="teacher-detail.html">خوسيه بورتيلا</a></p>
-                                <div class="rating-wrap d-flex align-items-center py-2">
-                                    <div class="review-stars">
-                                        <span class="rating-number">4.4</span>
-                                        <span class="la la-star"></span>
-                                        <span class="la la-star"></span>
-                                        <span class="la la-star"></span>
-                                        <span class="la la-star"></span>
-                                        <span class="la la-star-o"></span>
-                                    </div>
-                                    <span class="rating-total pl-1">(20,230)</span>
-                                </div><!-- end rating-wrap -->
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <p class="card-price text-black font-weight-bold">129.99</p>
-                                    <div class="icon-element icon-element-sm shadow-sm cursor-pointer" title="Add to Wishlist"><i class="la la-heart-o"></i></div>
-                                </div>
-                            </div><!-- end card-body -->
-                        </div><!-- end card -->
-                    </div><!-- end col-lg-4 -->
-                    <div class="col-lg-4 responsive-column-half">
-                        <div class="card card-item card-preview" data-tooltip-content="#tooltip_content_3">
-                            <div class="card-image">
-                                <a href="course-details.html" class="d-block">
-                                    <img class="card-img-top lazy" src="images/img-loading.png" data-src="images/img10.jpg" alt="Card image cap">
-                                </a>
-                            </div><!-- end card-image -->
-                            <div class="card-body">
-                                <h6 class="ribbon ribbon-blue-bg fs-14 mb-3">جميع المستويات</h6>
-                                <h5 class="card-title"><a href="course-details.html">دورة الأعمال الكاملة لموقع الويب</a></h5>
-                                <p class="card-text"><a href="teacher-detail.html">خوسيه بورتيلا</a></p>
-                                <div class="rating-wrap d-flex align-items-center py-2">
-                                    <div class="review-stars">
-                                        <span class="rating-number">4.4</span>
-                                        <span class="la la-star"></span>
-                                        <span class="la la-star"></span>
-                                        <span class="la la-star"></span>
-                                        <span class="la la-star"></span>
-                                        <span class="la la-star-o"></span>
-                                    </div>
-                                    <span class="rating-total pl-1">(20,230)</span>
-                                </div><!-- end rating-wrap -->
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <p class="card-price text-black font-weight-bold">129.99</p>
-                                    <div class="icon-element icon-element-sm shadow-sm cursor-pointer" title="Add to Wishlist"><i class="la la-heart-o"></i></div>
-                                </div>
-                            </div><!-- end card-body -->
-                        </div><!-- end card -->
-                    </div><!-- end col-lg-4 -->
-                    <div class="col-lg-4 responsive-column-half">
-                        <div class="card card-item card-preview" data-tooltip-content="#tooltip_content_3">
-                            <div class="card-image">
-                                <a href="course-details.html" class="d-block">
-                                    <img class="card-img-top lazy" src="images/img-loading.png" data-src="images/img11.jpg" alt="Card image cap">
-                                </a>
-                            </div><!-- end card-image -->
-                            <div class="card-body">
-                                <h6 class="ribbon ribbon-blue-bg fs-14 mb-3">جميع المستويات</h6>
-                                <h5 class="card-title"><a href="course-details.html">دورة الأعمال الكاملة لموقع الويب</a></h5>
-                                <p class="card-text"><a href="teacher-detail.html">خوسيه بورتيلا</a></p>
-                                <div class="rating-wrap d-flex align-items-center py-2">
-                                    <div class="review-stars">
-                                        <span class="rating-number">4.4</span>
-                                        <span class="la la-star"></span>
-                                        <span class="la la-star"></span>
-                                        <span class="la la-star"></span>
-                                        <span class="la la-star"></span>
-                                        <span class="la la-star-o"></span>
-                                    </div>
-                                    <span class="rating-total pl-1">(20,230)</span>
-                                </div><!-- end rating-wrap -->
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <p class="card-price text-black font-weight-bold">129.99</p>
-                                    <div class="icon-element icon-element-sm shadow-sm cursor-pointer" title="Add to Wishlist"><i class="la la-heart-o"></i></div>
-                                </div>
-                            </div><!-- end card-body -->
-                        </div><!-- end card -->
-                    </div><!-- end col-lg-4 -->
-                    <div class="col-lg-4 responsive-column-half">
-                        <div class="card card-item card-preview" data-tooltip-content="#tooltip_content_3">
-                            <div class="card-image">
-                                <a href="course-details.html" class="d-block">
-                                    <img class="card-img-top lazy" src="images/img-loading.png" data-src="images/img12.jpg" alt="Card image cap">
-                                </a>
-                                <div class="course-badge-labels">
-                                    <div class="course-badge green">حر</div>
-                                </div>
-                            </div><!-- end card-image -->
-                            <div class="card-body">
-                                <h6 class="ribbon ribbon-blue-bg fs-14 mb-3">جميع المستويات</h6>
-                                <h5 class="card-title"><a href="course-details.html">دورة الأعمال الكاملة لموقع الويب</a></h5>
-                                <p class="card-text"><a href="teacher-detail.html">خوسيه بورتيلا</a></p>
-                                <div class="rating-wrap d-flex align-items-center py-2">
-                                    <div class="review-stars">
-                                        <span class="rating-number">4.4</span>
-                                        <span class="la la-star"></span>
-                                        <span class="la la-star"></span>
-                                        <span class="la la-star"></span>
-                                        <span class="la la-star"></span>
-                                        <span class="la la-star-o"></span>
-                                    </div>
-                                    <span class="rating-total pl-1">(20,230)</span>
-                                </div><!-- end rating-wrap -->
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <p class="card-price text-black font-weight-bold">حر</p>
-                                    <div class="icon-element icon-element-sm shadow-sm cursor-pointer" title="Add to Wishlist"><i class="la la-heart-o"></i></div>
-                                </div>
-                            </div><!-- end card-body -->
-                        </div><!-- end card -->
-                    </div><!-- end col-lg-4 -->
-                    <div class="col-lg-4 responsive-column-half">
-                        <div class="card card-item card-preview" data-tooltip-content="#tooltip_content_3">
-                            <div class="card-image">
-                                <a href="course-details.html" class="d-block">
-                                    <img class="card-img-top lazy" src="images/img-loading.png" data-src="images/img13.jpg" alt="Card image cap">
-                                </a>
-                                <div class="course-badge-labels">
-                                    <div class="course-badge sky-blue">أعلى تصنيف</div>
-                                </div>
-                            </div><!-- end card-image -->
-                            <div class="card-body">
-                                <h6 class="ribbon ribbon-blue-bg fs-14 mb-3">جميع المستويات</h6>
-                                <h5 class="card-title"><a href="course-details.html">دورة الأعمال الكاملة لموقع الويب</a></h5>
-                                <p class="card-text"><a href="teacher-detail.html">خوسيه بورتيلا</a></p>
-                                <div class="rating-wrap d-flex align-items-center py-2">
-                                    <div class="review-stars">
-                                        <span class="rating-number">4.4</span>
-                                        <span class="la la-star"></span>
-                                        <span class="la la-star"></span>
-                                        <span class="la la-star"></span>
-                                        <span class="la la-star"></span>
-                                        <span class="la la-star-o"></span>
-                                    </div>
-                                    <span class="rating-total pl-1">(20,230)</span>
-                                </div><!-- end rating-wrap -->
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <p class="card-price text-black font-weight-bold">129.99</p>
-                                    <div class="icon-element icon-element-sm shadow-sm cursor-pointer" title="Add to Wishlist"><i class="la la-heart-o"></i></div>
-                                </div>
-                            </div><!-- end card-body -->
-                        </div><!-- end card -->
-                    </div><!-- end col-lg-4 -->
-                </div><!-- end row -->
-            </div><!-- end tab-pane -->
-            <div class="tab-pane fade" id="drawing" role="tabpanel" aria-labelledby="drawing-tab">
-                <div class="row">
-                    <div class="col-lg-4 responsive-column-half">
-                        <div class="card card-item card-preview" data-tooltip-content="#tooltip_content_4">
-                            <div class="card-image">
-                                <a href="course-details.html" class="d-block">
-                                    <img class="card-img-top lazy" src="images/img-loading.png" data-src="images/img11.jpg" alt="Card image cap">
-                                </a>
-                            </div><!-- end card-image -->
-                            <div class="card-body">
-                                <h6 class="ribbon ribbon-blue-bg fs-14 mb-3">مبتدئ</h6>
-                                <h5 class="card-title"><a href="course-details.html">دورة الرسم النهائية - مبتدئ إلى متقدم</a></h5>
-                                <p class="card-text"><a href="teacher-detail.html">خوسيه بورتيلا</a></p>
-                                <div class="rating-wrap d-flex align-items-center py-2">
-                                    <div class="review-stars">
-                                        <span class="rating-number">4.4</span>
-                                        <span class="la la-star"></span>
-                                        <span class="la la-star"></span>
-                                        <span class="la la-star"></span>
-                                        <span class="la la-star"></span>
-                                        <span class="la la-star-o"></span>
-                                    </div>
-                                    <span class="rating-total pl-1">(20,230)</span>
-                                </div><!-- end rating-wrap -->
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <p class="card-price text-black font-weight-bold">129.99</p>
-                                    <div class="icon-element icon-element-sm shadow-sm cursor-pointer" title="Add to Wishlist"><i class="la la-heart-o"></i></div>
-                                </div>
-                            </div><!-- end card-body -->
-                        </div><!-- end card -->
-                    </div><!-- end col-lg-4 -->
-                    <div class="col-lg-4 responsive-column-half">
-                        <div class="card card-item card-preview" data-tooltip-content="#tooltip_content_4">
-                            <div class="card-image">
-                                <a href="course-details.html" class="d-block">
-                                    <img class="card-img-top lazy" src="images/img-loading.png" data-src="images/img12.jpg" alt="Card image cap">
-                                </a>
-                                <div class="course-badge-labels">
-                                    <div class="course-badge green">حر</div>
-                                </div>
-                            </div><!-- end card-image -->
-                            <div class="card-body">
-                                <h6 class="ribbon ribbon-blue-bg fs-14 mb-3">مبتدئ</h6>
-                                <h5 class="card-title"><a href="course-details.html">دورة الرسم النهائية - مبتدئ إلى متقدم</a></h5>
-                                <p class="card-text"><a href="teacher-detail.html">خوسيه بورتيلا</a></p>
-                                <div class="rating-wrap d-flex align-items-center py-2">
-                                    <div class="review-stars">
-                                        <span class="rating-number">4.4</span>
-                                        <span class="la la-star"></span>
-                                        <span class="la la-star"></span>
-                                        <span class="la la-star"></span>
-                                        <span class="la la-star"></span>
-                                        <span class="la la-star-o"></span>
-                                    </div>
-                                    <span class="rating-total pl-1">(20,230)</span>
-                                </div><!-- end rating-wrap -->
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <p class="card-price text-black font-weight-bold">حر</p>
-                                    <div class="icon-element icon-element-sm shadow-sm cursor-pointer" title="Add to Wishlist"><i class="la la-heart-o"></i></div>
-                                </div>
-                            </div><!-- end card-body -->
-                        </div><!-- end card -->
-                    </div><!-- end col-lg-4 -->
-                    <div class="col-lg-4 responsive-column-half">
-                        <div class="card card-item card-preview" data-tooltip-content="#tooltip_content_4">
-                            <div class="card-image">
-                                <a href="course-details.html" class="d-block">
-                                    <img class="card-img-top lazy" src="images/img-loading.png" data-src="images/img13.jpg" alt="Card image cap">
-                                </a>
-                                <div class="course-badge-labels">
-                                    <div class="course-badge sky-blue">أعلى تصنيف</div>
-                                </div>
-                            </div><!-- end card-image -->
-                            <div class="card-body">
-                                <h6 class="ribbon ribbon-blue-bg fs-14 mb-3">مبتدئ</h6>
-                                <h5 class="card-title"><a href="course-details.html">دورة الرسم النهائية - مبتدئ إلى متقدم</a></h5>
-                                <p class="card-text"><a href="teacher-detail.html">خوسيه بورتيلا</a></p>
-                                <div class="rating-wrap d-flex align-items-center py-2">
-                                    <div class="review-stars">
-                                        <span class="rating-number">4.4</span>
-                                        <span class="la la-star"></span>
-                                        <span class="la la-star"></span>
-                                        <span class="la la-star"></span>
-                                        <span class="la la-star"></span>
-                                        <span class="la la-star-o"></span>
-                                    </div>
-                                    <span class="rating-total pl-1">(20,230)</span>
-                                </div><!-- end rating-wrap -->
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <p class="card-price text-black font-weight-bold">129.99</p>
-                                    <div class="icon-element icon-element-sm shadow-sm cursor-pointer" title="Add to Wishlist"><i class="la la-heart-o"></i></div>
-                                </div>
-                            </div><!-- end card-body -->
-                        </div><!-- end card -->
-                    </div><!-- end col-lg-4 -->
-                    <div class="col-lg-4 responsive-column-half">
-                        <div class="card card-item card-preview" data-tooltip-content="#tooltip_content_4">
-                            <div class="card-image">
-                                <a href="course-details.html" class="d-block">
-                                    <img class="card-img-top lazy" src="images/img-loading.png" data-src="images/img8.jpg" alt="Card image cap">
-                                </a>
-                                <div class="course-badge-labels">
-                                    <div class="course-badge">الأكثر مبيعا</div>
-                                    <div class="course-badge blue">-39%</div>
-                                </div>
-                            </div><!-- end card-image -->
-                            <div class="card-body">
-                                <h6 class="ribbon ribbon-blue-bg fs-14 mb-3">مبتدئ</h6>
-                                <h5 class="card-title"><a href="course-details.html">دورة الرسم النهائية - مبتدئ إلى متقدم</a></h5>
-                                <p class="card-text"><a href="teacher-detail.html">خوسيه بورتيلا</a></p>
-                                <div class="rating-wrap d-flex align-items-center py-2">
-                                    <div class="review-stars">
-                                        <span class="rating-number">4.4</span>
-                                        <span class="la la-star"></span>
-                                        <span class="la la-star"></span>
-                                        <span class="la la-star"></span>
-                                        <span class="la la-star"></span>
-                                        <span class="la la-star-o"></span>
-                                    </div>
-                                    <span class="rating-total pl-1">(20,230)</span>
-                                </div><!-- end rating-wrap -->
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <p class="card-price text-black font-weight-bold">12.99 <span class="before-price font-weight-medium">129.99</span></p>
-                                    <div class="icon-element icon-element-sm shadow-sm cursor-pointer" title="Add to Wishlist"><i class="la la-heart-o"></i></div>
-                                </div>
-                            </div><!-- end card-body -->
-                        </div><!-- end card -->
-                    </div><!-- end col-lg-4 -->
-                    <div class="col-lg-4 responsive-column-half">
-                        <div class="card card-item card-preview" data-tooltip-content="#tooltip_content_4">
-                            <div class="card-image">
-                                <a href="course-details.html" class="d-block">
-                                    <img class="card-img-top lazy" src="images/img-loading.png" data-src="images/img9.jpg" alt="Card image cap">
-                                </a>
-                                <div class="course-badge-labels">
-                                    <div class="course-badge red">متميز</div>
-                                </div>
-                            </div><!-- end card-image -->
-                            <div class="card-body">
-                                <h6 class="ribbon ribbon-blue-bg fs-14 mb-3">مبتدئ</h6>
-                                <h5 class="card-title"><a href="course-details.html">دورة الرسم النهائية - مبتدئ إلى متقدم</a></h5>
-                                <p class="card-text"><a href="teacher-detail.html">خوسيه بورتيلا</a></p>
-                                <div class="rating-wrap d-flex align-items-center py-2">
-                                    <div class="review-stars">
-                                        <span class="rating-number">4.4</span>
-                                        <span class="la la-star"></span>
-                                        <span class="la la-star"></span>
-                                        <span class="la la-star"></span>
-                                        <span class="la la-star"></span>
-                                        <span class="la la-star-o"></span>
-                                    </div>
-                                    <span class="rating-total pl-1">(20,230)</span>
-                                </div><!-- end rating-wrap -->
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <p class="card-price text-black font-weight-bold">129.99</p>
-                                    <div class="icon-element icon-element-sm shadow-sm cursor-pointer" title="Add to Wishlist"><i class="la la-heart-o"></i></div>
-                                </div>
-                            </div><!-- end card-body -->
-                        </div><!-- end card -->
-                    </div><!-- end col-lg-4 -->
-                    <div class="col-lg-4 responsive-column-half">
-                        <div class="card card-item card-preview" data-tooltip-content="#tooltip_content_4">
-                            <div class="card-image">
-                                <a href="course-details.html" class="d-block">
-                                    <img class="card-img-top lazy" src="images/img-loading.png" data-src="images/img10.jpg" alt="Card image cap">
-                                </a>
-                            </div><!-- end card-image -->
-                            <div class="card-body">
-                                <h6 class="ribbon ribbon-blue-bg fs-14 mb-3">مبتدئ</h6>
-                                <h5 class="card-title"><a href="course-details.html">دورة الرسم النهائية - مبتدئ إلى متقدم</a></h5>
-                                <p class="card-text"><a href="teacher-detail.html">خوسيه بورتيلا</a></p>
-                                <div class="rating-wrap d-flex align-items-center py-2">
-                                    <div class="review-stars">
-                                        <span class="rating-number">4.4</span>
-                                        <span class="la la-star"></span>
-                                        <span class="la la-star"></span>
-                                        <span class="la la-star"></span>
-                                        <span class="la la-star"></span>
-                                        <span class="la la-star-o"></span>
-                                    </div>
-                                    <span class="rating-total pl-1">(20,230)</span>
-                                </div><!-- end rating-wrap -->
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <p class="card-price text-black font-weight-bold">129.99</p>
-                                    <div class="icon-element icon-element-sm shadow-sm cursor-pointer" title="Add to Wishlist"><i class="la la-heart-o"></i></div>
-                                </div>
-                            </div><!-- end card-body -->
-                        </div><!-- end card -->
-                    </div><!-- end col-lg-4 -->
-                </div><!-- end row -->
-            </div><!-- end tab-pane -->
-            <div class="tab-pane fade" id="marketing" role="tabpanel" aria-labelledby="marketing-tab">
-                <div class="row">
-                    <div class="col-lg-4 responsive-column-half">
-                        <div class="card card-item card-preview" data-tooltip-content="#tooltip_content_5">
-                            <div class="card-image">
-                                <a href="course-details.html" class="d-block">
-                                    <img class="card-img-top lazy" src="images/img-loading.png" data-src="images/img8.jpg" alt="Card image cap">
-                                </a>
-                                <div class="course-badge-labels">
-                                    <div class="course-badge">الأكثر مبيعا</div>
-                                    <div class="course-badge blue">-39%</div>
-                                </div>
-                            </div><!-- end card-image -->
-                            <div class="card-body">
-                                <h6 class="ribbon ribbon-blue-bg fs-14 mb-3">جميع المستويات</h6>
-                                <h5 class="card-title"><a href="course-details.html">دورة التسويق الرقمي الكاملة - 12 دورة في 1</a></h5>
-                                <p class="card-text"><a href="teacher-detail.html">خوسيه بورتيلا</a></p>
-                                <div class="rating-wrap d-flex align-items-center py-2">
-                                    <div class="review-stars">
-                                        <span class="rating-number">4.4</span>
-                                        <span class="la la-star"></span>
-                                        <span class="la la-star"></span>
-                                        <span class="la la-star"></span>
-                                        <span class="la la-star"></span>
-                                        <span class="la la-star-o"></span>
-                                    </div>
-                                    <span class="rating-total pl-1">(20,230)</span>
-                                </div><!-- end rating-wrap -->
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <p class="card-price text-black font-weight-bold">12.99 <span class="before-price font-weight-medium">129.99</span></p>
-                                    <div class="icon-element icon-element-sm shadow-sm cursor-pointer" title="Add to Wishlist"><i class="la la-heart-o"></i></div>
-                                </div>
-                            </div><!-- end card-body -->
-                        </div><!-- end card -->
-                    </div><!-- end col-lg-4 -->
-                    <div class="col-lg-4 responsive-column-half">
-                        <div class="card card-item card-preview" data-tooltip-content="#tooltip_content_5">
-                            <div class="card-image">
-                                <a href="course-details.html" class="d-block">
-                                    <img class="card-img-top lazy" src="images/img-loading.png" data-src="images/img9.jpg" alt="Card image cap">
-                                </a>
-                                <div class="course-badge-labels">
-                                    <div class="course-badge red">متميز</div>
-                                </div>
-                            </div><!-- end card-image -->
-                            <div class="card-body">
-                                <h6 class="ribbon ribbon-blue-bg fs-14 mb-3">جميع المستويات</h6>
-                                <h5 class="card-title"><a href="course-details.html">دورة التسويق الرقمي الكاملة - 12 دورة في 1</a></h5>
-                                <p class="card-text"><a href="teacher-detail.html">خوسيه بورتيلا</a></p>
-                                <div class="rating-wrap d-flex align-items-center py-2">
-                                    <div class="review-stars">
-                                        <span class="rating-number">4.4</span>
-                                        <span class="la la-star"></span>
-                                        <span class="la la-star"></span>
-                                        <span class="la la-star"></span>
-                                        <span class="la la-star"></span>
-                                        <span class="la la-star-o"></span>
-                                    </div>
-                                    <span class="rating-total pl-1">(20,230)</span>
-                                </div><!-- end rating-wrap -->
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <p class="card-price text-black font-weight-bold">129.99</p>
-                                    <div class="icon-element icon-element-sm shadow-sm cursor-pointer" title="Add to Wishlist"><i class="la la-heart-o"></i></div>
-                                </div>
-                            </div><!-- end card-body -->
-                        </div><!-- end card -->
-                    </div><!-- end col-lg-4 -->
-                    <div class="col-lg-4 responsive-column-half">
-                        <div class="card card-item card-preview" data-tooltip-content="#tooltip_content_5">
-                            <div class="card-image">
-                                <a href="course-details.html" class="d-block">
-                                    <img class="card-img-top lazy" src="images/img-loading.png" data-src="images/img10.jpg" alt="Card image cap">
-                                </a>
-                            </div><!-- end card-image -->
-                            <div class="card-body">
-                                <h6 class="ribbon ribbon-blue-bg fs-14 mb-3">جميع المستويات</h6>
-                                <h5 class="card-title"><a href="course-details.html">دورة التسويق الرقمي الكاملة - 12 دورة في 1</a></h5>
-                                <p class="card-text"><a href="teacher-detail.html">خوسيه بورتيلا</a></p>
-                                <div class="rating-wrap d-flex align-items-center py-2">
-                                    <div class="review-stars">
-                                        <span class="rating-number">4.4</span>
-                                        <span class="la la-star"></span>
-                                        <span class="la la-star"></span>
-                                        <span class="la la-star"></span>
-                                        <span class="la la-star"></span>
-                                        <span class="la la-star-o"></span>
-                                    </div>
-                                    <span class="rating-total pl-1">(20,230)</span>
-                                </div><!-- end rating-wrap -->
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <p class="card-price text-black font-weight-bold">129.99</p>
-                                    <div class="icon-element icon-element-sm shadow-sm cursor-pointer" title="Add to Wishlist"><i class="la la-heart-o"></i></div>
-                                </div>
-                            </div><!-- end card-body -->
-                        </div><!-- end card -->
-                    </div><!-- end col-lg-4 -->
-                    <div class="col-lg-4 responsive-column-half">
-                        <div class="card card-item card-preview" data-tooltip-content="#tooltip_content_5">
-                            <div class="card-image">
-                                <a href="course-details.html" class="d-block">
-                                    <img class="card-img-top lazy" src="images/img-loading.png" data-src="images/img11.jpg" alt="Card image cap">
-                                </a>
-                            </div><!-- end card-image -->
-                            <div class="card-body">
-                                <h6 class="ribbon ribbon-blue-bg fs-14 mb-3">جميع المستويات</h6>
-                                <h5 class="card-title"><a href="course-details.html">دورة التسويق الرقمي الكاملة - 12 دورة في 1</a></h5>
-                                <p class="card-text"><a href="teacher-detail.html">خوسيه بورتيلا</a></p>
-                                <div class="rating-wrap d-flex align-items-center py-2">
-                                    <div class="review-stars">
-                                        <span class="rating-number">4.4</span>
-                                        <span class="la la-star"></span>
-                                        <span class="la la-star"></span>
-                                        <span class="la la-star"></span>
-                                        <span class="la la-star"></span>
-                                        <span class="la la-star-o"></span>
-                                    </div>
-                                    <span class="rating-total pl-1">(20,230)</span>
-                                </div><!-- end rating-wrap -->
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <p class="card-price text-black font-weight-bold">129.99</p>
-                                    <div class="icon-element icon-element-sm shadow-sm cursor-pointer" title="Add to Wishlist"><i class="la la-heart-o"></i></div>
-                                </div>
-                            </div><!-- end card-body -->
-                        </div><!-- end card -->
-                    </div><!-- end col-lg-4 -->
-                    <div class="col-lg-4 responsive-column-half">
-                        <div class="card card-item card-preview" data-tooltip-content="#tooltip_content_5">
-                            <div class="card-image">
-                                <a href="course-details.html" class="d-block">
-                                    <img class="card-img-top lazy" src="images/img-loading.png" data-src="images/img12.jpg" alt="Card image cap">
-                                </a>
-                                <div class="course-badge-labels">
-                                    <div class="course-badge green">حر</div>
-                                </div>
-                            </div><!-- end card-image -->
-                            <div class="card-body">
-                                <h6 class="ribbon ribbon-blue-bg fs-14 mb-3">جميع المستويات</h6>
-                                <h5 class="card-title"><a href="course-details.html">دورة التسويق الرقمي الكاملة - 12 دورة في 1</a></h5>
-                                <p class="card-text"><a href="teacher-detail.html">خوسيه بورتيلا</a></p>
-                                <div class="rating-wrap d-flex align-items-center py-2">
-                                    <div class="review-stars">
-                                        <span class="rating-number">4.4</span>
-                                        <span class="la la-star"></span>
-                                        <span class="la la-star"></span>
-                                        <span class="la la-star"></span>
-                                        <span class="la la-star"></span>
-                                        <span class="la la-star-o"></span>
-                                    </div>
-                                    <span class="rating-total pl-1">(20,230)</span>
-                                </div><!-- end rating-wrap -->
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <p class="card-price text-black font-weight-bold">حر</p>
-                                    <div class="icon-element icon-element-sm shadow-sm cursor-pointer" title="Add to Wishlist"><i class="la la-heart-o"></i></div>
-                                </div>
-                            </div><!-- end card-body -->
-                        </div><!-- end card -->
-                    </div><!-- end col-lg-4 -->
-                    <div class="col-lg-4 responsive-column-half">
-                        <div class="card card-item card-preview" data-tooltip-content="#tooltip_content_5">
-                            <div class="card-image">
-                                <a href="course-details.html" class="d-block">
-                                    <img class="card-img-top lazy" src="images/img-loading.png" data-src="images/img13.jpg" alt="Card image cap">
-                                </a>
-                                <div class="course-badge-labels">
-                                    <div class="course-badge sky-blue">أعلى تصنيف</div>
-                                </div>
-                            </div><!-- end card-image -->
-                            <div class="card-body">
-                                <h6 class="ribbon ribbon-blue-bg fs-14 mb-3">جميع المستويات</h6>
-                                <h5 class="card-title"><a href="course-details.html">دورة التسويق الرقمي الكاملة - 12 دورة في 1</a></h5>
-                                <p class="card-text"><a href="teacher-detail.html">خوسيه بورتيلا</a></p>
-                                <div class="rating-wrap d-flex align-items-center py-2">
-                                    <div class="review-stars">
-                                        <span class="rating-number">4.4</span>
-                                        <span class="la la-star"></span>
-                                        <span class="la la-star"></span>
-                                        <span class="la la-star"></span>
-                                        <span class="la la-star"></span>
-                                        <span class="la la-star-o"></span>
-                                    </div>
-                                    <span class="rating-total pl-1">(20,230)</span>
-                                </div><!-- end rating-wrap -->
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <p class="card-price text-black font-weight-bold">129.99</p>
-                                    <div class="icon-element icon-element-sm shadow-sm cursor-pointer" title="Add to Wishlist"><i class="la la-heart-o"></i></div>
-                                </div>
-                            </div><!-- end card-body -->
-                        </div><!-- end card -->
-                    </div><!-- end col-lg-4 -->
-                </div><!-- end row -->
-            </div><!-- end tab-pane -->
-        </div><!-- end tab-content -->
-        <div class="more-btn-box mt-4 text-center">
-            <a href="course-grid.html" class="btn theme-btn"> تصفح جميع الدورات<i class="la la-arrow-right icon ml-1"></i></a>
-        </div><!-- end more-btn-box -->
-    </div><!-- end container -->
-</section><!-
+                            @endif
+                        @endforeach
+
+                        </div>
+                    </div>
+                @endif
+            @endforeach
+            <div class="tab-pane hidden" id="a3a">
+                <h3></h3>
+            </div>
+        </div>
+        </div>
+</section>
+
 
 <!--================================
         END HERO AREA
@@ -1116,7 +244,6 @@
 <!--======================================
        END FEATURE AREA
 ======================================-->
-
 <section class="gallery-area section--padding">
     <div class="container">
         <div class="section-heading text-center">
@@ -1125,16 +252,16 @@
         <ul class="portfolio-filter pt-40px pb-40px">
             <li data-filter="*" class="active">الجميع</li>
             @if($GalleryFirst->count() >0)
-            <li data-filter=".web-design">الأول</li>
+                <li data-filter=".web-design">الأول</li>
             @endif
             @if($GallerySecond->count() >0)
-            <li data-filter=".photography">الثاني</li>
+                <li data-filter=".photography">الثاني</li>
             @endif
             @if($GalleryThird->count() >0)
-            <li data-filter=".management">الثالث</li>
+                <li data-filter=".management">الثالث</li>
             @endif
             @if($GalleryForth->count() >0)
-            <li data-filter=".advertising">الرابع</li>
+                <li data-filter=".advertising">الرابع</li>
             @endif
 
 
@@ -1146,18 +273,18 @@
 
                     </div><!-- end generic-portfolio-item -->
                     @if($GalleryFirst->count() >0)
-                            @foreach($GalleryFirst as $item)
-                    <div class="generic-portfolio-item col-lg-4 web-design">
-                        <div class="generic-portfolio-content">
-                            <a class="portfolio-link" href="images/{{$item}}" data-fancybox="gallery" data-caption="Image 2">
-                                <img src="images/{{$item}}" alt="portfolio-image">
-                                <div class="icon-element icon-element-md">
-                                    <i class="la la-plus"></i>
-                                </div>
-                            </a>
-                        </div><!-- end generic-portfolio-content -->
-                    </div><!-- end generic-portfolio-item -->
-                                @endforeach
+                        @foreach($GalleryFirst as $item)
+                            <div class="generic-portfolio-item col-lg-4 web-design">
+                                <div class="generic-portfolio-content">
+                                    <a class="portfolio-link" href="images/{{$item}}" data-fancybox="gallery" data-caption="Image 2">
+                                        <img src="images/{{$item}}" alt="portfolio-image">
+                                        <div class="icon-element icon-element-md">
+                                            <i class="la la-plus"></i>
+                                        </div>
+                                    </a>
+                                </div><!-- end generic-portfolio-content -->
+                            </div><!-- end generic-portfolio-item -->
+                        @endforeach
                     @endif
 
                     @if($GallerySecond->count() >0)
@@ -1205,311 +332,126 @@
                     @endif
 
                     {{--                    <div class="generic-portfolio-item col-lg-4 photography advertising">--}}
-{{--                        <div class="generic-portfolio-content">--}}
-{{--                            <a class="portfolio-link" href="/theme/images/img22.jpg" data-fancybox="gallery" data-caption="Image 3">--}}
-{{--                                <img src="/theme/images/img22.jpg" alt="portfolio-image">--}}
-{{--                                <div class="icon-element icon-element-md">--}}
-{{--                                    <i class="la la-plus"></i>--}}
-{{--                                </div>--}}
-{{--                            </a>--}}
-{{--                        </div><!-- end generic-portfolio-content -->--}}
-{{--                    </div><!-- end generic-portfolio-item -->--}}
-{{--                    <div class="generic-portfolio-item col-lg-4 development web-design">--}}
-{{--                        <div class="generic-portfolio-content">--}}
-{{--                            <a class="portfolio-link" href="/theme/images/img22.jpg" data-fancybox="gallery" data-caption="Image 4">--}}
-{{--                                <img src="/theme/images/img22.jpg" alt="portfolio-image">--}}
-{{--                                <div class="icon-element icon-element-md">--}}
-{{--                                    <i class="la la-plus"></i>--}}
-{{--                                </div>--}}
-{{--                            </a>--}}
-{{--                        </div><!-- end generic-portfolio-content -->--}}
-{{--                    </div><!-- end generic-portfolio-item -->--}}
-{{--                    <div class="generic-portfolio-item col-lg-4 advertising web-design">--}}
-{{--                        <div class="generic-portfolio-content">--}}
-{{--                            <a class="portfolio-link" href="/theme/images/img22.jpg" data-fancybox="gallery" data-caption="Image 5">--}}
-{{--                                <img src="/theme/images/img22.jpg" alt="portfolio-image">--}}
-{{--                                <div class="icon-element icon-element-md">--}}
-{{--                                    <i class="la la-plus"></i>--}}
-{{--                                </div>--}}
-{{--                            </a>--}}
-{{--                        </div><!-- end generic-portfolio-content -->--}}
-{{--                    </div><!-- end generic-portfolio-item -->--}}
-{{--                    <div class="generic-portfolio-item col-lg-4 photography management">--}}
-{{--                        <div class="generic-portfolio-content">--}}
-{{--                            <a class="portfolio-link" href="/theme/images/img22.jpg" data-fancybox="gallery" data-caption="Image 6">--}}
-{{--                                <img src="/theme/images/img22.jpg" alt="portfolio-image">--}}
-{{--                                <div class="icon-element icon-element-md">--}}
-{{--                                    <i class="la la-plus"></i>--}}
-{{--                                </div>--}}
-{{--                            </a>--}}
-{{--                        </div><!-- end generic-portfolio-content -->--}}
-{{--                    </div><!-- end generic-portfolio-item -->--}}
-{{--                    <div class="generic-portfolio-item col-lg-4 development web-design">--}}
-{{--                        <div class="generic-portfolio-content">--}}
-{{--                            <a class="portfolio-link" href="/theme/images/img22.jpg" data-fancybox="gallery" data-caption="Image 7">--}}
-{{--                                <img src="/theme/images/img22.jpg" alt="portfolio-image">--}}
-{{--                                <div class="icon-element icon-element-md">--}}
-{{--                                    <i class="la la-plus"></i>--}}
-{{--                                </div>--}}
-{{--                            </a>--}}
-{{--                        </div><!-- end generic-portfolio-content -->--}}
-{{--                    </div><!-- end generic-portfolio-item -->--}}
-{{--                    <div class="generic-portfolio-item col-lg-4 management photography advertising">--}}
-{{--                        <div class="generic-portfolio-content">--}}
-{{--                            <a class="portfolio-link" href="/theme/images/img22.jpg" data-fancybox="gallery" data-caption="Image 8">--}}
-{{--                                <img src="/theme/images/img22.jpg" alt="portfolio-image">--}}
-{{--                                <div class="icon-element icon-element-md">--}}
-{{--                                    <i class="la la-plus"></i>--}}
-{{--                                </div>--}}
-{{--                            </a>--}}
-{{--                        </div><!-- end generic-portfolio-content -->--}}
-{{--                    </div><!-- end generic-portfolio-item -->--}}
-{{--                    <div class="generic-portfolio-item col-lg-4 photography web-design">--}}
-{{--                        <div class="generic-portfolio-content">--}}
-{{--                            <a class="portfolio-link" href="/theme/images/img22.jpg" data-fancybox="gallery" data-caption="Image 9">--}}
-{{--                                <img src="/theme/images/img22.jpg" alt="portfolio-image">--}}
-{{--                                <div class="icon-element icon-element-md">--}}
-{{--                                    <i class="la la-plus"></i>--}}
-{{--                                </div>--}}
-{{--                            </a>--}}
-{{--                        </div><!-- end generic-portfolio-content -->--}}
-{{--                    </div><!-- end generic-portfolio-item -->--}}
-{{--            </div><!-- end portfolio-list -->   -->--}}
-        </div><!-- end col-lg-12 -->
-    </div><!-- end row -->
-</div><!-- end container -->
+                    {{--                        <div class="generic-portfolio-content">--}}
+                    {{--                            <a class="portfolio-link" href="/theme/images/img22.jpg" data-fancybox="gallery" data-caption="Image 3">--}}
+                    {{--                                <img src="/theme/images/img22.jpg" alt="portfolio-image">--}}
+                    {{--                                <div class="icon-element icon-element-md">--}}
+                    {{--                                    <i class="la la-plus"></i>--}}
+                    {{--                                </div>--}}
+                    {{--                            </a>--}}
+                    {{--                        </div><!-- end generic-portfolio-content -->--}}
+                    {{--                    </div><!-- end generic-portfolio-item -->--}}
+                    {{--                    <div class="generic-portfolio-item col-lg-4 development web-design">--}}
+                    {{--                        <div class="generic-portfolio-content">--}}
+                    {{--                            <a class="portfolio-link" href="/theme/images/img22.jpg" data-fancybox="gallery" data-caption="Image 4">--}}
+                    {{--                                <img src="/theme/images/img22.jpg" alt="portfolio-image">--}}
+                    {{--                                <div class="icon-element icon-element-md">--}}
+                    {{--                                    <i class="la la-plus"></i>--}}
+                    {{--                                </div>--}}
+                    {{--                            </a>--}}
+                    {{--                        </div><!-- end generic-portfolio-content -->--}}
+                    {{--                    </div><!-- end generic-portfolio-item -->--}}
+                    {{--                    <div class="generic-portfolio-item col-lg-4 advertising web-design">--}}
+                    {{--                        <div class="generic-portfolio-content">--}}
+                    {{--                            <a class="portfolio-link" href="/theme/images/img22.jpg" data-fancybox="gallery" data-caption="Image 5">--}}
+                    {{--                                <img src="/theme/images/img22.jpg" alt="portfolio-image">--}}
+                    {{--                                <div class="icon-element icon-element-md">--}}
+                    {{--                                    <i class="la la-plus"></i>--}}
+                    {{--                                </div>--}}
+                    {{--                            </a>--}}
+                    {{--                        </div><!-- end generic-portfolio-content -->--}}
+                    {{--                    </div><!-- end generic-portfolio-item -->--}}
+                    {{--                    <div class="generic-portfolio-item col-lg-4 photography management">--}}
+                    {{--                        <div class="generic-portfolio-content">--}}
+                    {{--                            <a class="portfolio-link" href="/theme/images/img22.jpg" data-fancybox="gallery" data-caption="Image 6">--}}
+                    {{--                                <img src="/theme/images/img22.jpg" alt="portfolio-image">--}}
+                    {{--                                <div class="icon-element icon-element-md">--}}
+                    {{--                                    <i class="la la-plus"></i>--}}
+                    {{--                                </div>--}}
+                    {{--                            </a>--}}
+                    {{--                        </div><!-- end generic-portfolio-content -->--}}
+                    {{--                    </div><!-- end generic-portfolio-item -->--}}
+                    {{--                    <div class="generic-portfolio-item col-lg-4 development web-design">--}}
+                    {{--                        <div class="generic-portfolio-content">--}}
+                    {{--                            <a class="portfolio-link" href="/theme/images/img22.jpg" data-fancybox="gallery" data-caption="Image 7">--}}
+                    {{--                                <img src="/theme/images/img22.jpg" alt="portfolio-image">--}}
+                    {{--                                <div class="icon-element icon-element-md">--}}
+                    {{--                                    <i class="la la-plus"></i>--}}
+                    {{--                                </div>--}}
+                    {{--                            </a>--}}
+                    {{--                        </div><!-- end generic-portfolio-content -->--}}
+                    {{--                    </div><!-- end generic-portfolio-item -->--}}
+                    {{--                    <div class="generic-portfolio-item col-lg-4 management photography advertising">--}}
+                    {{--                        <div class="generic-portfolio-content">--}}
+                    {{--                            <a class="portfolio-link" href="/theme/images/img22.jpg" data-fancybox="gallery" data-caption="Image 8">--}}
+                    {{--                                <img src="/theme/images/img22.jpg" alt="portfolio-image">--}}
+                    {{--                                <div class="icon-element icon-element-md">--}}
+                    {{--                                    <i class="la la-plus"></i>--}}
+                    {{--                                </div>--}}
+                    {{--                            </a>--}}
+                    {{--                        </div><!-- end generic-portfolio-content -->--}}
+                    {{--                    </div><!-- end generic-portfolio-item -->--}}
+                    {{--                    <div class="generic-portfolio-item col-lg-4 photography web-design">--}}
+                    {{--                        <div class="generic-portfolio-content">--}}
+                    {{--                            <a class="portfolio-link" href="/theme/images/img22.jpg" data-fancybox="gallery" data-caption="Image 9">--}}
+                    {{--                                <img src="/theme/images/img22.jpg" alt="portfolio-image">--}}
+                    {{--                                <div class="icon-element icon-element-md">--}}
+                    {{--                                    <i class="la la-plus"></i>--}}
+                    {{--                                </div>--}}
+                    {{--                            </a>--}}
+                    {{--                        </div><!-- end generic-portfolio-content -->--}}
+                    {{--                    </div><!-- end generic-portfolio-item -->--}}
+                    {{--            </div><!-- end portfolio-list -->   -->--}}
+                </div><!-- end col-lg-12 -->
+            </div><!-- end row -->
+        </div><!-- end container -->
 </section><!-- end gallery-area -->
 
 <section class="client-logo-area section-padding position-relative overflow-hidden text-center">
-<div class="container">
-    <h5 class="ribbon ribbon-lg mb-2">الكادر</h5>
-    <h2 class="section__title">الكادر التدريسي والاداري</h2>
-    <span class="section-divider"></span>
-    <ul class="nav nav-tabs generic-tab justify-content-center pb-4" id="myTab" role="tablist">
-        @if($mangement->count() >0)
-            <li class="nav-item">
-                <a class="nav-link active" id="mangement-tab" data-toggle="tab" href="#mangement" role="tab" aria-controls="mangement" aria-selected="true">الادارة
-                </a>
-            </li>
-        @endif
-        @if($Tedmangement->count() >0)
-            <li class="nav-item">
-                <a class="nav-link" id="Tedmangement-tab" data-toggle="tab" href="#Tedmangement" role="tab" aria-controls="design" aria-selected="false">المركز التدريبي</a>
-            </li>
-        @endif
-        @if($BabeMangement->count() >0)
-            <li class="nav-item">
-                <a class="nav-link" id="BabeMangement-tab" data-toggle="tab" href="#BabeMangement" role="tab" aria-controls="BabeMangement" aria-selected="false">الحضانة</a>
-            </li>
-        @endif
-        @if($PreMangement->count() >0)
-            <li class="nav-item">
-                <a class="nav-link" id="PreMangement-tab" data-toggle="tab" href="#PreMangement" role="tab" aria-controls="PreMangement" aria-selected="false">الروضة</a>
-            </li>
-        @endif
-        @if($FirstMangement->count() >0)
-            <li class="nav-item">
-                <a class="nav-link" id="FirstMangement-tab" data-toggle="tab" href="#FirstMangement" role="tab" aria-controls="FirstMangement" aria-selected="false">الابتدائي</a>
-            </li>
-        @endif
-            @if($SecondMangement->count() >0)
-                <li class="nav-item">
-                    <a class="nav-link" id="SecondMangement-tab" data-toggle="tab" href="#SecondMangement" role="tab" aria-controls="SecondMangement" aria-selected="false">الاعدادي</a>
-                </li>
-            @endif
-            @if($ThirdMangement->count() >0)
-                <li class="nav-item">
-                    <a class="nav-link" id="ThirdMangement-tab" data-toggle="tab" href="#ThirdMangement" role="tab" aria-controls="ThirdMangement" aria-selected="false">الثانوي</a>
-                </li>
-            @endif
-            @if($OnlineMangement->count() >0)
-                <li class="nav-item">
-                    <a class="nav-link" id="OnlineMangement-tab" data-toggle="tab" href="#OnlineMangement" role="tab" aria-controls="OnlineMangement" aria-selected="false">المدرسة الافتراضية</a>
-                </li>
-            @endif
-    </ul>
-</div>
-<div class="card-content-wrapper bg-gray pt-50px pb-120px">
     <div class="container">
-        <div class="tab-content" id="myTabContent">
-            <div class="tab-pane fade show active" id="mangement" role="tabpanel" aria-labelledby="mangement-tab">
-                <div class="row">
+        <h5 class="ribbon ribbon-lg mb-2">الكادر</h5>
+        <h2 class="section__title">الكادر التدريسي والاداري</h2>
+        <span class="section-divider"></span>
+        <ul class="nav nav-tabs generic-tab justify-content-center pb-4" id="myTab" role="tablist">
 
-                    @foreach($mangement as $item)
-                        <div class="col-lg-3 responsive-column-half">
-                            <div class="card card-item member-card text-center">
-                                <div class="card-image">
-                                    <img class="card-img-top" src="images/{{$item->image}}" alt="team member">
-                                </div>
-                                <div class="card-body">
-                                    <h5 class="card-title"><a href="teacher-detail.html">{{$item->name}}</a></h5>
-                                    <p class="card-text">{{$item->title}}</p>
+            @if($Tedmangement->count() >0)
+                <li class="nav-item">
+                    <a class="nav-link active" id="Tedmangement-tab" data-toggle="tab" href="#Tedmangement" role="tab" aria-controls="design" aria-selected="false">المركز التدريبي</a>
+                </li>
+            @endif
+        </ul>
+    </div>
+    <div class="card-content-wrapper bg-gray pt-50px pb-120px">
+        <div class="container">
+            <div class="tab-content" id="myTabContent">
 
-                                    <a href="{!! route('employe.display', ['id' => $item->id]) !!}" class="btn theme-btn theme-btn-sm theme-btn-transparent mt-3">عرض الصفحة الشخصية <i class="la la-arrow-right icon ml-1"></i></a>
+                <div class="tab-pane fade show active" id="Tedmangement" role="tabpanel" aria-labelledby="Tedmangement-tab">
+                    <div class="row">
+                        @foreach($Tedmangement as $item)
+                            <div class="col-lg-3 responsive-column-half">
+                                <div class="card card-item member-card text-center">
+                                    <div class="card-image">
+                                        <img class="card-img-top" src="images/{{$item->image}}" alt="team member">
+                                    </div>
+                                    <div class="card-body">
+                                        <h5 class="card-title"><a href="teacher-detail.html">{{$item->name}}</a></h5>
+                                        <p class="card-text">{{$item->title}}</p>
 
-                                </div>
-                            </div><!-- end card -->
-                        </div><!-- end col-lg-3 -->
+                                        <a href="{!! route('employe.display', ['id' => $item->id]) !!}" class="btn theme-btn theme-btn-sm theme-btn-transparent mt-3">عرض الصفحة الشخصية <i class="la la-arrow-right icon ml-1"></i></a>
 
-                    @endforeach
-                </div><!-- end row -->
-            </div><!-- end tab-pane -->
-            <div class="tab-pane fade" id="Tedmangement" role="tabpanel" aria-labelledby="Tedmangement-tab">
-                <div class="row">
-                    @foreach($Tedmangement as $item)
-                        <div class="col-lg-3 responsive-column-half">
-                            <div class="card card-item member-card text-center">
-                                <div class="card-image">
-                                    <img class="card-img-top" src="images/{{$item->image}}" alt="team member">
-                                </div>
-                                <div class="card-body">
-                                    <h5 class="card-title"><a href="teacher-detail.html">{{$item->name}}</a></h5>
-                                    <p class="card-text">{{$item->title}}</p>
+                                    </div>
+                                </div><!-- end card -->
+                            </div><!-- end col-lg-3 -->
 
-                                    <a href="{!! route('employe.display', ['id' => $item->id]) !!}" class="btn theme-btn theme-btn-sm theme-btn-transparent mt-3">عرض الصفحة الشخصية <i class="la la-arrow-right icon ml-1"></i></a>
-
-                                </div>
-                            </div><!-- end card -->
-                        </div><!-- end col-lg-3 -->
-
-                    @endforeach
-                </div><!-- end row -->
-            </div><!-- end tab-pane -->
-            <div class="tab-pane fade" id="BabeMangement" role="tabpanel" aria-labelledby="BabeMangement-tab">
-                <div class="row">
-
-                    @foreach($BabeMangement as $item)
-                        <div class="col-lg-3 responsive-column-half">
-                            <div class="card card-item member-card text-center">
-                                <div class="card-image">
-                                    <img class="card-img-top" src="images/{{$item->image}}" alt="team member">
-                                </div>
-                                <div class="card-body">
-                                    <h5 class="card-title"><a href="teacher-detail.html">{{$item->name}}</a></h5>
-                                    <p class="card-text">{{$item->title}}</p>
-
-                                    <a href="{!! route('employe.display', ['id' => $item->id]) !!}" class="btn theme-btn theme-btn-sm theme-btn-transparent mt-3">عرض الصفحة الشخصية <i class="la la-arrow-right icon ml-1"></i></a>
-
-                                </div>
-                            </div><!-- end card -->
-                        </div><!-- end col-lg-3 -->
-
-                    @endforeach
-                </div><!-- end row -->
-            </div><!-- end tab-pane -->
-            <div class="tab-pane fade" id="PreMangement" role="tabpanel" aria-labelledby="PreMangement-tab">
-                <div class="row">
-                    @foreach($PreMangement as $item)
-                        <div class="col-lg-3 responsive-column-half">
-                            <div class="card card-item member-card text-center">
-                                <div class="card-image">
-                                    <img class="card-img-top" src="images/{{$item->image}}" alt="team member">
-                                </div>
-                                <div class="card-body">
-                                    <h5 class="card-title"><a href="teacher-detail.html">{{$item->name}}</a></h5>
-                                    <p class="card-text">{{$item->title}}</p>
-
-                                    <a href="{!! route('employe.display', ['id' => $item->id]) !!}" class="btn theme-btn theme-btn-sm theme-btn-transparent mt-3">عرض الصفحة الشخصية <i class="la la-arrow-right icon ml-1"></i></a>
-
-                                </div>
-                            </div><!-- end card -->
-                        </div><!-- end col-lg-3 -->
-
-                    @endforeach
-                </div><!-- end row -->
-            </div><!-- end tab-pane -->
-            <div class="tab-pane fade" id="FirstMangement" role="tabpanel" aria-labelledby="FirstMangement-tab">
-                <div class="row">
-                    @foreach($FirstMangement as $item)
-                        <div class="col-lg-3 responsive-column-half">
-                            <div class="card card-item member-card text-center">
-                                <div class="card-image">
-                                    <img class="card-img-top" src="images/{{$item->image}}" alt="team member">
-                                </div>
-                                <div class="card-body">
-                                    <h5 class="card-title"><a href="teacher-detail.html">{{$item->name}}</a></h5>
-                                    <p class="card-text">{{$item->title}}</p>
-
-                                    <a href="{!! route('employe.display', ['id' => $item->id]) !!}" class="btn theme-btn theme-btn-sm theme-btn-transparent mt-3">عرض الصفحة الشخصية <i class="la la-arrow-right icon ml-1"></i></a>
-
-                                </div>
-                            </div><!-- end card -->
-                        </div><!-- end col-lg-3 -->
-
-                    @endforeach
-                </div><!-- end row -->
-            </div><!-- end tab-pane -->
+                        @endforeach
+                    </div><!-- end row -->
+                </div><!-- end tab-pane -->
+               </div><!-- end tab-content -->
         </div><!-- end tab-content -->
-        <div class="tab-pane fade" id="SecondMangement" role="tabpanel" aria-labelledby="SecondMangement-tab">
-            <div class="row">
-                @foreach($SecondMangement as $item)
-                    <div class="col-lg-3 responsive-column-half">
-                        <div class="card card-item member-card text-center">
-                            <div class="card-image">
-                                <img class="card-img-top" src="images/{{$item->image}}" alt="team member">
-                            </div>
-                            <div class="card-body">
-                                <h5 class="card-title"><a href="teacher-detail.html">{{$item->name}}</a></h5>
-                                <p class="card-text">{{$item->title}}</p>
-
-                                <a href="{!! route('employe.display', ['id' => $item->id]) !!}" class="btn theme-btn theme-btn-sm theme-btn-transparent mt-3">عرض الصفحة الشخصية <i class="la la-arrow-right icon ml-1"></i></a>
-
-                            </div>
-                        </div><!-- end card -->
-                    </div><!-- end col-lg-3 -->
-
-                @endforeach
-            </div><!-- end row -->
-        </div><!-- end tab-pane -->
     </div><!-- end tab-content -->
-    <div class="tab-pane fade" id="ThirdMangement" role="tabpanel" aria-labelledby="ThirdMangement-tab">
-        <div class="row">
-            @foreach($ThirdMangement as $item)
-                <div class="col-lg-3 responsive-column-half">
-                    <div class="card card-item member-card text-center">
-                        <div class="card-image">
-                            <img class="card-img-top" src="images/{{$item->image}}" alt="team member">
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title"><a href="teacher-detail.html">{{$item->name}}</a></h5>
-                            <p class="card-text">{{$item->title}}</p>
 
-                            <a href="{!! route('employe.display', ['id' => $item->id]) !!}" class="btn theme-btn theme-btn-sm theme-btn-transparent mt-3">عرض الصفحة الشخصية <i class="la la-arrow-right icon ml-1"></i></a>
-
-                        </div>
-                    </div><!-- end card -->
-                </div><!-- end col-lg-3 -->
-
-            @endforeach
-        </div><!-- end row -->
-    </div><!-- end tab-pane -->
-</div><!-- end tab-content -->
-<div class="tab-pane fade" id="OnlineMangement" role="tabpanel" aria-labelledby="OnlineMangement-tab">
-    <div class="row">
-        @foreach($OnlineMangement as $item)
-            <div class="col-lg-3 responsive-column-half">
-                <div class="card card-item member-card text-center">
-                    <div class="card-image">
-                        <img class="card-img-top" src="images/{{$item->image}}" alt="team member">
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title"><a href="teacher-detail.html">{{$item->name}}</a></h5>
-                        <p class="card-text">{{$item->title}}</p>
-
-                        <a href="{!! route('employe.display', ['id' => $item->id]) !!}" class="btn theme-btn theme-btn-sm theme-btn-transparent mt-3">عرض الصفحة الشخصية <i class="la la-arrow-right icon ml-1"></i></a>
-
-                    </div>
-                </div><!-- end card -->
-            </div><!-- end col-lg-3 -->
-
-        @endforeach
-    </div><!-- end row -->
-</div><!-- end tab-pane -->
-
-
-<!-- end container -->
+    <!-- end container -->
 </section>
-
 <section class="contact-area section--padding position-relative" style="padding-top: 0px;">
 
 <div class="container-fluid">

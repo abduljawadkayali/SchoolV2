@@ -12,6 +12,8 @@
 */
 
 
+use Illuminate\Support\Facades\DB;
+
 Route::get('/clear-cache', function() {
     $exitCode = Artisan::call('cache:clear');
         $exitCode = Artisan::call('route:clear');
@@ -26,7 +28,70 @@ Route::get('/ads.txt',function(){
    return view('ads');
 });
 Route::get('updateStudent',function(){
-    $students = \App\Student::first();
+  $students = \App\Student::all();
+
+  foreach ($students as $student){
+      if($student->group->name == 'الأول'){
+          $student->group_id = 34;
+          $branc = DB::table("branch_group")->where("group_id",34)->first();
+          $student->branch_id =$branc->branch_id;
+          $student->save();
+//dd($branc,$student);
+      }
+      else if($student->group->name == 'الثاني'){
+          $student->group_id = 55;
+          $branc = DB::table("branch_group")->where("group_id",55)->first();
+          $student->branch_id =$branc->branch_id;
+          $student->save();
+//dd($branc,$student);
+      } else if($student->group->name == 'الصف الثالث' || $student->group->name == 'الثالث') {
+          $student->group_id = 36;
+          $branc = DB::table("branch_group")->where("group_id", 36)->first();
+          $student->branch_id = $branc->branch_id;
+          $student->save();
+      }
+      else if($student->group->name == 'الرابع'){
+              $student->group_id = 37;
+              $branc = DB::table("branch_group")->where("group_id",37)->first();
+              $student->branch_id =$branc->branch_id;
+              $student->save();
+//dd($branc,$student);
+      }     else if($student->group->name == 'الخامس'){
+              $student->group_id = 76;
+              $branc = DB::table("branch_group")->where("group_id",76)->first();
+              $student->branch_id =$branc->branch_id;
+              $student->save();
+//dd($branc,$student);
+      }  else if($student->group->name == 'السادس'){
+              $student->group_id = 39;
+              $branc = DB::table("branch_group")->where("group_id",39)->first();
+              $student->branch_id =$branc->branch_id;
+              $student->save();
+      } else if($student->group->name == 'السابع'){
+              $student->group_id = 40;
+              $branc = DB::table("branch_group")->where("group_id",40)->first();
+              $student->branch_id =$branc->branch_id;
+              $student->save();
+      } else if($student->group->name == 'الثامن'){
+              $student->group_id = 41;
+              $branc = DB::table("branch_group")->where("group_id",41)->first();
+              $student->branch_id =$branc->branch_id;
+              $student->save();
+      } else if($student->group->name == 'التاسع'){
+              $student->group_id = 57;
+              $branc = DB::table("branch_group")->where("group_id",57)->first();
+              $student->branch_id =$branc->branch_id;
+              $student->save();
+      } else if($student->group->name == 'العاشر'){
+              $student->group_id = 46;
+              $branc = DB::table("branch_group")->where("group_id",46)->first();
+              $student->branch_id =$branc->branch_id;
+              $student->save();
+      }
+  }
+//  dd($students->group == );
+
+    return;
    return view('ads');
 });
 Route::get('welcome', 'PagesController@welcome');
@@ -48,6 +113,8 @@ Route::get('test', 'PagesController@test');
 Route::get('mangement', 'PagesController@mangement');
 
 Route::get('kgmang', 'PagesController@kgmang');
+Route::get('Tedmangement', 'PagesController@Tedmangement');
+Route::get('OnlineMangement', 'PagesController@OnlineMangement');
 
 Route::get('prekgmang', 'PagesController@prekgmang');
 
@@ -98,10 +165,14 @@ Route::get('photo/{id}', ['as' => 'crud.photo', 'uses' => 'CrudsController@photo
 Route::resource('background','New\BackgroundController');
 Route::resource('icon','New\IconController');
 Route::resource('gallery','New\GalleryController');
+Route::resource('courseCategory','New\CourseCategoryController');
+Route::resource('courseView','New\CourseViewController');
+Route::resource('backgroundOther','New\BackgroundOtherController');
 Route::resource('haber','New\HaberController');
 Route::resource('haberCard','New\HaberCardController');
 Route::resource('rate','New\RateController');
 Route::resource('employe','New\EmployeController');
+Route::resource('region','New\RegionController');
 Route::get('employee/{id}', ['as' => 'employe.display', 'uses' => 'pagesController@displayEmployee']);
 Route::get('displayHaber/{id}', ['as' => 'haberCard.display', 'uses' => 'pagesController@display']);
 

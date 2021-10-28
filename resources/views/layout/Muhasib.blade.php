@@ -91,56 +91,11 @@
 
 
 
-                            <li class="nav-item">
-                                <a href="/background" class="nav-link">
-                                    <i class="fas fa-image"></i>
-                                    <p>@lang("Background")</p>
-                                </a>
-                            </li>
 
                             <li class="nav-item">
-                                <a href="/icon" class="nav-link">
-                                    <i class="fas fa-icons"></i>
-                                    <p>@lang("Icon")</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="/haber" class="nav-link">
-                                    <i class="fas fa-newspaper"></i>
-                                    <p>@lang("Haber")</p>
-                                </a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a href="/haberCard" class="nav-link">
-                                    <i class="fas fa-newspaper"></i>
-                                    <p>@lang("haberCard")</p>
-                                </a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a href="/rate" class="nav-link">
-                                    <i class="fas fa-star"></i>
-                                    <p>@lang("Rate")</p>
-                                </a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a href="/employe" class="nav-link">
+                                <a href="/region" class="nav-link">
                                     <i class="fas fa-person-booth"></i>
-                                    <p>@lang("Employe")</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="/gallery" class="nav-link">
-                                    <i class="fas fa-image"></i>
-                                    <p>@lang("Gallery")</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="/message" class="nav-link">
-                                    <i class="fas fa-newspaper"></i>
-                                    <p>@lang("Messages")</p>
+                                    <p>@lang("region")</p>
                                 </a>
                             </li>
 

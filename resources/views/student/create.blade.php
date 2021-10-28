@@ -115,15 +115,6 @@
         <option>@lang("--branch--")</option>
         </select>
     </div>
-
-
-
-
-
-
-
-
-
             {{Form::submit('Add', array('class' => 'btn btn-primary')) }}
             {{ Form::close() }}
          </div>

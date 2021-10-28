@@ -48,7 +48,13 @@ class StudentsController extends Controller
    }
 
 
+    public function getStudents($id)
+    {
+        $students = Student::where('groub_id',$id)->get();
 
+
+        return json_encode($students);
+    }
 
     /**
      * Display a listing of the resource.
@@ -59,8 +65,9 @@ class StudentsController extends Controller
     {
         $students = Student::all();//Get all Group
 
-
-        return view('student.index')->with('students', $students);
+        $groups = Group::all()->pluck("name","id");
+        return view('student.index', compact('students','groups' ))
+            ->with('i', (request()->input('page', 1) - 1) * 50);
     }
 
     /**

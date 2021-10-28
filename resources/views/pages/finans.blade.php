@@ -1,27 +1,440 @@
 @include ('includes.navbarNew')
-<section class="error-area section--padding dot-bg overflow-hidden">
-    <div class="container">
-        <div class="col-lg-7 mx-auto">
-            <div class="error-content text-center">
-                <svg viewBox="0 -35 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m442 232.910156v-205.410156c0-15.164062-12.335938-27.5-27.5-27.5h-387c-15.164062 0-27.5 12.335938-27.5 27.5v311c0 15.164062 12.335938 27.5 27.5 27.5h39.167969c4.140625 0 7.5-3.359375 7.5-7.5s-3.359375-7.5-7.5-7.5h-39.167969c-6.894531 0-12.5-5.605469-12.5-12.5v-270.5h412v160.472656c-7.414062-1.613281-15.109375-2.472656-23-2.472656-20.28125 0-39.269531 5.621094-55.5 15.386719v-84.386719c0-4.140625-3.355469-7.5-7.5-7.5s-7.5 3.359375-7.5 7.5v53h-42.5c-1.378906 0-2.5-1.121094-2.5-2.5v-50.5c0-4.140625-3.355469-7.5-7.5-7.5s-7.5 3.359375-7.5 7.5v50.5c0 9.648438 7.851562 17.5 17.5 17.5h42.5v26.695312c0 .179688.015625.355469.027344.53125-19.871094 17.152344-33.441406 41.402344-36.742188 68.773438h-251.785156v-223h352v100.5c0 4.140625 3.355469 7.5 7.5 7.5s7.5-3.359375 7.5-7.5v-103c0-6.894531-5.605469-12.5-12.5-12.5h-357c-6.894531 0-12.5 5.605469-12.5 12.5v228c0 6.894531 5.605469 12.5 12.5 12.5h253.523438c.09375 5.09375.539062 10.101562 1.320312 15h-195.675781c-4.144531 0-7.5 3.359375-7.5 7.5s3.355469 7.5 7.5 7.5h199.171875c13.671875 43.976562 54.746094 76 103.160156 76 59.550781 0 108-48.449219 108-108 0-46.183594-29.140625-85.683594-70-101.089844zm-427-179.910156v-25.5c0-6.894531 5.605469-12.5 12.5-12.5h387c6.894531 0 12.5 5.605469 12.5 12.5v25.5zm389 374c-51.28125 0-93-41.71875-93-93s41.71875-93 93-93 93 41.71875 93 93-41.71875 93-93 93zm0 0"/><path d="m44 25c-4.964844 0-9 4.039062-9 9s4.035156 9 9 9 9-4.039062 9-9-4.035156-9-9-9zm0 0"/><path d="m82 25c-4.964844 0-9 4.039062-9 9s4.035156 9 9 9 9-4.039062 9-9-4.035156-9-9-9zm0 0"/><path d="m120 25c-4.964844 0-9 4.039062-9 9s4.035156 9 9 9 9-4.039062 9-9-4.035156-9-9-9zm0 0"/><path d="m161 270.5c4.144531 0 7.5-3.359375 7.5-7.5v-106c0-4.140625-3.355469-7.5-7.5-7.5s-7.5 3.359375-7.5 7.5v53h-42.5c-1.378906 0-2.5-1.121094-2.5-2.5v-50.5c0-4.140625-3.355469-7.5-7.5-7.5s-7.5 3.359375-7.5 7.5v50.5c0 9.648438 7.851562 17.5 17.5 17.5h42.5v38c0 4.140625 3.355469 7.5 7.5 7.5zm0 0"/><path d="m201 150c-9.648438 0-17.5 7.851562-17.5 17.5v85c0 9.648438 7.851562 17.5 17.5 17.5h40c9.648438 0 17.5-7.851562 17.5-17.5v-85c0-9.648438-7.851562-17.5-17.5-17.5zm42.5 17.5v85c0 1.378906-1.121094 2.5-2.5 2.5h-40c-1.378906 0-2.5-1.121094-2.5-2.5v-85c0-1.378906 1.121094-2.5 2.5-2.5h40c1.378906 0 2.5 1.121094 2.5 2.5zm0 0"/><path d="m221 187.5c-4.144531 0-7.5 3.359375-7.5 7.5v30c0 4.140625 3.355469 7.5 7.5 7.5s7.5-3.359375 7.5-7.5v-30c0-4.140625-3.355469-7.5-7.5-7.5zm0 0"/><path d="m360.5 306.175781c-4.144531 0-7.5 3.359375-7.5 7.5v23c0 4.140625 3.355469 7.5 7.5 7.5s7.5-3.359375 7.5-7.5v-23c0-4.140625-3.355469-7.5-7.5-7.5zm0 0"/><path d="m447.5 306.175781c-4.144531 0-7.5 3.359375-7.5 7.5v23c0 4.140625 3.355469 7.5 7.5 7.5s7.5-3.359375 7.5-7.5v-23c0-4.140625-3.355469-7.5-7.5-7.5zm0 0"/><path d="m404 347.175781c-11.722656 0-22.609375 5.289063-29.871094 14.507813-2.5625 3.253906-2 7.96875 1.253906 10.53125 3.253907 2.5625 7.972657 2.003906 10.53125-1.25 4.398438-5.585938 10.988282-8.789063 18.085938-8.789063s13.6875 3.203125 18.085938 8.789063c1.480468 1.878906 3.679687 2.859375 5.898437 2.859375 1.621094 0 3.257813-.523438 4.632813-1.605469 3.253906-2.5625 3.816406-7.277344 1.253906-10.535156-7.257813-9.21875-18.144532-14.507813-29.871094-14.507813zm0 0"/></svg>
+<meta name="csrf-token" content="{{ csrf_token() }}" />
+@if($background !=null)
+    <section class="breadcrumb-area section-padding " style="    position: relative;
+        background-size: cover;
+        background-position: center;
+        z-index: 2;background: url('/images/{{$background->image}}')">
+
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="breadcrumb-content text-left">
                 <div class="section-heading">
-                    <h3 class="section__title pb-3">عذرًا! هذه الصفحة غير موجودة</h3>
-                    <p class="section__desc">
-                        الصفحة المطلوبة غير جاهزة حاليا
-                    </p>
+                    <h5 class="ribbon ribbon-lg ribbon-white mb-2">{{$background->title}}</h5>
+                    <h2 class="section__title fs-45 lh-60 text-white">{{$background->body}}</h2>
                 </div>
-                <div class="btn-box pt-30px">
-                    <a href="/" class="btn theme-btn"><i class="la la-reply mr-1"></i> العودة إلى المنزل</a>
+                <div class="breadcrumb-btn-box pt-40px pl-3">
+                    <a href="#" class="btn-text text-white video-play-btn d-inline-flex align-items-center" data-fancybox data-src="{{$background->vidio}}">
+                        <span class="icon-element icon-element-md pulse-btn mr-3"><i class="la la-play"></i></span>شاهد الفيديو
+                    </a>
                 </div>
-            </div>
-            <!-- end error-content -->
-        </div>
-        <!-- end col-lg-7 -->
+            </div><!-- end breadcrumb-content -->
+        </div><!-- end container -->
+    </section><!-- end breadcrumb-area -->
+    <section class="about-area section--padding overflow-hidden">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 w-50">
+                    <div class="about-content pb-5 text-left">
+                        <div class="section-heading">
+                            <h2 class="section__title pb-3 lh-50">{{$background->subtitle}}</h2>
+                            <p class="section__desc ">{{$background->subbody}}</p>
+                        </div><!-- end section-heading -->
+
+                    </div><!-- end about-content -->
+                </div><!-- end col-lg-6 -->
+                <div class="col-lg-6">
+                    <div class="generic-img-box generic-img-box-layout-2">
+                        <div class="img__item img__item-1">
+                            <img class="lazy" src="/images/{{$background->image1}}" data-src="/images/{{$background->image1}}" alt="About image">
+                            <div class="generic-img-box-content">
+                            </div>
+                        </div>
+                        <div class="img__item img__item-2">
+                            <img class="lazy" src="/images/{{$background->image2}}" data-src="/images/{{$background->image2}}" alt="About image">
+                            <div class="generic-img-box-content">
+                            </div>
+                        </div>
+                        <div class="img__item img__item-3">
+                            <img class="lazy" src="/images/{{$background->image3}}" data-src="/images/{{$background->image3}}" alt="About image">
+                            <div class="generic-img-box-content">
+                            </div>
+                        </div>
+                    </div><!-- end generic-img-box -->
+                </div><!-- end col-lg-6 -->
+            </div><!-- end row -->
+        </div><!-- end container -->
+    </section><!-- end about-area -->
+@endif
+<!--================================
+        END HERO AREA
+=================================-->
+
+
+
+<!--======================================
+       END FEATURE AREA
+======================================-->
+
+<section class="gallery-area section--padding">
+    <div class="container">
+        <div class="section-heading text-center">
+            <h2 class="section__title">معرض الصور</h2>
+        </div><!-- end section-heading -->
+        <ul class="portfolio-filter pt-40px pb-40px">
+            <li data-filter="*" class="active">الجميع</li>
+            @if($GalleryFirst->count() >0)
+                <li data-filter=".web-design">الأول</li>
+            @endif
+            @if($GallerySecond->count() >0)
+                <li data-filter=".photography">الثاني</li>
+            @endif
+            @if($GalleryThird->count() >0)
+                <li data-filter=".management">الثالث</li>
+            @endif
+            @if($GalleryForth->count() >0)
+                <li data-filter=".advertising">الرابع</li>
+            @endif
+
+
+        </ul>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="generic-portfolio-list row">
+                    <div class="generic-portfolio-item col-lg-4 all">
+
+                    </div><!-- end generic-portfolio-item -->
+                    @if($GalleryFirst->count() >0)
+                        @foreach($GalleryFirst as $item)
+                            <div class="generic-portfolio-item col-lg-4 web-design">
+                                <div class="generic-portfolio-content">
+                                    <a class="portfolio-link" href="images/{{$item}}" data-fancybox="gallery" data-caption="Image 2">
+                                        <img src="images/{{$item}}" alt="portfolio-image">
+                                        <div class="icon-element icon-element-md">
+                                            <i class="la la-plus"></i>
+                                        </div>
+                                    </a>
+                                </div><!-- end generic-portfolio-content -->
+                            </div><!-- end generic-portfolio-item -->
+                        @endforeach
+                    @endif
+
+                    @if($GallerySecond->count() >0)
+                        @foreach($GallerySecond as $item)
+                            <div class="generic-portfolio-item col-lg-4 photography  ">
+                                <div class="generic-portfolio-content">
+                                    <a class="portfolio-link" href="images/{{$item}}" data-fancybox="gallery" data-caption="Image 2">
+                                        <img src="images/{{$item}}" alt="portfolio-image">
+                                        <div class="icon-element icon-element-md">
+                                            <i class="la la-plus"></i>
+                                        </div>
+                                    </a>
+                                </div><!-- end generic-portfolio-content -->
+                            </div><!-- end generic-portfolio-item -->
+                        @endforeach
+                    @endif
+
+                    @if($GalleryThird->count() >0)
+                        @foreach($GalleryThird as $item)
+                            <div class="generic-portfolio-item col-lg-4 management">
+                                <div class="generic-portfolio-content">
+                                    <a class="portfolio-link" href="images/{{$item}}" data-fancybox="gallery" data-caption="Image 2">
+                                        <img src="images/{{$item}}" alt="portfolio-image">
+                                        <div class="icon-element icon-element-md">
+                                            <i class="la la-plus"></i>
+                                        </div>
+                                    </a>
+                                </div><!-- end generic-portfolio-content -->
+                            </div><!-- end generic-portfolio-item -->
+                        @endforeach
+                    @endif
+                    @if($GalleryForth->count() >0)
+                        @foreach($GalleryForth as $item)
+                            <div class="generic-portfolio-item col-lg-4 advertising">
+                                <div class="generic-portfolio-content">
+                                    <a class="portfolio-link" href="images/{{$item}}" data-fancybox="gallery" data-caption="Image 2">
+                                        <img src="images/{{$item}}" alt="portfolio-image">
+                                        <div class="icon-element icon-element-md">
+                                            <i class="la la-plus"></i>
+                                        </div>
+                                    </a>
+                                </div><!-- end generic-portfolio-content -->
+                            </div><!-- end generic-portfolio-item -->
+                        @endforeach
+                    @endif
+
+                    {{--                    <div class="generic-portfolio-item col-lg-4 photography advertising">--}}
+                    {{--                        <div class="generic-portfolio-content">--}}
+                    {{--                            <a class="portfolio-link" href="/theme/images/img22.jpg" data-fancybox="gallery" data-caption="Image 3">--}}
+                    {{--                                <img src="/theme/images/img22.jpg" alt="portfolio-image">--}}
+                    {{--                                <div class="icon-element icon-element-md">--}}
+                    {{--                                    <i class="la la-plus"></i>--}}
+                    {{--                                </div>--}}
+                    {{--                            </a>--}}
+                    {{--                        </div><!-- end generic-portfolio-content -->--}}
+                    {{--                    </div><!-- end generic-portfolio-item -->--}}
+                    {{--                    <div class="generic-portfolio-item col-lg-4 development web-design">--}}
+                    {{--                        <div class="generic-portfolio-content">--}}
+                    {{--                            <a class="portfolio-link" href="/theme/images/img22.jpg" data-fancybox="gallery" data-caption="Image 4">--}}
+                    {{--                                <img src="/theme/images/img22.jpg" alt="portfolio-image">--}}
+                    {{--                                <div class="icon-element icon-element-md">--}}
+                    {{--                                    <i class="la la-plus"></i>--}}
+                    {{--                                </div>--}}
+                    {{--                            </a>--}}
+                    {{--                        </div><!-- end generic-portfolio-content -->--}}
+                    {{--                    </div><!-- end generic-portfolio-item -->--}}
+                    {{--                    <div class="generic-portfolio-item col-lg-4 advertising web-design">--}}
+                    {{--                        <div class="generic-portfolio-content">--}}
+                    {{--                            <a class="portfolio-link" href="/theme/images/img22.jpg" data-fancybox="gallery" data-caption="Image 5">--}}
+                    {{--                                <img src="/theme/images/img22.jpg" alt="portfolio-image">--}}
+                    {{--                                <div class="icon-element icon-element-md">--}}
+                    {{--                                    <i class="la la-plus"></i>--}}
+                    {{--                                </div>--}}
+                    {{--                            </a>--}}
+                    {{--                        </div><!-- end generic-portfolio-content -->--}}
+                    {{--                    </div><!-- end generic-portfolio-item -->--}}
+                    {{--                    <div class="generic-portfolio-item col-lg-4 photography management">--}}
+                    {{--                        <div class="generic-portfolio-content">--}}
+                    {{--                            <a class="portfolio-link" href="/theme/images/img22.jpg" data-fancybox="gallery" data-caption="Image 6">--}}
+                    {{--                                <img src="/theme/images/img22.jpg" alt="portfolio-image">--}}
+                    {{--                                <div class="icon-element icon-element-md">--}}
+                    {{--                                    <i class="la la-plus"></i>--}}
+                    {{--                                </div>--}}
+                    {{--                            </a>--}}
+                    {{--                        </div><!-- end generic-portfolio-content -->--}}
+                    {{--                    </div><!-- end generic-portfolio-item -->--}}
+                    {{--                    <div class="generic-portfolio-item col-lg-4 development web-design">--}}
+                    {{--                        <div class="generic-portfolio-content">--}}
+                    {{--                            <a class="portfolio-link" href="/theme/images/img22.jpg" data-fancybox="gallery" data-caption="Image 7">--}}
+                    {{--                                <img src="/theme/images/img22.jpg" alt="portfolio-image">--}}
+                    {{--                                <div class="icon-element icon-element-md">--}}
+                    {{--                                    <i class="la la-plus"></i>--}}
+                    {{--                                </div>--}}
+                    {{--                            </a>--}}
+                    {{--                        </div><!-- end generic-portfolio-content -->--}}
+                    {{--                    </div><!-- end generic-portfolio-item -->--}}
+                    {{--                    <div class="generic-portfolio-item col-lg-4 management photography advertising">--}}
+                    {{--                        <div class="generic-portfolio-content">--}}
+                    {{--                            <a class="portfolio-link" href="/theme/images/img22.jpg" data-fancybox="gallery" data-caption="Image 8">--}}
+                    {{--                                <img src="/theme/images/img22.jpg" alt="portfolio-image">--}}
+                    {{--                                <div class="icon-element icon-element-md">--}}
+                    {{--                                    <i class="la la-plus"></i>--}}
+                    {{--                                </div>--}}
+                    {{--                            </a>--}}
+                    {{--                        </div><!-- end generic-portfolio-content -->--}}
+                    {{--                    </div><!-- end generic-portfolio-item -->--}}
+                    {{--                    <div class="generic-portfolio-item col-lg-4 photography web-design">--}}
+                    {{--                        <div class="generic-portfolio-content">--}}
+                    {{--                            <a class="portfolio-link" href="/theme/images/img22.jpg" data-fancybox="gallery" data-caption="Image 9">--}}
+                    {{--                                <img src="/theme/images/img22.jpg" alt="portfolio-image">--}}
+                    {{--                                <div class="icon-element icon-element-md">--}}
+                    {{--                                    <i class="la la-plus"></i>--}}
+                    {{--                                </div>--}}
+                    {{--                            </a>--}}
+                    {{--                        </div><!-- end generic-portfolio-content -->--}}
+                    {{--                    </div><!-- end generic-portfolio-item -->--}}
+                    {{--            </div><!-- end portfolio-list -->   -->--}}
+                </div><!-- end col-lg-12 -->
+            </div><!-- end row -->
+        </div><!-- end container -->
+</section><!-- end gallery-area -->
+
+<section class="client-logo-area section-padding position-relative overflow-hidden text-center" style="padding-bottom: 0px!important;">
+    <div class="container">
+        <h5 class="ribbon ribbon-lg mb-2">أخر الأخبار</h5>
+        <h2 class="section__title">أحدث الأخبار والنشاطات في مدارس جيل المستقبل الخاصة</h2>
+        <span class="section-divider"></span>
+        <ul class="nav nav-tabs generic-tab justify-content-center pb-4" id="myTab" role="tablist">
+            @if($haberCards1->count() >0)
+                <li class="nav-item">
+                    <a class="nav-link active" id="business-tab" data-toggle="tab" href="#business" role="tab" aria-controls="business" aria-selected="true">أخر الأخبار</a>
+                </li>
+            @endif
+            @if($haberCards2->count() >0)
+                <li class="nav-item">
+                    <a class="nav-link" id="design-tab" data-toggle="tab" href="#design" role="tab" aria-controls="design" aria-selected="false">النشاطات</a>
+                </li>
+            @endif
+            @if($haberCards3->count() >0)
+                <li class="nav-item">
+                    <a class="nav-link" id="development-tab" data-toggle="tab" href="#development" role="tab" aria-controls="development" aria-selected="false">الزيارات</a>
+                </li>
+            @endif
+            @if($haberCards4->count() >0)
+                <li class="nav-item">
+                    <a class="nav-link" id="drawing-tab" data-toggle="tab" href="#drawing" role="tab" aria-controls="drawing" aria-selected="false">القرارات</a>
+                </li>
+            @endif
+            @if($haberCards5->count() >0)
+                <li class="nav-item">
+                    <a class="nav-link" id="marketing-tab" data-toggle="tab" href="#marketing" role="tab" aria-controls="marketing" aria-selected="false">التعليمات الادارية</a>
+                </li>
+            @endif
+        </ul>
     </div>
+    <div class="card-content-wrapper bg-gray pt-50px pb-120px">
+        <div class="container">
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="business" role="tabpanel" aria-labelledby="business-tab">
+                    <div class="row">
+                        @foreach($haberCards1 as $haberCard1)
+                            <div class="col-lg-4 responsive-column-half">
+                                <div class="card card-item card-preview" data-tooltip-content="#tooltip_content_1">
+                                    <div class="card-image">
+                                        <a href="{!! route('haberCard.display', ['id' => $haberCard1->id]) !!}" class="d-block">
+                                            <img class="card-img-top lazy" src="images/{{$haberCard1->image}}" data-src="images/{{$haberCard1->image}}" alt="Card image cap">
+                                        </a>
+                                    </div><!-- end card-image -->
+                                    <a href="{!! route('haberCard.display', ['id' => $haberCard1->id]) !!}" class="card-body">
+                                        <h6 class="ribbon ribbon-blue-bg fs-14 mb-3">{{$haberCard1->type}}</h6>
+                                        <h5 class="card-title"> {{$haberCard1->title}}</h5>
+                                        <p class="card-text">
+                                            {!! Str::limit($haberCard1->body, $limit = 200  ) !!}
+
+                                        </p>
+
+                                    </a>
+                                    <div class="course-badge-labels p-2">
+                                        <a style="float: left" href="{!! route('haberCard.display', ['id' => $haberCard1->id]) !!}">
+                                            <span class="p-b-4">  @lang("read more..")<br></span> </a>
+
+                                    </div>
+
+                                </div><!-- end card -->
+                            </div>
+                        @endforeach
+                    </div><!-- end row -->
+                </div><!-- end tab-pane -->
+                <div class="tab-pane fade" id="design" role="tabpanel" aria-labelledby="design-tab">
+                    <div class="row">
+                        @foreach($haberCards2 as $haberCard2)
+                            <div class="col-lg-4 responsive-column-half">
+                                <div class="card card-item card-preview" data-tooltip-content="#tooltip_content_2">
+                                    <div class="card-image">
+                                        <a href="{!! route('haberCard.display', ['id' => $haberCard2->id]) !!}" class="d-block">
+                                            <img class="card-img-top lazy" src="images/{{$haberCard2->image}}" data-src="images/{{$haberCard2->image}}" alt="Card image cap">
+                                        </a>
+                                    </div><!-- end card-image -->
+                                    <a href="{!! route('haberCard.display', ['id' => $haberCard2->id]) !!}" class="card-body">
+                                        <h6 class="ribbon ribbon-blue-bg fs-14 mb-3">{{$haberCard2->type}}</h6>
+                                        <h5 class="card-title"> {{$haberCard2->title}}</h5>
+                                        <p class="card-text">
+                                            {!! Str::limit($haberCard2->body, $limit = 200  ) !!}
+
+                                        </p>
+
+                                    </a>
+                                    <div class="course-badge-labels p-2">
+                                        <a style="float: left" href="{!! route('haberCard.display', ['id' => $haberCard2->id]) !!}">
+                                            <span class="p-b-4">  @lang("read more..")<br></span> </a>
+
+                                    </div>
+
+                                </div><!-- end card -->
+                            </div>
+                        @endforeach
+                    </div><!-- end row -->
+                </div><!-- end tab-pane -->
+                <div class="tab-pane fade" id="development" role="tabpanel" aria-labelledby="development-tab">
+                    <div class="row">
+
+                        @foreach($haberCards3 as $haberCard3)
+                            <div class="col-lg-4 responsive-column-half">
+                                <div class="card card-item card-preview" data-tooltip-content="#tooltip_content_3">
+                                    <div class="card-image">
+                                        <a href="{!! route('haberCard.display', ['id' => $haberCard3->id]) !!}" class="d-block">
+                                            <img class="card-img-top lazy" src="images/{{$haberCard3->image}}" data-src="images/{{$haberCard3->image}}" alt="Card image cap">
+                                        </a>
+                                    </div><!-- end card-image -->
+                                    <a href="{!! route('haberCard.display', ['id' => $haberCard3->id]) !!}" class="card-body">
+                                        <h6 class="ribbon ribbon-blue-bg fs-14 mb-3">{{$haberCard3->type}}</h6>
+                                        <h5 class="card-title"> {{$haberCard3->title}}</h5>
+                                        <p class="card-text">
+                                            {!! Str::limit($haberCard3->body, $limit = 200  ) !!}
+
+                                        </p>
+
+                                    </a>
+                                    <div class="course-badge-labels p-2">
+                                        <a style="float: left" href="{!! route('haberCard.display', ['id' => $haberCard3->id]) !!}">
+                                            <span class="p-b-4">  @lang("read more..")<br></span> </a>
+
+                                    </div>
+
+                                </div><!-- end card -->
+                            </div>
+                        @endforeach
+                    </div><!-- end row -->
+                </div><!-- end tab-pane -->
+                <div class="tab-pane fade" id="drawing" role="tabpanel" aria-labelledby="drawing-tab">
+                    <div class="row">
+                        @foreach($haberCards4 as $haberCard4)
+                            <div class="col-lg-4 responsive-column-half">
+                                <div class="card card-item card-preview" data-tooltip-content="#tooltip_content_4">
+                                    <div class="card-image">
+                                        <a href="{!! route('haberCard.display', ['id' => $haberCard4->id]) !!}" class="d-block">
+                                            <img class="card-img-top lazy" src="images/{{$haberCard4->image}}" data-src="images/{{$haberCard4->image}}" alt="Card image cap">
+                                        </a>
+                                    </div><!-- end card-image -->
+                                    <a href="{!! route('haberCard.display', ['id' => $haberCard4->id]) !!}" class="card-body">
+                                        <h6 class="ribbon ribbon-blue-bg fs-14 mb-3">{{$haberCard4->type}}</h6>
+                                        <h5 class="card-title"> {{$haberCard4->title}}</h5>
+                                        <p class="card-text">
+                                            {!! Str::limit($haberCard4->body, $limit = 200  ) !!}
+
+                                        </p>
+
+                                    </a>
+                                    <div class="course-badge-labels p-2">
+                                        <a style="float: left" href="{!! route('haberCard.display', ['id' => $haberCard4->id]) !!}">
+                                            <span class="p-b-4">  @lang("read more..")<br></span> </a>
+
+                                    </div>
+
+                                </div><!-- end card -->
+                            </div>
+                        @endforeach
+                    </div><!-- end row -->
+                </div><!-- end tab-pane -->
+                <div class="tab-pane fade" id="marketing" role="tabpanel" aria-labelledby="marketing-tab">
+                    <div class="row">
+                        @foreach($haberCards5 as $haberCard5)
+                            <div class="col-lg-4 responsive-column-half">
+                                <div class="card card-item card-preview" data-tooltip-content="#tooltip_content_5">
+                                    <div class="card-image">
+                                        <a href="{!! route('haberCard.display', ['id' => $haberCard5->id]) !!}" class="d-block">
+                                            <img class="card-img-top lazy" src="images/{{$haberCard5->image}}" data-src="images/{{$haberCard5->image}}" alt="Card image cap">
+                                        </a>
+                                    </div><!-- end card-image -->
+                                    <a href="{!! route('haberCard.display', ['id' => $haberCard5->id]) !!}" class="card-body">
+                                        <h6 class="ribbon ribbon-blue-bg fs-14 mb-3">{{$haberCard5->type}}</h6>
+                                        <h5 class="card-title"> {{$haberCard5->title}}</h5>
+                                        <p class="card-text">
+                                            {!! Str::limit($haberCard5->body, $limit = 200  ) !!}
+
+                                        </p>
+
+                                    </a>
+                                    <div class="course-badge-labels p-2">
+                                        <a style="float: left" href="{!! route('haberCard.display', ['id' => $haberCard5->id]) !!}">
+                                            <span class="p-b-4">  @lang("read more..")<br></span> </a>
+
+                                    </div>
+
+                                </div><!-- end card -->
+                            </div>
+                        @endforeach
+                    </div><!-- end row -->
+                </div><!-- end tab-pane -->
+            </div><!-- end tab-content -->
+
+        </div><!-- end container -->
+    </div><!-- end card-content-wrapper -->
     <!-- end container -->
 </section>
+
+
+
 
 @include ('includes.footerNew')
 
 
+
+<script type="text/javascript">
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+</script>
 

@@ -23,41 +23,33 @@
         <h5 class="ribbon ribbon-lg mb-2">الكادر</h5>
         <h2 class="section__title">الكادر التدريسي والاداري</h2>
         <span class="section-divider"></span>
-        <ul class="nav nav-tabs generic-tab justify-content-center pb-4" id="myTab" role="tablist">
 
-            @if($FirstMangement->count() >0)
-                <li class="nav-item">
-                    <a class="nav-link" id="FirstMangement-tab" data-toggle="tab" href="#FirstMangement" role="tab" aria-controls="FirstMangement" aria-selected="false">الابتدائي</a>
-                </li>
-            @endif
-        </ul>
     </div>
     <div class="card-content-wrapper bg-gray pt-50px pb-120px">
         <div class="container">
-            <div class="tab-pane fade show active" id="myTabContent"> <div class="tab-pane fade" id="FirstMangement" role="tabpanel" aria-labelledby="FirstMangement-tab">
-                    <div class="row">
-                        @foreach($FirstMangement as $item)
-                            <div class="col-lg-3 responsive-column-half">
-                                <div class="card card-item member-card text-center">
-                                    <div class="card-image">
-                                        <img class="card-img-top" src="images/{{$item->image}}" alt="team member">
-                                    </div>
-                                    <div class="card-body">
-                                        <h5 class="card-title"><a href="teacher-detail.html">{{$item->name}}</a></h5>
-                                        <p class="card-text">{{$item->title}}</p>
 
-                                        <a href="{!! route('employe.display', ['id' => $item->id]) !!}" class="btn theme-btn theme-btn-sm theme-btn-transparent mt-3">عرض الصفحة الشخصية <i class="la la-arrow-right icon ml-1"></i></a>
+            <div class="row">
+                @foreach($mangement as $item)
+                    <div class="col-lg-3 responsive-column-half">
+                        <div class="card card-item member-card text-center">
+                            <div class="card-image">
+                                <img class="card-img-top" src="images/{{$item->image}}" alt="team member">
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title"><a href="teacher-detail.html">{{$item->name}}</a></h5>
+                                <p class="card-text">{{$item->title}}</p>
 
-                                    </div>
-                                </div><!-- end card -->
-                            </div><!-- end col-lg-3 -->
+                                <a href="{!! route('employe.display', ['id' => $item->id]) !!}" class="btn theme-btn theme-btn-sm theme-btn-transparent mt-3">عرض الصفحة الشخصية <i class="la la-arrow-right icon ml-1"></i></a>
 
-                        @endforeach
-                    </div><!-- end row -->
-                </div><!-- end tab-pane -->
-            </div><!-- end tab-content -->
-        </div><!-- end tab-content -->
-    </div>
+                            </div>
+                        </div><!-- end card -->
+                    </div><!-- end col-lg-3 -->
+
+                @endforeach
+            </div><!-- end row -->
+        </div><!-- end tab-pane -->
+    </div><!-- end tab-content -->
+
     <!-- end container -->
 </section>
 

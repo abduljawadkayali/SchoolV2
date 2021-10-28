@@ -570,7 +570,7 @@
                     @endforeach
                 </div><!-- end row -->
             </div><!-- end tab-pane -->
-        </div><!-- end tab-content -->
+
         <div class="tab-pane fade" id="SecondMangement" role="tabpanel" aria-labelledby="SecondMangement-tab">
             <div class="row">
                 @foreach($SecondMangement as $item)
@@ -592,8 +592,7 @@
                 @endforeach
             </div><!-- end row -->
         </div><!-- end tab-pane -->
-    </div><!-- end tab-content -->
-    <div class="tab-pane fade" id="ThirdMangement" role="tabpanel" aria-labelledby="ThirdMangement-tab">
+     <div class="tab-pane fade" id="ThirdMangement" role="tabpanel" aria-labelledby="ThirdMangement-tab">
         <div class="row">
             @foreach($ThirdMangement as $item)
                 <div class="col-lg-3 responsive-column-half">
@@ -614,7 +613,7 @@
             @endforeach
         </div><!-- end row -->
     </div><!-- end tab-pane -->
-</div><!-- end tab-content -->
+
 <div class="tab-pane fade" id="OnlineMangement" role="tabpanel" aria-labelledby="OnlineMangement-tab">
     <div class="row">
         @foreach($OnlineMangement as $item)
@@ -636,7 +635,9 @@
         @endforeach
     </div><!-- end row -->
 </div><!-- end tab-pane -->
-
+        </div><!-- end tab-content -->
+        </div><!-- end tab-content -->
+        </div><!-- end tab-content -->
 
 <!-- end container -->
 </section>

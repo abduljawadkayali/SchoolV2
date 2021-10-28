@@ -188,6 +188,8 @@
                                             <li><a href="/firstmang" class="nav-link">@lang("Primary School")</a></li>
                                             <li><a href="/secondmang" class="nav-link">@lang("Preparatory School")</a></li>
                                             <li><a href="/highmang" class="nav-link">@lang("High school")</a></li>
+                                            <li><a href="/Tedmangement" class="nav-link">@lang("Ted")</a></li>
+                                            <li><a href="/OnlineMangement" class="nav-link">@lang("OnlineSchool")</a></li>
 
 
                                         </ul>

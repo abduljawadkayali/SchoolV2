@@ -1,67 +1,61 @@
 @include ('includes.navbarNew')
 <meta name="csrf-token" content="{{ csrf_token() }}" />
+@if($background !=null)
+    <section class="breadcrumb-area section-padding " style="    position: relative;
+        background-size: cover;
+        background-position: center;
+        z-index: 2;background: url('/images/{{$background->image}}')">
 
-<section class="breadcrumb-area section-padding img-bg-3">
-    <div class="overlay"></div>
-    <div class="container">
-        <div class="breadcrumb-content text-left">
-            <div class="section-heading">
-                <h5 class="ribbon ribbon-lg ribbon-white mb-2">مرحبا بكم في Aduca</h5>
-                <h2 class="section__title fs-45 lh-60 text-white">تحسين حياتك التعلم</h2>
-            </div>
-            <div class="breadcrumb-btn-box pt-40px pl-3">
-                <a href="#" class="btn-text text-white video-play-btn d-inline-flex align-items-center" data-fancybox data-src="https://www.youtube.com/watch?v=cRXm1p-CNyk">
-                    <span class="icon-element icon-element-md pulse-btn mr-3"><i class="la la-play"></i></span>شاهد الفيديو
-                </a>
-            </div>
-        </div><!-- end breadcrumb-content -->
-    </div><!-- end container -->
-</section><!-- end breadcrumb-area -->
-<section class="about-area section--padding overflow-hidden">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6">
-                <div class="about-content pb-5 text-left">
-                    <div class="section-heading">
-                        <h2 class="section__title pb-3 lh-50">السوق العالمي الرائد للتعلم والتعليم</h2>
-                        <p class="section__desc">هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص أو شكل توضع الفقرات في الصفحة التي يقرأها. الهدف من استخدام لوريم إيبسوم هو أنه يحتوي على توزيع طبيعي -إلى حد ما- للأحرف ، بدلاً من استخدام "هنا يوجد محتوى نصي ، هنا يوجد محتوى نصي" ، مما يجعلها تبدو وكأنها إنجليزية قابلة للقراءة. تستخدم العديد من حزم النشر المكتبي ومحرري صفحات الويب الآن Lorem Ipsum كنص نموذج افتراضي ، وسيكشف البحث عن "lorem ipsum" عن العديد من مواقع الويب التي لا تزال في مهدها.</p>
-                    </div><!-- end section-heading -->
-                    <ul class="generic-list-item pt-3">
-                        <li><i class="la la-check-circle mr-2 text-success"></i>دورات عبر الإنترنت مع أنظمة خصم كاملة.</li>
-                        <li><i class="la la-check-circle mr-2 text-success"></i>شهادات عبر الإنترنت يمكن استخدامها في جميع أنحاء العالم.</li>
-                        <li><i class="la la-check-circle mr-2 text-success"></i>برنامج تطوير القيادة عبر الإنترنت في Aduca.</li>
-                    </ul>
-                </div><!-- end about-content -->
-            </div><!-- end col-lg-6 -->
-            <div class="col-lg-6">
-                <div class="generic-img-box generic-img-box-layout-2">
-                    <div class="img__item img__item-1">
-                        <img class="lazy" src="images/img-loading.png" data-src="images/img15.jpg" alt="About image">
-                        <div class="generic-img-box-content">
-                            <h3 class="fs-24 font-weight-semi-bold pb-1">55K</h3>
-                            <span>المدربين</span>
-                        </div>
-                    </div>
-                    <div class="img__item img__item-2">
-                        <img class="lazy" src="images/img-loading.png" data-src="images/img16.jpg" alt="About image">
-                        <div class="generic-img-box-content">
-                            <h3 class="fs-24 font-weight-semi-bold pb-1">6,900+</h3>
-                            <span>الدورات</span>
-                        </div>
-                    </div>
-                    <div class="img__item img__item-3">
-                        <img class="lazy" src="images/img-loading.png" data-src="images/img17.jpg" alt="About image">
-                        <div class="generic-img-box-content">
-                            <h3 class="fs-24 font-weight-semi-bold pb-1">40M</h3>
-                            <span>المتعلمين</span>
-                        </div>
-                    </div>
-                </div><!-- end generic-img-box -->
-            </div><!-- end col-lg-6 -->
-        </div><!-- end row -->
-    </div><!-- end container -->
-</section><!-- end about-area -->
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="breadcrumb-content text-left">
+                <div class="section-heading">
+                    <h5 class="ribbon ribbon-lg ribbon-white mb-2">{{$background->title}}</h5>
+                    <h2 class="section__title fs-45 lh-60 text-white">{{$background->body}}</h2>
+                </div>
+                <div class="breadcrumb-btn-box pt-40px pl-3">
+                    <a href="#" class="btn-text text-white video-play-btn d-inline-flex align-items-center" data-fancybox data-src="{{$background->vidio}}">
+                        <span class="icon-element icon-element-md pulse-btn mr-3"><i class="la la-play"></i></span>شاهد الفيديو
+                    </a>
+                </div>
+            </div><!-- end breadcrumb-content -->
+        </div><!-- end container -->
+    </section><!-- end breadcrumb-area -->
+    <section class="about-area section--padding overflow-hidden">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 w-50">
+                    <div class="about-content pb-5 text-left">
+                        <div class="section-heading">
+                            <h2 class="section__title pb-3 lh-50">{{$background->subtitle}}</h2>
+                            <p class="section__desc ">{{$background->subbody}}</p>
+                        </div><!-- end section-heading -->
 
+                    </div><!-- end about-content -->
+                </div><!-- end col-lg-6 -->
+                <div class="col-lg-6">
+                    <div class="generic-img-box generic-img-box-layout-2">
+                        <div class="img__item img__item-1">
+                            <img class="lazy" src="/images/{{$background->image1}}" data-src="/images/{{$background->image1}}" alt="About image">
+                            <div class="generic-img-box-content">
+                            </div>
+                        </div>
+                        <div class="img__item img__item-2">
+                            <img class="lazy" src="/images/{{$background->image2}}" data-src="/images/{{$background->image2}}" alt="About image">
+                            <div class="generic-img-box-content">
+                            </div>
+                        </div>
+                        <div class="img__item img__item-3">
+                            <img class="lazy" src="/images/{{$background->image3}}" data-src="/images/{{$background->image3}}" alt="About image">
+                            <div class="generic-img-box-content">
+                            </div>
+                        </div>
+                    </div><!-- end generic-img-box -->
+                </div><!-- end col-lg-6 -->
+            </div><!-- end row -->
+        </div><!-- end container -->
+    </section><!-- end about-area -->
+@endif
 <!--================================
         END HERO AREA
 =================================-->
@@ -77,7 +71,23 @@
         <div class="section-heading text-center">
             <h2 class="section__title">معرض الصور</h2>
         </div><!-- end section-heading -->
-        <br>
+        <ul class="portfolio-filter pt-40px pb-40px">
+            <li data-filter="*" class="active">الجميع</li>
+            @if($GalleryFirst->count() >0)
+                <li data-filter=".web-design">الأول</li>
+            @endif
+            @if($GallerySecond->count() >0)
+                <li data-filter=".photography">الثاني</li>
+            @endif
+            @if($GalleryThird->count() >0)
+                <li data-filter=".management">الثالث</li>
+            @endif
+            @if($GalleryForth->count() >0)
+                <li data-filter=".advertising">الرابع</li>
+            @endif
+
+
+        </ul>
         <div class="row">
             <div class="col-lg-12">
                 <div class="generic-portfolio-list row">
@@ -99,7 +109,121 @@
                         @endforeach
                     @endif
 
+                    @if($GallerySecond->count() >0)
+                        @foreach($GallerySecond as $item)
+                            <div class="generic-portfolio-item col-lg-4 photography  ">
+                                <div class="generic-portfolio-content">
+                                    <a class="portfolio-link" href="images/{{$item}}" data-fancybox="gallery" data-caption="Image 2">
+                                        <img src="images/{{$item}}" alt="portfolio-image">
+                                        <div class="icon-element icon-element-md">
+                                            <i class="la la-plus"></i>
+                                        </div>
+                                    </a>
+                                </div><!-- end generic-portfolio-content -->
+                            </div><!-- end generic-portfolio-item -->
+                        @endforeach
+                    @endif
 
+                    @if($GalleryThird->count() >0)
+                        @foreach($GalleryThird as $item)
+                            <div class="generic-portfolio-item col-lg-4 management">
+                                <div class="generic-portfolio-content">
+                                    <a class="portfolio-link" href="images/{{$item}}" data-fancybox="gallery" data-caption="Image 2">
+                                        <img src="images/{{$item}}" alt="portfolio-image">
+                                        <div class="icon-element icon-element-md">
+                                            <i class="la la-plus"></i>
+                                        </div>
+                                    </a>
+                                </div><!-- end generic-portfolio-content -->
+                            </div><!-- end generic-portfolio-item -->
+                        @endforeach
+                    @endif
+                    @if($GalleryForth->count() >0)
+                        @foreach($GalleryForth as $item)
+                            <div class="generic-portfolio-item col-lg-4 advertising">
+                                <div class="generic-portfolio-content">
+                                    <a class="portfolio-link" href="images/{{$item}}" data-fancybox="gallery" data-caption="Image 2">
+                                        <img src="images/{{$item}}" alt="portfolio-image">
+                                        <div class="icon-element icon-element-md">
+                                            <i class="la la-plus"></i>
+                                        </div>
+                                    </a>
+                                </div><!-- end generic-portfolio-content -->
+                            </div><!-- end generic-portfolio-item -->
+                        @endforeach
+                    @endif
+
+                    {{--                    <div class="generic-portfolio-item col-lg-4 photography advertising">--}}
+                    {{--                        <div class="generic-portfolio-content">--}}
+                    {{--                            <a class="portfolio-link" href="/theme/images/img22.jpg" data-fancybox="gallery" data-caption="Image 3">--}}
+                    {{--                                <img src="/theme/images/img22.jpg" alt="portfolio-image">--}}
+                    {{--                                <div class="icon-element icon-element-md">--}}
+                    {{--                                    <i class="la la-plus"></i>--}}
+                    {{--                                </div>--}}
+                    {{--                            </a>--}}
+                    {{--                        </div><!-- end generic-portfolio-content -->--}}
+                    {{--                    </div><!-- end generic-portfolio-item -->--}}
+                    {{--                    <div class="generic-portfolio-item col-lg-4 development web-design">--}}
+                    {{--                        <div class="generic-portfolio-content">--}}
+                    {{--                            <a class="portfolio-link" href="/theme/images/img22.jpg" data-fancybox="gallery" data-caption="Image 4">--}}
+                    {{--                                <img src="/theme/images/img22.jpg" alt="portfolio-image">--}}
+                    {{--                                <div class="icon-element icon-element-md">--}}
+                    {{--                                    <i class="la la-plus"></i>--}}
+                    {{--                                </div>--}}
+                    {{--                            </a>--}}
+                    {{--                        </div><!-- end generic-portfolio-content -->--}}
+                    {{--                    </div><!-- end generic-portfolio-item -->--}}
+                    {{--                    <div class="generic-portfolio-item col-lg-4 advertising web-design">--}}
+                    {{--                        <div class="generic-portfolio-content">--}}
+                    {{--                            <a class="portfolio-link" href="/theme/images/img22.jpg" data-fancybox="gallery" data-caption="Image 5">--}}
+                    {{--                                <img src="/theme/images/img22.jpg" alt="portfolio-image">--}}
+                    {{--                                <div class="icon-element icon-element-md">--}}
+                    {{--                                    <i class="la la-plus"></i>--}}
+                    {{--                                </div>--}}
+                    {{--                            </a>--}}
+                    {{--                        </div><!-- end generic-portfolio-content -->--}}
+                    {{--                    </div><!-- end generic-portfolio-item -->--}}
+                    {{--                    <div class="generic-portfolio-item col-lg-4 photography management">--}}
+                    {{--                        <div class="generic-portfolio-content">--}}
+                    {{--                            <a class="portfolio-link" href="/theme/images/img22.jpg" data-fancybox="gallery" data-caption="Image 6">--}}
+                    {{--                                <img src="/theme/images/img22.jpg" alt="portfolio-image">--}}
+                    {{--                                <div class="icon-element icon-element-md">--}}
+                    {{--                                    <i class="la la-plus"></i>--}}
+                    {{--                                </div>--}}
+                    {{--                            </a>--}}
+                    {{--                        </div><!-- end generic-portfolio-content -->--}}
+                    {{--                    </div><!-- end generic-portfolio-item -->--}}
+                    {{--                    <div class="generic-portfolio-item col-lg-4 development web-design">--}}
+                    {{--                        <div class="generic-portfolio-content">--}}
+                    {{--                            <a class="portfolio-link" href="/theme/images/img22.jpg" data-fancybox="gallery" data-caption="Image 7">--}}
+                    {{--                                <img src="/theme/images/img22.jpg" alt="portfolio-image">--}}
+                    {{--                                <div class="icon-element icon-element-md">--}}
+                    {{--                                    <i class="la la-plus"></i>--}}
+                    {{--                                </div>--}}
+                    {{--                            </a>--}}
+                    {{--                        </div><!-- end generic-portfolio-content -->--}}
+                    {{--                    </div><!-- end generic-portfolio-item -->--}}
+                    {{--                    <div class="generic-portfolio-item col-lg-4 management photography advertising">--}}
+                    {{--                        <div class="generic-portfolio-content">--}}
+                    {{--                            <a class="portfolio-link" href="/theme/images/img22.jpg" data-fancybox="gallery" data-caption="Image 8">--}}
+                    {{--                                <img src="/theme/images/img22.jpg" alt="portfolio-image">--}}
+                    {{--                                <div class="icon-element icon-element-md">--}}
+                    {{--                                    <i class="la la-plus"></i>--}}
+                    {{--                                </div>--}}
+                    {{--                            </a>--}}
+                    {{--                        </div><!-- end generic-portfolio-content -->--}}
+                    {{--                    </div><!-- end generic-portfolio-item -->--}}
+                    {{--                    <div class="generic-portfolio-item col-lg-4 photography web-design">--}}
+                    {{--                        <div class="generic-portfolio-content">--}}
+                    {{--                            <a class="portfolio-link" href="/theme/images/img22.jpg" data-fancybox="gallery" data-caption="Image 9">--}}
+                    {{--                                <img src="/theme/images/img22.jpg" alt="portfolio-image">--}}
+                    {{--                                <div class="icon-element icon-element-md">--}}
+                    {{--                                    <i class="la la-plus"></i>--}}
+                    {{--                                </div>--}}
+                    {{--                            </a>--}}
+                    {{--                        </div><!-- end generic-portfolio-content -->--}}
+                    {{--                    </div><!-- end generic-portfolio-item -->--}}
+                    {{--            </div><!-- end portfolio-list -->   -->--}}
                 </div><!-- end col-lg-12 -->
             </div><!-- end row -->
         </div><!-- end container -->
@@ -112,10 +236,9 @@
         <span class="section-divider"></span>
         <ul class="nav nav-tabs generic-tab justify-content-center pb-4" id="myTab" role="tablist">
 
-
-            @if($BabeMangement->count() >0)
-                <li class="nav-item">
-                    <a class="nav-link" id="BabeMangement-tab" data-toggle="tab" href="#BabeMangement" role="tab" aria-controls="BabeMangement" aria-selected="false">الحضانة</a>
+            @if($PreMangement->count() >0)
+                <li class="nav-item active ">
+                    <a class="nav-link" id="PreMangement-tab" data-toggle="tab" href="#PreMangement" role="tab" aria-controls="PreMangement" aria-selected="false">الروضة</a>
                 </li>
             @endif
         </ul>
@@ -123,10 +246,9 @@
     <div class="card-content-wrapper bg-gray pt-50px pb-120px">
         <div class="container">
             <div class="tab-content" id="myTabContent">
-                <div class="tab-pane fade show active" id="BabeMangement" role="tabpanel" aria-labelledby="BabeMangement-tab">
+                <div class="tab-pane fade active show" id="PreMangement" role="tabpanel" aria-labelledby="PreMangement-tab">
                     <div class="row">
-
-                        @foreach($BabeMangement as $item)
+                        @foreach($PreMangement as $item)
                             <div class="col-lg-3 responsive-column-half">
                                 <div class="card card-item member-card text-center">
                                     <div class="card-image">
@@ -146,72 +268,8 @@
                     </div><!-- end row -->
                 </div><!-- end tab-pane -->
             </div><!-- end tab-content -->
-            <div class="tab-pane fade" id="SecondMangement" role="tabpanel" aria-labelledby="SecondMangement-tab">
-                <div class="row">
-                    @foreach($SecondMangement as $item)
-                        <div class="col-lg-3 responsive-column-half">
-                            <div class="card card-item member-card text-center">
-                                <div class="card-image">
-                                    <img class="card-img-top" src="images/{{$item->image}}" alt="team member">
-                                </div>
-                                <div class="card-body">
-                                    <h5 class="card-title"><a href="teacher-detail.html">{{$item->name}}</a></h5>
-                                    <p class="card-text">{{$item->title}}</p>
-
-                                    <a href="{!! route('employe.display', ['id' => $item->id]) !!}" class="btn theme-btn theme-btn-sm theme-btn-transparent mt-3">عرض الصفحة الشخصية <i class="la la-arrow-right icon ml-1"></i></a>
-
-                                </div>
-                            </div><!-- end card -->
-                        </div><!-- end col-lg-3 -->
-
-                    @endforeach
-                </div><!-- end row -->
-            </div><!-- end tab-pane -->
         </div><!-- end tab-content -->
-        <div class="tab-pane fade" id="ThirdMangement" role="tabpanel" aria-labelledby="ThirdMangement-tab">
-            <div class="row">
-                @foreach($ThirdMangement as $item)
-                    <div class="col-lg-3 responsive-column-half">
-                        <div class="card card-item member-card text-center">
-                            <div class="card-image">
-                                <img class="card-img-top" src="images/{{$item->image}}" alt="team member">
-                            </div>
-                            <div class="card-body">
-                                <h5 class="card-title"><a href="teacher-detail.html">{{$item->name}}</a></h5>
-                                <p class="card-text">{{$item->title}}</p>
-
-                                <a href="{!! route('employe.display', ['id' => $item->id]) !!}" class="btn theme-btn theme-btn-sm theme-btn-transparent mt-3">عرض الصفحة الشخصية <i class="la la-arrow-right icon ml-1"></i></a>
-
-                            </div>
-                        </div><!-- end card -->
-                    </div><!-- end col-lg-3 -->
-
-                @endforeach
-            </div><!-- end row -->
-        </div><!-- end tab-pane -->
     </div><!-- end tab-content -->
-    <div class="tab-pane fade" id="OnlineMangement" role="tabpanel" aria-labelledby="OnlineMangement-tab">
-        <div class="row">
-            @foreach($OnlineMangement as $item)
-                <div class="col-lg-3 responsive-column-half">
-                    <div class="card card-item member-card text-center">
-                        <div class="card-image">
-                            <img class="card-img-top" src="images/{{$item->image}}" alt="team member">
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title"><a href="teacher-detail.html">{{$item->name}}</a></h5>
-                            <p class="card-text">{{$item->title}}</p>
-
-                            <a href="{!! route('employe.display', ['id' => $item->id]) !!}" class="btn theme-btn theme-btn-sm theme-btn-transparent mt-3">عرض الصفحة الشخصية <i class="la la-arrow-right icon ml-1"></i></a>
-
-                        </div>
-                    </div><!-- end card -->
-                </div><!-- end col-lg-3 -->
-
-            @endforeach
-        </div><!-- end row -->
-    </div><!-- end tab-pane -->
-
 
     <!-- end container -->
 </section>

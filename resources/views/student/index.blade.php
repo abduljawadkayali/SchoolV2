@@ -22,9 +22,8 @@
       </div>
 
 
-
     <div class="table-responsive">
-        <table class="table datatable table-bordered table-striped">
+        <table class="table datatable table-bordered table-striped" id="mytable">
             <thead>
                 <tr>
                     <th>@lang("Student Number")</th>
@@ -39,14 +38,11 @@
                     <th>@lang("Action")</th>
                 </tr>
             </thead>
-
             <tbody>
                 @foreach ($students as $student)
                 <tr>
                     <td>{{ $student->number }}</td>
-
                     <td>{{ $student->name }}</td>
-
                     <td>{{ $student->school->name }}</td>
                     <td>{{ $student->email }}</td>
                     <td>{{ $student->phone }}</td>
@@ -94,6 +90,7 @@
         $('div.dataTables_filter label input').addClass('form-control');
     } );
     </script>
+
 
 
 @endsection
