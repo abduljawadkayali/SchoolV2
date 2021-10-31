@@ -173,6 +173,10 @@ Route::resource('haberCard','New\HaberCardController');
 Route::resource('rate','New\RateController');
 Route::resource('employe','New\EmployeController');
 Route::resource('region','New\RegionController');
+Route::resource('disacount','New\DiscountController');
+Route::resource('acount','New\acountController');
+Route::resource('statment','New\StatmentController');
+Route::resource('lock','New\LockController');
 Route::get('employee/{id}', ['as' => 'employe.display', 'uses' => 'pagesController@displayEmployee']);
 Route::get('displayHaber/{id}', ['as' => 'haberCard.display', 'uses' => 'pagesController@display']);
 

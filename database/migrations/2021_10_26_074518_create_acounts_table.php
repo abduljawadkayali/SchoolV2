@@ -14,6 +14,7 @@ class CreateAcountsTable extends Migration
     public function up()
     {
         Schema::create('acounts', function (Blueprint $table) {
+            $table->Increments('id');
             $table->integer('student_id')->unsigned()->nullable();
             $table->foreign('student_id')->references('id')->on('students');
             $table->string('payment')->nullable();

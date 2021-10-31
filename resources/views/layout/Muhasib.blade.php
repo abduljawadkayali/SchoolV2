@@ -89,13 +89,35 @@
 
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false"><ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
-
-
+                            <li class="nav-item">
+                                <a href="/lock" class="nav-link">
+                                    <i class="fas fa-key"></i>
+                                    <p>@lang("lock")</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/statment" class="nav-link">
+                                    <i class="fas fa-newspaper"></i>
+                                    <p>@lang("statment")</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/acount" class="nav-link">
+                                    <i class="fas fa-dollar-sign"></i>
+                                    <p>@lang("acount")</p>
+                                </a>
+                            </li>
 
                             <li class="nav-item">
                                 <a href="/region" class="nav-link">
-                                    <i class="fas fa-person-booth"></i>
+                                    <i class="fas fa-place-of-worship"></i>
                                     <p>@lang("region")</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/disacount" class="nav-link">
+                                    <i class="fas fa-person-booth"></i>
+                                    <p>@lang("disacount")</p>
                                 </a>
                             </li>
 

@@ -50,7 +50,7 @@ class HomeController extends Controller
 
     }
 public function MuhasibDashbored(){
-    return redirect()->route('region.index');
+    return redirect()->route('acount.index');
 }
     public function NotLogin()
     {

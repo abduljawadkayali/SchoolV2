@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Discount;
 use App\Http\Controllers\Controller;
+use App\Region;
 use App\School;
 use Illuminate\Http\Request;
 use App\Student;
@@ -13,10 +15,7 @@ use Illuminate\Support\Facades\DB;
 class StudentsController extends Controller
 {
     public function __construct() {
-
-
         $this->middleware('permission:Editor');
-
 
    }
 
@@ -26,11 +25,12 @@ class StudentsController extends Controller
        $schools = School::all();
       // $group = DB::table('groups')->pluck("name","id");
        $group = Group::all()->pluck("name","id");
-
+$regions = Region::all();
+$discounts = Discount::all();
 
 
       //dd($schools);
-       return view('student.create',compact('group','schools'));
+       return view('student.create',compact('regions','discounts','group','schools'));
    }
 
    public function getBranches($id)
@@ -101,6 +101,8 @@ class StudentsController extends Controller
             'group'=>'required|exists:groups,id',
             'branch'=>'required',
             'school_id'=>'required',
+            'region'=>'required',
+            'discount'=>'required',
 
 
             ]
@@ -118,9 +120,13 @@ class StudentsController extends Controller
         $student->phone = $phone;
         $student->number = $number;
         $student->group_id = $request['group'];
+        $student->region_id = $request['region'];
+        $student->discount_id = $request['discount'];
         $student->branch_id = $request['branch'];
         $student->school_id = $request['school_id'];
         $student->save();
+
+
 
 
         return redirect()->action('StudentsController@index')->with('success', 'Student Added successfully');

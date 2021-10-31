@@ -13,7 +13,7 @@ class Group extends Model
 {
     use SoftDeletes;
     protected $fillable = [
-        'name', 'classNum'
+        'name', 'classNum','fee'
     ];
 
     public function students()
