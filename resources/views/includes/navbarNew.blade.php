@@ -231,7 +231,7 @@
                     <!-- end col-lg-10 -->
                     <div class="col-lg-2">
                         <div class="logo-box">
-                            <a href="index.html" class="logo"><img src="/theme/images/logo.jpg" alt="logo"></a>
+                            <a href="/" class="logo"><img src="/theme/images/logo.jpg" alt="logo"></a>
                             <div class="user-btn-action">
                                 <div class="off-canvas-menu-toggle main-menu-toggle icon-element icon-element-sm shadow-sm" data-toggle="tooltip" data-placement="top" title="Main menu">
                                     <i class="la la-bars"></i>
