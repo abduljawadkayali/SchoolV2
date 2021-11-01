@@ -50,7 +50,30 @@
 			   {{ Form::text('name', $student->name, array('class' => 'form-control')) }}
 
            </div>
+            <div class="form-group">
+                <label for="region">@lang("Select region:")</label>
+                <select name="region" class="form-control">
+                    <option value="{{$student->region_id}}">{{$student->region->name}}</option>
 
+                    @foreach($regions as $region)
+                        <option value="{{$region->id}}">{{$region->name}}</option>
+                    @endforeach
+
+
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="discount">@lang("Select discount:")</label>
+                <select name="discount" class="form-control">
+                    <option value="{{$student->discount_id}}">{{$student->discount->name}}</option>
+
+                    @foreach($discounts as $discount)
+                        <option value="{{$discount->id}}">{{$discount->name}}</option>
+                    @endforeach
+
+
+                </select>
+            </div>
             <div class="form-group">
                 <label for="school_id">@lang("Select School:")</label>
                 <select name="school_id" class="form-control">

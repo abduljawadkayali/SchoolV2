@@ -28,6 +28,8 @@
                 <tr>
                     <th>@lang("Student Number")</th>
                     <th>@lang("Student Name")</th>
+                    <th>@lang("Student Region")</th>
+                    <th>@lang("Student Discount")</th>
                     <th>@lang("Student School")</th>
                     <th>@lang("Student email")</th>
                     <th>@lang("Phone")</th>
@@ -43,6 +45,8 @@
                 <tr>
                     <td>{{ $student->number }}</td>
                     <td>{{ $student->name }}</td>
+                    <td>{{ $student->region->name }}</td>
+                    <td>{{ $student->discount->name }}</td>
                     <td>{{ $student->school->name }}</td>
                     <td>{{ $student->email }}</td>
                     <td>{{ $student->phone }}</td>

@@ -244,6 +244,7 @@ Route::get('subject/{year}/{semister}/{class}/{branch}/{subject}/{exam}/{student
 
 Route::get('action/{year}/{semister}/{class}/{branch}/{subject}/{exam}','Student\StudentHomeController@action')->name('student.action');
     Route::resource('StudentSubject', 'Student\StudentSubjectController');
+    Route::resource('StudentPayment', 'Student\StudentPaymentController');
 
 
     Route::get('lessons/{class}','Student\StudentSubjectController@group')->name('lessons.group');

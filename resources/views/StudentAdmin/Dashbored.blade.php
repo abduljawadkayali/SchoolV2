@@ -15,11 +15,11 @@
 
  <!DOCTYPE html>
  <html lang="ar" dir="rtl">
- 
+
  <head>
   <meta charset="utf-8" />
   <link rel="apple-touch-icon" sizes="76x76" href="/assets/img/apple-icon.png">
-  <link rel="icon" type="image/png" href="/assets/img/favicon.png"> 
+  <link rel="icon" type="image/png" href="/assets/img/favicon.png">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>
    @lang("Future Generation Private Schools")
@@ -36,7 +36,7 @@
 
   <!-- CSS Files -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  
+
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
 
   @yield('header')
@@ -45,34 +45,34 @@
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="/assets/demo/demo.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
- 
+
 
    <style>
      * {
        font-family: "DroidArabicKufiRegular";
      }
 
-     
+
    </style>
  </head>
- 
- 
+
+
  <body class="">
     <div class="wrapper ">
       <div class="sidebar" data-color="purple" data-background-color="white" data-image="/assets/img/sidebar-1.jpg">
         <!--
           Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
-  
+
           Tip 2: you can also add an image using data-image tag
       -->
         <div class="logo">
           <a href="/welcome" class="simple-text logo-normal">
               @lang("Future Generation Private Schools")      </a>
         </div>
-  
-        
-  
-  
+
+
+
+
         <div class="sidebar-wrapper">
           <ul class="nav">
 
@@ -82,7 +82,7 @@
                 <p> @lang("Subjects") </p>
               </a>
             </li>
-           
+
 
             <li class="nav-item ">
               <a class="nav-link" href="{{ route('StudentHome.index') }}">
@@ -90,27 +90,34 @@
                 <p> @lang("Result") </p>
               </a>
             </li>
-            
 
-    
+              <li class="nav-item ">
+                  <a class="nav-link" href="{{ route('StudentPayment.index') }}">
+                      <i class="material-icons"> sort</i>
+                      <p> @lang("Payment") </p>
+                  </a>
+              </li>
 
 
-            
-            <li class="nav-item ">
+
+
+
+
+              <li class="nav-item ">
               <a class="nav-link" href="{{ route('studentPersonal.index') }}">
                 <i class="material-icons"> sort</i>
                 <p> @lang("Profile") </p>
               </a>
             </li>
 
-            
-           
 
 
-    
 
-              
-              
+
+
+
+
+
 
 
 
@@ -132,14 +139,14 @@
              <span class="navbar-toggler-icon icon-bar"></span>
            </button>
            <div class="collapse navbar-collapse justify-content-end">
-            
+
              <ul class="navbar-nav">
-               
+
                <li class="nav-item dropdown">
                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                   {{ Auth::guard('students')->user()->name}} <span class="caret"></span>
                 </a>
-  
+
 
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                   <a style="text-align:center;" class="nav-link" href="{{ route('logout') }}"
@@ -147,7 +154,7 @@
                            $('#logout-form').submit();">
                     @lang("logout")
                   </a>
-  
+
                   <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                     @csrf
                   </form>
@@ -167,10 +174,10 @@
        <main class="py-4">
            @yield('main')
        </main>
- 
+
        <!-- End Navbar -->
-     
-        
+
+
 </div>
 
 
@@ -181,7 +188,7 @@
      <script src="/assets/js/core/popper.min.js" type="text/javascript"></script>
      <script src="/assets/js/core/bootstrap-material-design.min.js" type="text/javascript"></script>
      <script src="/assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
- 
+
      <!-- Chartist JS -->
      <script src="/assets/js/plugins/chartist.min.js"></script>
      <!--  Notifications Plugin    -->
@@ -189,15 +196,14 @@
      <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
      <script src="/assets/js/material-dashboard.min.js?v=2.1.0" type="text/javascript"></script>
      <!-- Material Dashboard DEMO methods, don't include it in your project! -->
-    
+
      <script>
        $(document).ready(function () {
          // Javascript method's body can be found in assets/js/demos.js
          md.initDashboardPageCharts();
- 
+
        });
      </script>
  </body>
- 
+
  </html>
- 

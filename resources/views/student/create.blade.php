@@ -48,6 +48,28 @@
            </div>
 
             <div class="form-group">
+                <label for="region">@lang("Select region:")</label>
+                <select name="region" class="form-control">
+
+                    @foreach($regions as $region)
+                        <option value="{{$region->id}}">{{$region->name}}</option>
+                    @endforeach
+
+
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="discount">@lang("Select discount:")</label>
+                <select name="discount" class="form-control">
+
+                    @foreach($discounts as $discount)
+                        <option value="{{$discount->id}}">{{$discount->name}}</option>
+                    @endforeach
+
+
+                </select>
+            </div>
+            <div class="form-group">
                 <label for="school_id">@lang("Select School:")</label>
                 <select name="school_id" class="form-control">
 

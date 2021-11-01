@@ -101,8 +101,8 @@ $discounts = Discount::all();
             'group'=>'required|exists:groups,id',
             'branch'=>'required',
             'school_id'=>'required',
-            'region'=>'required',
-            'discount'=>'required',
+            'region'=>'nullable|exists:regions,id',
+            'discount'=>'nullable|exists:discounts,id',
 
 
             ]
@@ -120,8 +120,8 @@ $discounts = Discount::all();
         $student->phone = $phone;
         $student->number = $number;
         $student->group_id = $request['group'];
-        $student->region_id = $request['region'];
-        $student->discount_id = $request['discount'];
+        $student->region_id = $request['region']?$request['region']:null;
+        $student->discount_id = $request['discount']?$request['discount']:null;
         $student->branch_id = $request['branch'];
         $student->school_id = $request['school_id'];
         $student->save();
@@ -155,9 +155,10 @@ $discounts = Discount::all();
         $student = Student::findOrFail($id);
         $group = Group::all();
         $schools = School::all();
+        $regions = Region::all();
+        $discounts = Discount::all();
 
-
-        return view('student.edit', compact('student', 'group','schools'));
+        return view('student.edit', compact('regions','discounts','student', 'group','schools'));
     }
 
     /**
@@ -171,36 +172,60 @@ $discounts = Discount::all();
     {
         $student = Student::findOrFail($id);
 
+//        dd($request->discount);
 
         $this->validate($request, [
             'name'=>'required',
             'email'=>'required',
-            'password'=>'required',
+            'password'=>'nullable',
             'phone'=>'required',
             'number' => 'required|unique:students,number,'.$student->id,
             'group'=>'required|exists:groups,id',
             'branch'=>'required',
+            'discount'=>'required',
+            'region'=>'required',
             'school_id'=>'required',
 
 
 
             ]
         );
+if($request['password'] == null){
+    $form_data = array(
 
-        $form_data = array(
-
-            'name'   => $request->name,
-            'email'   => $request->email,
-            'password'       =>   Hash::make($request['password']),
-            'phone'        =>   $request->phone,
-            'number'            =>   $request->number,
-            'group_id'            =>   $request->group,
-            'branch_id'            =>   $request->branch,
-            'school_id'            =>   $request->school_id,
-
+        'name'   => $request->name,
+        'email'   => $request->email,
+        'phone'        =>   $request->phone,
+        'number'            =>   $request->number,
+        'group_id'            =>   $request->group,
+        'branch_id'            =>   $request->branch,
+        'discount_id'            =>   $request->discount,
+        'region_id'            =>   $request->region,
+        'school_id'            =>   $request->school_id,
 
 
-        );
+
+    );
+}
+else{
+    $form_data = array(
+
+        'name'   => $request->name,
+        'email'   => $request->email,
+        'password'       =>   Hash::make($request['password']),
+        'phone'        =>   $request->phone,
+        'number'            =>   $request->number,
+        'group_id'            =>   $request->group,
+        'branch_id'            =>   $request->branch,
+        'school_id'            =>   $request->school_id,
+        'discount_id'            =>   $request->discount,
+        'region_id'            =>   $request->region
+
+
+
+    );
+}
+
 
         Student::whereId($id)->update($form_data);
 

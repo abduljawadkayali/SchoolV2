@@ -37,25 +37,26 @@ class AuthController extends Controller
      */
     public function __construct()
     {
-      
+
         //$this->middleware('guest', ['except' => 'logout']);
     }
 
     public function login()
     {
-    
+
      return view('StudentAdmin.Auth.login')  ;
     }
 
     public function attemp(Request $request)
     {
         if(Auth::guard('students')->attempt($request->only('number','password'),$request->filled('remember'))){
+            dd(Auth::guard('students'));
             //Authentication passed...
             return redirect()
                 ->intended(route('StudentSubject.index'))
                 ->with('status','You are Logged in as Admin!');
         }
-    
+
         //Authentication failed...
         return redirect()->back()->with('error', 'your email or password is wrong');
     }
