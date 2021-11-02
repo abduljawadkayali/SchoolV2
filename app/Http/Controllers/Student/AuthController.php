@@ -50,7 +50,15 @@ class AuthController extends Controller
     public function attemp(Request $request)
     {
         if(Auth::guard('students')->attempt($request->only('number','password'),$request->filled('remember'))){
-            dd(Auth::guard('students'));
+
+            $student_id = Auth::guard('students')->user();
+
+            if($student_id->status == 0){
+                Auth::guard('students')->logout();
+                toast(__('Background Other data Added Successfully'),'success');
+                return redirect('/Student/StudentLogin')->with('error', 'الرجاء التواصل مع المكتب المالي');
+            }
+
             //Authentication passed...
             return redirect()
                 ->intended(route('StudentSubject.index'))
